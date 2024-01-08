@@ -1,0 +1,259 @@
+@mixin make-cta-options($display: block, $has-columns: no) {
+    width: 100%;
+    display: $display;
+    position: relative;
+    &__bg-items {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+    }
+    &__ft-items {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        @if $has-columns == yes {
+            row-gap: $g-measure * 4;
+            @if $g-viewport-type == "max-width" {
+                column-gap: calc((100% / 12) * 1);
+            }
+            &__content {
+                @if $g-viewport-type == "max-width" {
+                    width: calc((100% / 12) * 5);
+                }
+                @else if $g-viewport-type == "min-width" {
+                    width: 100%;
+                }
+            }
+            &__wrapper {
+                @if $g-viewport-type == "max-width" {
+                    width: calc((100% / 12) * 6);
+                }
+                @else if $g-viewport-type == "min-width" {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+$cta-options: (
+    "align": null,
+    "align-columns": null,
+    "container": null,
+    "min-height": null,
+    "back-items": null,
+    "breakpoint-bigger-columns": null,
+    "breakpoint-full-width": null,
+);
+
+@mixin make-cta-modifier-options($options, $has-columns: no) {
+    @each $property, $value in $options {
+        @if map-has-key($cta-options, $property) {
+            @if $value {
+                @if $property == "align" {
+                    @if $value == "left" {
+                        text-align: left;
+                        *[class$="__ft-items"] {
+                            justify-content: flex-start;
+                        }
+                        *[class$="__list-group"] {
+                            justify-content: flex-start;
+                        }
+                    }
+                    @else if $value == "center" {
+                        text-align: center;
+                        *[class$="__ft-items"] {
+                            justify-content: center;
+                        }
+                        *[class$="__list-group"] {
+                            justify-content: center;
+                        }
+                    }
+                    @else if $value == "right" {
+                        text-align: right;
+                        *[class$="__ft-items"] {
+                            justify-content: flex-end;
+                        }
+                        *[class$="__list-group"] {
+                            justify-content: flex-end;
+                        }
+                    }
+                }
+
+                @else if $property == "container" {
+                    @if $value == "no" {
+                        *[class$="__ft-items"] {
+                            width: 100%;
+                            max-width: 100%;
+                            @include make-padding($variable: $cta-inside-container-padding);
+                            @media all and ($g-viewport-type: $cta-spaces-breakpoint) {
+                                @include make-padding($variable: $cta-inside-container-padding-responsive);
+                            }
+                            @if $has-columns == no {
+                                *[class$="__content"] {
+                                    max-width: 100%;
+                                    width: 100%;
+                                    flex: none;
+                                }
+                            }
+                        }
+                    }
+                    @else if $value == "yes"{
+                        *[class$="__ft-items"] {
+                            @extend .#{$g-container-class};
+                            @extend .#{$g-row-class};
+                            @extend .#{$g-row-remove-gutter-class};
+                            margin-left: auto;
+                            margin-right: auto;
+                            padding-top: $cta-outside-container-padding-y;
+                            padding-bottom: $cta-outside-container-padding-y;
+                            @media all and ($g-viewport-type: $cta-spaces-breakpoint) {
+                                padding-top: $cta-outside-container-padding-y-responsive;
+                                padding-bottom: $cta-outside-container-padding-y-responsive;
+                            }
+                            @if $has-columns == no {
+                                *[class$="__content"] {
+                                    @if type-of($cta-outside-container-col-class) == list {
+                                        @each $class in $cta-outside-container-col-class {
+                                            @extend .#{$class};
+                                        }
+                                    }
+                                    @else {
+                                        @extend .#{$cta-outside-container-col-class};
+                                    }
+                                    padding-left: 0;
+                                    padding-right: 0;
+                                }
+                            }
+                        }
+                    }
+                    @else {
+                        *[class$="__ft-items"] {
+                            @extend .#{$g-container-class};
+                            @extend .#{$g-row-class};
+                            @extend .#{$g-row-remove-gutter-class};
+                            margin-left: auto;
+                            margin-right: auto;
+                            padding-top: $cta-outside-container-padding-y;
+                            padding-bottom: $cta-outside-container-padding-y;
+                            @media all and ($g-viewport-type: $cta-spaces-breakpoint) {
+                                padding-top: $cta-outside-container-padding-y-responsive;
+                                padding-bottom: $cta-outside-container-padding-y-responsive;
+                            }
+                            @if $has-columns == no {
+                                *[class$="__content"] {
+                                    @if type-of($value) == list {
+                                        @each $class in $value {
+                                            @extend .#{$class};
+                                        }
+                                    }
+                                    @else if $value{
+                                        @extend .#{$value};
+                                    }
+                                    padding-left: 0;
+                                    padding-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                @else if $property == "breakpoint-full-width" {
+                    @if $has-columns == yes {
+                        @if $g-viewport-type == "min-width" {
+                            @media all and ($g-viewport-type: $value) {
+                                *[class$="__content"] {
+                                    width: calc(((100% / 12) * 6));
+                                    padding-right: $g-measure*2;
+                                }
+                                *[class$="__wrapper"] {
+                                    width: calc(((100% / 12) * 6));
+                                    padding-left: $g-measure*2;
+                                }
+                            }
+                        }
+                        @else if $g-viewport-type == "max-width" {
+                            @media all and ($g-viewport-type: $value) {
+                                *[class$="__wrapper"] {
+                                    width: 100%;
+                                    padding-left: 0;
+                                }
+                                *[class$="__content"] {
+                                    width: 100%;
+                                    padding-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                @else if $property == "breakpoint-bigger-columns" {
+                    @media all and ($g-viewport-type: $value) {
+                        @if $has-columns == yes {
+                            @if $g-viewport-type == "max-width" {
+                                *[class$="__ft-items"] {
+                                    column-gap: 0;
+                                }
+                                *[class$="__content"] {
+                                    width: calc(((100% / 12) * 6));
+                                    padding-right: $g-measure*2;
+                                }
+                                *[class$="__wrapper"] {
+                                    width: calc(((100% / 12) * 6));
+                                    padding-left: $g-measure*2;
+                                }
+                            }
+                            @else if $g-viewport-type == "min-width" {
+                                *[class$="__ft-items"] {
+                                    column-gap: calc((100% / 12) * 1);
+                                }
+                                *[class$="__content"] {
+                                    width: calc(((100% / 12) * 5));
+                                    padding-right: 0;
+                                }
+                                *[class$="__wrapper"] {
+                                    width: calc(((100% / 12) * 6));
+                                    padding-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                @else if $property == "align-columns" {
+                    @if $has-columns == yes {
+                        @if $value == "top" {
+                            *[class$="__ft-items"] {
+                                align-items: flex-start;
+                            }
+                        }
+                        @else if $value == "center" {
+                            *[class$="__ft-items"] {
+                                align-items: center;
+                            }
+                        }
+                        @else if $value == "bottom" {
+                            *[class$="__ft-items"] {
+                                align-items: flex-end;
+                            }
+                        }
+                    }
+                }
+                @else if $property != "back-items" {
+                    #{$property}: $value;
+                }
+            }
+        }
+    }
+}
+
+@mixin make-cta-item-list-options($gap: $cta-item-list-gap) {
+    @include make-list-options($gap: $gap);
+}
+
+@mixin make-cta-item-list-modifier-options($options) {
+    @include make-list-modifier-options($options: $options);
+}

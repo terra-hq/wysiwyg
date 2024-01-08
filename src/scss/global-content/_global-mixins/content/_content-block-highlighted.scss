@@ -1,0 +1,5 @@
+@mixin block-highlighted-wp-modifier($options: $options) {
+    .highlighted{
+        @include make-font-options($options)
+    }
+}

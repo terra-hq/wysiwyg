@@ -1,0 +1,39 @@
+$hover-font-options: (
+    "color": null,
+    "transform": null,
+    "text-decoration-color": null,
+    "opacity": null,
+);
+
+@mixin make-hover-font-interaction($options) {
+    @each $property, $value in $options {
+        @if map-has-key($hover-font-options, $property) {
+            @if $value {
+                #{$property}: $value;
+            }
+        }
+    }
+}
+
+@mixin make-hover-font-transition($options) {
+    $hover-transition-list: ();
+    @each $property, $value in $options {
+        @if map-has-key($hover-font-options, $property) {
+            @if $value {
+                $transition: unquote(
+                    "#{$property} #{$g-transition-duration} #{$g-transition-timing-function}"
+                );
+                $hover-transition-list: append(
+                    $hover-transition-list,
+                    $transition,
+                    $separator: comma
+                );
+            }
+        }
+    }
+    @if $options != () {
+        @if $hover-transition-list != () {
+            transition: $hover-transition-list;
+        }
+    }
+}

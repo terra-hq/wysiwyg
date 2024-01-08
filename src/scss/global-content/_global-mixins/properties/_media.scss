@@ -1,0 +1,139 @@
+$media-options: (
+    "border-color": null,
+    "border-radius": null,
+    "border-style": null,
+    "border-width": null,
+    "object-fit": null,
+    "max-height": null,
+    "min-height": null,
+    "object-position": null,
+    "max-width": null,
+    "min-width": null,
+    "margin-bottom": null,
+    "margin-x": null,
+    "caption": null,
+);
+
+@mixin make-media-options($options, $platform) {
+
+    @each $property, $value in $options {
+        @if map-has-key($media-options, $property) {
+            @if $value {
+                @if $platform == wp {
+                    @if $property == "margin-bottom" {
+                        figure.wp-block-image {
+                            #{$property}: $value;
+                        }
+                        div.wp-block-image {
+                            figure {
+                                #{$property}: $value;
+                            }
+                        }
+                        *[class^='wp-block'] {
+                            img {
+                                #{$property}: $value;
+                            }
+                        }
+                        > p {
+                            > img {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                    @else if $property == "margin-x" {
+                        figure.wp-block-image {
+                            &.alignleft{
+                                margin-right: $value;
+                            }
+                            &.alignright{
+                                margin-left: $value;
+                            }
+                        }
+                        *[class^='wp-block'] {
+                            img {
+                                &.alignleft{
+                                    margin-right: $value;
+                                }
+                                &.alignright{
+                                    margin-left: $value;
+                                }
+                            }
+                        }
+                        > p {
+                            > img{
+                                &.alignleft{
+                                    margin-right: $value;
+                                }
+                                &.alignright{
+                                    margin-left: $value;
+                                }
+                            }
+                        }
+                    }
+                    @else if $property == "caption" {
+                        figure.wp-block-image {
+                            figcaption{
+                                @include make-font-options($options: $value);
+                            }
+                        }
+                        div.wp-block-image{
+                            figure{
+                                figcaption{
+                                    @include make-font-options($options: $value);
+                                }
+                            }
+                        }
+                    }
+                    @else {
+                        figure.wp-block-image {
+                            img {
+                                #{$property}: $value;
+                            }
+                        }
+                        div.wp-block-image {
+                            figure {
+                                img {
+                                    #{$property}: $value;
+                                }
+                            }
+                        }
+                        *[class^='wp-block'] {
+                            img {
+                                #{$property}: $value;
+                            }
+                        }
+                        > p {
+                            > img {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+                @if $platform == sanity {
+                    @if $property == "margin-bottom" {
+                        figure {
+                            #{$property}: $value;
+                        }
+                    }
+                    @else if $property == "margin-x" {
+                        @error "Sanity doesn't support margin-x styles for images";
+                    }
+                    @else if $property == "caption" {
+                        figure {
+                            figcaption {
+                                @include make-font-options($options: $value);
+                            }
+                        }
+                    }
+                    @else {
+                        figure {
+                            img {
+                                #{$property}: $value;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

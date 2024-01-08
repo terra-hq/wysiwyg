@@ -1,0 +1,44 @@
+$font-options: (
+    "color": null,
+    "font-family": null,
+    "font-size": null,
+    "font-style": null,
+    "font-weight": null,
+    "letter-spacing": null,
+    "line-height": null,
+    "max-lines": null,
+    "text-decoration": null,
+    "text-decoration-color": null,
+    "text-underline-position": null,
+    "className": null,
+    "margin-bottom": null,
+    "padding-top": null,
+    "text-align": null,
+    "bold-font-weight": null,
+);
+
+@mixin make-font-options($options) {
+    @each $property, $value in $options {
+        @if map-has-key($font-options, $property) {
+            @if $value {
+                @if $property == "className" {
+                    @if type-of($value) == list {
+                        @each $class in $value {
+                            @extend .#{$class};
+                        }
+                    } @else {
+                        @extend .#{$value};
+                    }
+                } @else if $property == "max-lines" {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: $value;
+                    -webkit-box-orient: vertical;
+                } @else {
+                    #{$property}: $value;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+$link-options: (
+    "className": null,
+);
+
+@mixin block-link-modifier ($options) {
+    @each $property, $value in $options {
+        @if map-has-key($link-options, $property) {
+            @if $value {
+                @if $property == "className" {
+                    a:not([class]){
+                        @include make-class-options($value);
+                    }
+                }
+            }
+        }
+    }
+}

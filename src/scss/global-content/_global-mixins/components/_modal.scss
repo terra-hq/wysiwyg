@@ -1,0 +1,96 @@
+@mixin make-modal-options() {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+$modal-options: (
+    "size": null,
+);
+
+$modal-transition-options: (
+    "zoom": null,
+    "opacity": null,
+);
+
+@mixin make-modal-modifier-options($options) {
+
+    @each $property, $value in $options {
+        @if map-has-key($modal-options, $property) {
+            @if $value {
+                @if $property == "size" {
+                    @if $value == "small" {
+                        width: 50%;
+                    }
+                    @if $value == "medium" {
+                        width: 70%;
+                    }
+                    @if $value == "large" {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+        @if map-has-key($modal-transition-options, $property) {
+            @if $value {
+                @if $property == "zoom" {
+                    @if $value == "yes" {
+                        transform: translate(-50%, -50%) scale(0);
+                        &[class$="--is-active"] {
+                            transform: translate(-50%, -50%) scale(1);
+                        }
+                    }@else if $value == "no" {
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }@else if $property == "opacity" {
+                    @if $value == "yes" {
+                        opacity: 0;
+                        &[class$="--is-active"] {
+                            opacity: 1;
+                        }
+                    }@else if $value == "no" {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@mixin make-modal-transition($options) {
+    $modal-transition-list: ();
+    @each $property, $value in $options {
+        @if map-has-key($modal-transition-options, $property) {
+            @if $value {
+                @if $property == "zoom" {
+                    $transition: unquote(
+                                "transform #{$g-transition-duration} #{$g-transition-timing-function}"
+                            );
+                    $modal-transition-list: append(
+                        $modal-transition-list,
+                        $transition,
+                        $separator: comma
+                    );
+                }
+                @else {
+                    $transition: unquote(
+                                "#{$property} #{$g-transition-duration} #{$g-transition-timing-function}"
+                            );
+                    $modal-transition-list: append(
+                        $modal-transition-list,
+                        $transition,
+                        $separator: comma
+                    );
+                }
+            }
+        }
+    }
+    @if $options != () {
+        @if $modal-transition-list != () {
+            transition: $modal-transition-list;
+        }
+    }
+}

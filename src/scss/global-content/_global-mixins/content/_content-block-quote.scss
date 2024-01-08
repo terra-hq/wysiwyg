@@ -1,0 +1,69 @@
+$quote-options: (
+    "padding": null,
+    "margin-top": null,
+    "margin-bottom": null,
+    "border": null,
+    "paragraph": null,
+    "cite": null,
+);
+
+@mixin block-quote-wp() {
+    .wp-block-quote, blockquote {
+        cite{
+            display: block;
+        }
+    }
+}
+
+@mixin block-quote-wp-modifier ($options) {
+    .wp-block-quote, blockquote {
+        @each $property, $value in $options {
+            @if map-has-key($quote-options, $property) {
+                @if $value {
+                    @if $property == "border" {
+                        @include make-border-options($value);
+                    }
+                    @else if $property == "paragraph" {
+                        p {
+                            @include make-font-options($value);
+                        }
+                    }
+                    @else if $property == "cite" {
+                        cite {
+                            @include make-font-options($value);
+                        }
+                    }
+                    @else {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@mixin block-quote-sanity-modifier ($options) {
+    blockquote {
+        @each $property, $value in $options {
+            @if map-has-key($quote-options, $property) {
+                @if $value {
+                    @if $property == "border" {
+                        @include make-border-options($value);
+                    }
+                    @else if $property == "paragraph" {
+                        p {
+                            @include make-font-options($value);
+                        }
+                    }
+                    @else if $property == "cite" {
+                        @error "Sanity doesn't support cite styles for quotes";
+                    }
+                    @else {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+    }
+}

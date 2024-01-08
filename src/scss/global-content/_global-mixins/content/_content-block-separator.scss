@@ -1,0 +1,31 @@
+$separator-options: (
+    "margin": null,
+    "width": null,
+    "color": null,
+    "height": null,
+);
+
+@mixin block-separator-wp () {
+    .wp-block-separator{
+        width: 100%;
+        display: block;
+        border: none;
+    } 
+}
+
+@mixin block-separator-wp-modifier($options) {
+    .wp-block-separator {
+        @each $property, $value in $options {
+            @if map-has-key($separator-options, $property) {
+                @if $value {
+                    @if $property == "color" {
+                        background: $value;
+                    }
+                    @else {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+    }
+}

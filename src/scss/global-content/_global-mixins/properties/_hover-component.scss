@@ -1,0 +1,187 @@
+$hover-component-options: (
+    "background-color": null,
+    "background-image": null,
+    "background-position": null,
+    "background-size": null,
+    "border-color": null,
+    "border-radius": null,
+    "border-width": null,
+    "box-shadow": null,
+    "transform": null,
+    "background-overlay": null,
+);
+
+@mixin make-hover-component-interaction($options, $bg-items: "no") {
+    @each $property, $value in $options {
+        @if map-has-key($hover-component-options, $property) {
+            @if $value {
+                @if $property == "background-overlay" {
+                    @if $bg-items == "no" {
+                        &::before {
+                            @each $overlay-options, $overlay-value in $value {
+                                @if map-has-key($hover-component-options, $overlay-options) {
+                                    #{$overlay-options}: $overlay-value;
+                                }
+                            }
+                        }
+                    } @else if $bg-items == "yes" {
+                        *[class*="__bg-items"] {
+                            &::before {
+                                @each $overlay-options, $overlay-value in $value {
+                                    @if map-has-key($hover-component-options, $overlay-options) {
+                                        #{$overlay-options}: $overlay-value !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } @else if $property == "background-color" {
+                    @if $bg-items == "no" {
+                        #{$property}: $value;
+                    } @else if $bg-items == "yes" {
+                        *[class*="__bg-items"] {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else if $property == "background-image" {
+                    @if $bg-items == "no" {
+                        #{$property}: $value;
+                    } @else if $bg-items == "yes" {
+                        *[class*="__bg-items"] {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else if $property == "background-position" {
+                    @if $bg-items == "no" {
+                        #{$property}: $value;
+                    } @else if $bg-items == "yes" {
+                        *[class*="__bg-items"] {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else if $property == "background-size" {
+                    @if $bg-items == "no" {
+                        #{$property}: $value;
+                    } @else if $bg-items == "yes" {
+                        *[class*="__bg-items"] {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else {
+                    #{$property}: $value;
+                }
+            }
+        }
+    }
+}
+
+@mixin make-hover-component-transition($options, $bg-items: no) {
+    $hover-transition-list: ();
+    $hover-bg-items-transition-list: ();
+    $hover-overlay-transition-list: ();
+    @each $property, $value in $options {
+        @if map-has-key($hover-component-options, $property) {
+            @if $value {
+                @if $bg-items == "no" {
+                    @if $property == "background-overlay" {
+                        &::before {
+                            @each $overlay-options, $overlay-value in $value {
+                                $transition: unquote(
+                                    "#{$overlay-options} #{$g-transition-duration} #{$g-transition-timing-function}"
+                                );
+                                $hover-overlay-transition-list: append(
+                                    $hover-overlay-transition-list,
+                                    $transition,
+                                    $separator: comma
+                                );
+                            }
+                        }
+                    } @else {
+                        $transition: unquote(
+                            "#{$property} #{$g-transition-duration} #{$g-transition-timing-function}"
+                        );
+                        $hover-transition-list: append(
+                            $hover-transition-list,
+                            $transition,
+                            $separator: comma
+                        );
+                    }
+                } @else if $bg-items == "yes" {
+                    @if $property == "background-overlay" {
+                        *[class$="__bg-items"] {
+                            &::before {
+                                @each $overlay-options, $overlay-value in $value {
+                                    $transition: unquote(
+                                        "#{$overlay-options} #{$g-transition-duration} #{$g-transition-timing-function}"
+                                    );
+                                    $hover-overlay-transition-list: append(
+                                        $hover-overlay-transition-list,
+                                        $transition,
+                                        $separator: comma
+                                    );
+                                }
+                            }
+                        }
+                    } @else if
+                        $property ==
+                        "background-color" or
+                        $property ==
+                        "background-image" or
+                        $property ==
+                        "background-position" or
+                        $property ==
+                        "background-size"
+                    {
+                        *[class$="__bg-items"] {
+                            $transition: unquote(
+                                "#{$property} #{$g-transition-duration} #{$g-transition-timing-function}"
+                            );
+                            $hover-bg-items-transition-list: append(
+                                $hover-bg-items-transition-list,
+                                $transition,
+                                $separator: comma
+                            );
+                        }
+                    } @else {
+                        $transition: unquote(
+                            "#{$property} #{$g-transition-duration} #{$g-transition-timing-function}"
+                        );
+                        $hover-transition-list: append(
+                            $hover-transition-list,
+                            $transition,
+                            $separator: comma
+                        );
+                    }
+                }
+            }
+        }
+    }
+    @if $options != () {
+        @if $bg-items == "no" {
+            @if $hover-overlay-transition-list != () {
+                &::before {
+                    transition: $hover-overlay-transition-list;
+                }
+            }
+            @if $hover-transition-list != () {
+                transition: $hover-transition-list;
+            }
+        } @else if $bg-items == "yes" {
+            @if $hover-overlay-transition-list != () {
+                *[class$="__bg-items"] {
+                    &::before {
+                        transition: $hover-overlay-transition-list;
+                    }
+                }
+            }
+            @if $hover-bg-items-transition-list != () {
+                *[class$="__bg-items"] {
+                    transition: $hover-bg-items-transition-list;
+                }
+            }
+            @if $hover-transition-list != () {
+                transition: $hover-transition-list;
+            }
+        }
+    }
+}

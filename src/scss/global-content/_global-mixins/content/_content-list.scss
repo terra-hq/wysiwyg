@@ -1,0 +1,417 @@
+$lists-options: (
+    "first-number-width": null,
+    "number-color": null,
+    "first-level-artwork-width": null,
+    "first-level-artwork-top": null,
+    "first-level-artwork-image": null,
+    "first-level-artwork-background": null,
+    "first-level-artwork-border-radius": null,
+    "first-level-artwork-border-width": null,
+    "first-level-artwork-border-color": null,
+    "second-level-artwork-width": null,
+    "second-level-artwork-top": null,
+    "second-level-artwork-image": null,
+    "second-level-artwork-background": null,
+    "second-level-artwork-border-radius": null,
+    "second-level-artwork-border-width": null,
+    "second-level-artwork-border-color": null,
+    "third-level-artwork-width": null,
+    "third-level-artwork-top": null,
+    "third-level-artwork-image": null,
+    "third-level-artwork-background": null,
+    "third-level-artwork-border-radius": null,
+    "third-level-artwork-border-width": null,
+    "third-level-artwork-border-color": null,
+    "margin-bottom": null,
+    "font-styles": null,
+);
+
+@mixin lists() {
+  ul,
+  ol {
+    list-style: none;
+  }
+  ul {
+    > li {
+      position: relative;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+  ol {
+    counter-reset: item;
+    > li{
+      position: relative;
+      &::before{
+        content: counters(item, ".") ".";
+        counter-increment: item;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+@mixin lists-modifier($options) {
+  @each $property, $value in $options {
+    @if map-has-key($lists-options, $property) {
+      @if $value {
+        @if $property == "first-number-width" {
+          ol {
+            > li{
+              padding-left: calc(#{$measure*2} + #{$value}); //* space between number and text + number width
+              //* Nested ol
+              ol{
+                > li{
+                  padding-left: calc(#{$measure*2} + #{$value*2}); //* space between number and text + number width
+                  ol{
+                    > li{
+                      padding-left: calc(#{$measure*2} + #{$value*3}); //* space between number and text + number width
+                      ol{
+                        > li{
+                          padding-left: calc(#{$measure*2} + #{$value*4}); //* space between number and text + number width
+                          ol{
+                            > li{
+                              padding-left: calc(#{$measure*2} + #{$value*5}); //* space between number and text + number width
+                              ol{
+                                > li{
+                                  padding-left: calc(#{$measure*2} + #{$value*6}); //* space between number and text + number width
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "number-color" {
+          ol {
+            > li {
+              &:before {
+                color: $value;
+              }
+            }
+          }
+        }
+        @else if $property == "first-level-artwork-width" {
+          ul {
+            > li {
+              padding-left: calc(#{$measure*2} + #{$value}); //* space between artwork and text + artwork width
+              &:before {
+                width: $value;
+                height: $value;
+              }
+            }
+          }
+        }
+        @else if $property == "first-level-artwork-top" {
+          ul {
+            > li {
+              &:before {
+                top: $value;
+              }
+            }
+          }
+        }
+        @else if $property == "first-level-artwork-image" {
+          ul {
+            > li {
+              &:before {
+                background: url(#{$value});
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+              }
+            }
+          }
+        }
+        @else if $property == "first-level-artwork-background" {
+          ul {
+            > li {
+              &:before {
+                background: $value;
+              }
+            }
+          }
+        }
+        @else if $property == "first-level-artwork-border-radius" {
+          ul {
+            > li {
+              &:before {
+                border-radius: $value;
+              }
+            }
+          }
+        }
+        @else if $property == "first-level-artwork-border-width" {
+          ul {
+            > li {
+              &:before {
+                border-width: $value;
+                border-style: solid;
+              }
+            }
+          }
+        }
+        @else if $property == "first-level-artwork-border-color" {
+          ul {
+            > li {
+              &:before {
+                border-color: $value;
+              }
+            }
+          }
+        }
+        @else if $property == "second-level-artwork-width" {
+          ul {
+            > li {
+              //* Nested ul
+              ul{
+                > li{
+                  padding-left: calc(#{$measure*2} + #{$value}); //* space between artwork and text + artwork width
+                  &::before{
+                    width: $value;
+                    height: $value;
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "second-level-artwork-top" {
+          ul {
+            > li {
+              //* Nested ul
+              ul{
+                > li{
+                  &::before{
+                    top: $value;
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "second-level-artwork-image" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  &:before {
+                    background: url(#{$value});
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "second-level-artwork-background" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  &:before {
+                    background: $value;
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "second-level-artwork-border-radius" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  &:before {
+                    border-radius: $value;
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "second-level-artwork-border-width" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  &:before {
+                    border-width: $value;
+                    border-style: solid;
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "second-level-artwork-border-color" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  &:before {
+                    border-color: $value;
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "third-level-artwork-width" {
+          ul {
+            > li {
+              //* Nested ul
+              ul{
+                > li{
+                  ul{
+                    > li{
+                      padding-left: calc(#{$measure*2} + #{$value}); //* space between artwork and text + artwork width
+                      &::before{
+                        width: $value;
+                        height: $value;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "third-level-artwork-top" {
+          ul {
+            > li {
+              //* Nested ul
+              ul{
+                > li{
+                  ul{
+                    > li{
+                      &::before{
+                        top: $value;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "third-level-artwork-image" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  ul {
+                    > li {
+                      &:before {
+                        background: url(#{$value});
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        background-position: center;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "third-level-artwork-background" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  ul {
+                    > li {
+                      &:before {
+                        background: $value;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "third-level-artwork-border-radius" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  ul {
+                    > li {
+                      &:before {
+                        border-radius: $value;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "third-level-artwork-border-width" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  ul {
+                    > li {
+                      &:before {
+                        border-width: $value;
+                        border-style: solid;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "third-level-artwork-border-color" {
+          ul {
+            > li {
+              ul {
+                > li {
+                  ul {
+                    > li {
+                      &:before {
+                        border-color: $value;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @else if $property == "font-styles" {
+          ul,
+          ol {
+            li {
+              @include make-font-options($options: $value);
+            }
+          }
+        }
+        @else {
+          ul,
+          ol {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+}

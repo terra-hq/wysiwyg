@@ -1,0 +1,9 @@
+@mixin make-class-options($className) {
+    @if type-of($className) == list {
+        @each $class in $className {
+            @extend .#{$class};
+        }
+    } @else {
+        @extend .#{$className};
+    }
+}

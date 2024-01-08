@@ -1,0 +1,20 @@
+@mixin paragraphs() {
+  em {
+    font-style: italic;
+  }
+}
+
+
+@mixin paragraphs-wp-modifier($options) {
+  & > p,
+  .wp-block-column p,
+  .wp-block-media-text p {
+    @include make-font-options($options: $options);
+  }
+}
+
+@mixin paragraphs-sanity-modifier($options) {
+  & > p {
+    @include make-font-options($options: $options);
+  }
+}

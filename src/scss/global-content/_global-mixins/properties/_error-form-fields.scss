@@ -1,0 +1,38 @@
+$error-options: (
+    "color": null,
+    "background-color": null,
+    "border-color": null,
+);
+
+@mixin make-error-interaction($options) {
+    @each $property, $value in $options {
+        @if map-has-key($error-options, $property) {
+            @if $value {
+                #{$property}: $value;
+            }
+        }
+    }
+}
+
+@mixin make-error-transition($options) {
+    $error-transition-list: ();
+    @each $property, $value in $options {
+        @if map-has-key($error-options, $property) {
+            @if $value {
+                $transition: unquote(
+                    "#{$property} #{$g-transition-duration} #{$g-transition-timing-function}"
+                );
+                $error-transition-list: append(
+                    $error-transition-list,
+                    $transition,
+                    $separator: comma
+                );
+            }
+        }
+    }
+    @if $options != () {
+        @if $error-transition-list != () {
+            transition: $error-transition-list;
+        }
+    }
+}

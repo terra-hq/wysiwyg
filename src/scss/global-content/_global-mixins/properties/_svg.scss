@@ -1,0 +1,64 @@
+@mixin make-svg-options($options, $svg-tag: "no") {
+    $media-options: (
+        "fill": null,
+        "stroke": null,
+        "top": null,
+        "width": null,
+        "height": null,
+        "first": null,
+    );
+
+    @each $property, $value in $options {
+        @if map-has-key($media-options, $property) {
+            @if $value {
+                @if $svg-tag == "no" {
+                    @if $property == "top" {
+                        position: relative;
+                        #{$property}: $value;
+                    }
+                    @else if $property == "width" {
+                        #{$property}: $value;
+                    }
+                    @else if $property == "height" {
+                        #{$property}: $value;
+                    }
+                    @else if $property == "first" {
+                        @if $value == "yes" {
+                            order: -1;
+                        } @else if $value == "no" {
+                            order: 0;
+                        }
+                    }
+                    @else {
+                        * {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else {
+                    @if $property == "top" {
+                        position: relative;
+                        #{$property}: $value;
+                    }
+                    @else if $property == "width" {
+                        #{$property}: $value;
+                    }
+                    @else if $property == "height" {
+                        #{$property}: $value;
+                    }
+                    @else if $property == "first" {
+                        @if $value == "yes" {
+                            order: -1;
+                        } @else if $value == "no" {
+                            order: 0;
+                        }
+                    }
+                    @else {
+                        #{$svg-tag} {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

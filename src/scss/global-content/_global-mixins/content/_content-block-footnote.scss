@@ -1,0 +1,5 @@
+@mixin block-footnote-wp-modifier($options: $options) {
+    .footnote{
+        @include make-font-options($options)
+    }
+}

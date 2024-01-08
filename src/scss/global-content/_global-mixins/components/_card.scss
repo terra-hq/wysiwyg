@@ -1,0 +1,128 @@
+@mixin make-card-options($display: flex, $ft-bg-items: "yes") {
+    width: 100%;
+    display: $display;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    @if $ft-bg-items == "yes" {
+        &__bg-items {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 0;
+        }
+        &__ft-items {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+    }
+}
+
+@mixin make-card-modifier-options($options, $align-items: "yes") {
+    $card-options: (
+        "breakpoint": null,
+        "align": null,
+        "min-height": null,
+        "back-items": null,
+        "aspect-ratio": null,
+    );
+
+    @each $property, $value in $options {
+        @if map-has-key($card-options, $property) {
+            @if $value {
+                @if $property == "align" {
+                    @if $value == "left" {
+                        text-align: left;
+                        @if $align-items == "yes" {
+                            align-items: flex-start;
+                            *[class$="__ft-items"] {
+                                align-items: flex-start;
+                            }
+                        }
+                        *[class$="__media-wrapper"] {
+                            margin-left: 0;
+                            margin-right: auto;
+                        }
+                        *[class$="__media"] {
+                            margin-left: 0;
+                            margin-right: auto;
+                        }
+                        *[class$="__list-group"] {
+                            justify-content: flex-start;
+                        }
+                        *[class$="__ft"] {
+                            justify-content: flex-start;
+                        }
+                    }
+                    @if $value == "center" {
+                        text-align: center;
+                        @if $align-items == "yes" {
+                            align-items: center;
+                            *[class$="__ft-items"] {
+                                align-items: center;
+                            }
+                        }
+                        *[class$="__media-wrapper"] {
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        *[class$="__media"] {
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        *[class$="__list-group"] {
+                            justify-content: center;
+                        }
+                        *[class$="__ft"] {
+                            justify-content: center;
+                        }
+                    }
+                    @if $value == "right" {
+                        text-align: right;
+                        @if $align-items == "yes" {
+                            align-items: flex-end;
+                            *[class$="__ft-items"] {
+                                align-items: flex-end;
+                            }
+                        }
+                        *[class$="__media-wrapper"] {
+                            margin-left: auto;
+                            margin-right: 0;
+                        }
+                        *[class$="__media"] {
+                            margin-left: auto;
+                            margin-right: 0;
+                        }
+                        *[class$="__list-group"] {
+                            justify-content: flex-end;
+                        }
+                        *[class$="__ft"] {
+                            justify-content: flex-end;
+                        }
+                    }
+                } @else if $property == "aspect-ratio" {
+                    @if type-of($value) == list {
+                        #{$property}: calc(nth($value, 1) / nth($value, length($value)));
+                    } @else if $value == "auto" {
+                        #{$property}: $value;
+                    } @else {
+                        @error "You should add an value like 'X Y' or 'auto'";
+                    }
+                } @else if $property != "breakpoint" and $property != "back-items" {
+                    #{$property}: $value;
+                }
+            }
+        }
+    }
+}
+
+@mixin make-card-item-list-options($gap: $card-item-list-gap) {
+    @include make-list-options($gap: $gap);
+}
+
+@mixin make-card-item-list-modifier-options($options) {
+    @include make-list-modifier-options($options: $options);
+}

@@ -1,0 +1,38 @@
+$columns-options: (
+    "margin-bottom": null,
+    "breakpoint": null,
+);
+
+@mixin block-columns-wp() {
+    .wp-block-columns{
+        .wp-block-column{
+            display: flex;
+            flex-basis: 0 !important;
+            flex-grow: 1;
+        }
+    }
+}
+
+@mixin block-columns-wp-modifier($options) {
+    @each $property, $value in $options {
+        @if map-has-key($columns-options, $property) {
+            @if $value {
+                @if $property == "breakpoint" {
+                    .wp-block-columns {
+                        .wp-block-column {
+                            @media all and ($viewport-type: $value) {
+                                flex-basis: 100% !important;
+                                flex-wrap: wrap !important;
+                            }
+                        }
+                    }
+                }
+                @else {
+                    .wp-block-columns {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+    }
+}

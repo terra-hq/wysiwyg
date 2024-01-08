@@ -1,0 +1,22 @@
+{
+  "name": "@terra-hq/gc",
+  "private": false,
+  "version": "0.0.3",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "exports": {
+    "./library": "./src/scss/global-components/_library.scss",
+    "./global-mixins": "./src/scss/global-components/_global-mixins/_global-mixins.scss"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.5",
+    "sass": "^1.69.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {}
+}

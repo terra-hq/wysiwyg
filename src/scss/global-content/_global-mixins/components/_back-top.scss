@@ -1,0 +1,22 @@
+@mixin make-back-top-options() {
+    display: block;
+    position: sticky;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $g-transition-duration $g-transition-timing-function;
+    z-index: 1000;
+    
+    &--is-active{
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+@mixin make-back-top-modifier-options($options) {
+    $hero-options: (
+        "width": null,
+        "height": null,
+        "margin-bottom": null,
+        "margin-right": null
+    );
+}

@@ -1,0 +1,11 @@
+.c--link-a {
+    @extend .f--color-e;
+    text-decoration: none;
+    transition: all $time-b $ease-standard-a;
+
+    @media all and (hover: hover) {
+        &:hover {
+            opacity: .5;
+        }
+    }
+}
