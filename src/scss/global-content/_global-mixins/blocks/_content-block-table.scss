@@ -1,0 +1,122 @@
+$table-options: (
+    "header-font-styles": null,
+    "body-font-styles": null,
+    "caption": null,
+    "margin-bottom": null,
+    "header-cells-padding": null,
+    "body-cells-padding": null,
+    "header-border": null,
+    "header-background": null,
+    "body-border": null,
+    "body-background": null,
+    "odd-rows-background": null,
+    "odd-rows-text-color": null,
+);
+
+@mixin block-table-wp() {
+    .wp-block-table {
+        table,
+        table.wp-block-table {
+            width: 100%;
+            text-align: left;
+            margin: 0;
+            border: none;
+            padding: 0px;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        table thead,
+        table tfoot,
+        table.wp-block-table thead,
+        table.wp-block-table tfoot {
+            border: none;
+            border: none;
+        }
+        table td,
+        table.wp-block-table td { //* all rows
+            margin: 0px;
+        }
+    }
+}
+
+@mixin block-table-wp-modifier($options) {
+    .wp-block-table {
+        @each $property, $value in $options {
+            @if map-has-key($table-options, $property) {
+                @if $value {
+                    @if $property == "header-font-styles" {
+                        table thead tr { //* first row
+                            th {
+                                @include make-font-options($options: $value);
+                            }
+                        }
+                    }
+                    @else if $property == "header-cells-padding" {
+                        table thead tr { //* first row
+                            th {
+                                padding: $value;
+                            }
+                        }
+                    }
+                    @else if $property == "header-border" {
+                        table thead tr {
+                            th {
+                                @include make-border-options($options: $value);
+                            }
+                        }
+                    }
+                    @else if $property == "header-background" {
+                        table thead tr {
+                            background: $value;
+                        }
+                    }
+                    @else if $property == "body-font-styles" {
+                        table td,
+                        table.wp-block-table td { //* all rows
+                            @include make-font-options($options: $value);
+                        }
+                    }
+                    @else if $property == "body-cells-padding" {
+                        table td,
+                        table.wp-block-table td { //* all rows
+                            padding: $value;
+                        }
+                    }
+                    @else if $property == "body-border" {
+                        table td,
+                        table.wp-block-table td {
+                            @include make-border-options($options: $value);
+                        }
+                    }
+                    @else if $property == "body-background" {
+                        table tbody tr {
+                            background: $value;
+                        }
+                    }
+                    @else if $property == "odd-rows-background" {
+                        table tbody tr:nth-child(odd) {
+                            background: $value;
+                        }
+                    }
+                    @else if $property == "odd-rows-text-color" {
+                        table tbody tr:nth-child(odd) td {
+                            color: $value;
+                        }
+                    }
+                    @else if $property == "caption" {
+                        figcaption{
+                            @include make-font-options($options: $value);
+                        }
+                    }
+                    @else {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+
+
+        
+        
+    }
+}

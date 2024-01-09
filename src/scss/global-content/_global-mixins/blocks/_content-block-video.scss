@@ -1,0 +1,28 @@
+$video-options: (
+    "margin-bottom": null,
+);
+
+@mixin block-video-wp() {
+    .wp-block-embed {
+        margin: 0 auto;
+        .wp-block-embed__wrapper {
+            iframe {
+                aspect-ratio: 16 / 9;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+@mixin block-video-wp-modifier($options) {
+    .wp-block-embed {
+        @each $property, $value in $options {
+            @if map-has-key($video-options, $property) {
+                @if $value {
+                    #{$property}: $value;
+                }
+            }
+        }
+    }
+}

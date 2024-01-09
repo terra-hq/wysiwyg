@@ -1,0 +1,33 @@
+$utilities-options: (
+    "media-text-aligned-margin-x": null,
+);
+
+@mixin utilities-wp() {
+    *.alignleft{
+        float: left;
+    }
+    *.alignright{
+        float: right;
+    }
+    *.aligncenter{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@mixin utilities-wp-modifier($options) {
+    @each $property, $value in $options {
+        @if map-has-key($utilities-options, $property) {
+            @if $value {
+                @if $property == "media-text-aligned-margin-x" {
+                    *.alignleft{
+                        margin-right: $value !important;
+                    }
+                    *.alignright{
+                        margin-left: $value !important;
+                    }
+                }
+            }
+        }
+    }
+}

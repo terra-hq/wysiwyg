@@ -126,7 +126,7 @@ $lists-options: (
           ul {
             > li {
               &:before {
-                background: url(#{$value});
+                background-image: url#{$value};
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;

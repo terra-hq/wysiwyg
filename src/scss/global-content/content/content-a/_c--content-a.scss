@@ -1,9 +1,9 @@
-.g--content-01 {
+.c--content-a {
     &--wp {
-        @include make-content-01 (
+        @include make-content (
             $platform: wp,
         );
-        @include make-content-01-modifier (
+        @include make-content-modifier (
             $platform: wp,
             $btn-options: (
                 "className": c--btn-a c--btn-a--second,
@@ -59,7 +59,6 @@
                 "max-width": 100%,
                 "min-width": 30px,
                 "margin-bottom": $measure*7,
-                "margin-x": $measure*10,
                 "caption": (
                     // "color": red,
                     "font-family": arial,
@@ -143,6 +142,7 @@
             $paragraphs-options: (
                 "className": f--font-e f--color-f,
                 "margin-bottom": $measure*4,
+                "margin-bottom-before-lists": $measure*2,
             ),
             $lists-options: (
                 "first-number-width": 14px,
@@ -173,13 +173,86 @@
                     "className": f--font-e f--color-e,
                 ),
             ),
+            $table-options: (
+                "header-font-styles": (
+                    // "color": red,
+                    // "font-family": arial,
+                    // "font-size": 2rem,
+                    // "font-style": italic,
+                    "font-weight": 600,
+                    // "letter-spacing": 1px,
+                    // "line-height": 1.5,
+                    // "max-lines": 3,
+                    // "text-decoration": none,
+                    // "text-decoration-color": #000000,
+                    // "text-underline-position": under,
+                    "className": f--font-e,
+                    // "margin-bottom": $measure*3,
+                    // "padding-top": $measure,
+                    // "text-align": right,
+                ),
+                "body-font-styles": (
+                    // "color": red,
+                    // "font-family": arial,
+                    // "font-size": 2rem,
+                    // "font-style": italic,
+                    // "font-weight": 600,
+                    // "letter-spacing": 1px,
+                    // "line-height": 1.5,
+                    // "max-lines": 3,
+                    // "text-decoration": none,
+                    // "text-decoration-color": #000000,
+                    // "text-underline-position": under,
+                    "className": f--font-e,
+                    // "margin-bottom": $measure*3,
+                    // "padding-top": $measure,
+                    // "text-align": right,
+                ),
+                "caption": (
+                    // "color": red,
+                    // "font-family": arial,
+                    // "font-size": 2rem,
+                    // "font-style": italic,
+                    // "font-weight": 600,
+                    // "letter-spacing": 1px,
+                    // "line-height": 1.5,
+                    // "max-lines": 3,
+                    // "text-decoration": none,
+                    // "text-decoration-color": #000000,
+                    // "text-underline-position": under,
+                    "className": f--font-f f--color-e,
+                    // "margin-bottom": $measure*3,
+                    // "padding-top": $measure,
+                    "text-align": right,
+                ),
+                "margin-bottom": $measure*4,
+                "header-cells-padding": $measure*2,
+                "body-cells-padding": $measure $measure*2,
+                "header-border": (
+                    "border-width": 1px,
+                    "border-style": solid,
+                    "border-color": map-get($color-options, a)
+                ),
+                "header-background": rgba(map-get($color-options, a), .3),
+                "body-border": (
+                    "border-width": 1px,
+                    "border-style": solid,
+                    "border-color": map-get($color-options, a)
+                ),
+                "body-background": rgba(map-get($color-options, e), .3),
+                "odd-rows-background": rgba(map-get($color-options, e), .5),
+                "odd-rows-text-color": null,
+            ),
+            $utilities-options: (
+                "media-text-aligned-margin-x": 32px
+            ),
         );
     }
     &--sanity {
-        @include make-content-01 (
+        @include make-content (
             $platform: sanity,
         );
-        @include make-content-01-modifier (
+        @include make-content-modifier (
             $platform: sanity,
             $image-options: (
                 // "border-color": red,
@@ -257,11 +330,11 @@
             $lists-options: (
                 "first-number-width": 14px,
                 "number-color": map-get($color-options, d),
-                "first-level-artwork-width": 8px,
-                "first-level-artwork-top": 8px,
-                "first-level-artwork-image": null,
-                "first-level-artwork-background": map-get($color-options, d),
-                "first-level-artwork-border-radius": 50%,
+                "first-level-artwork-width": 12px,
+                "first-level-artwork-top": 6px,
+                "first-level-artwork-image": '(/img/Diana-Blue.png)',
+                // "first-level-artwork-background": map-get($color-options, d),
+                // "first-level-artwork-border-radius": 50%,
                 "first-level-artwork-border-width": null,
                 "first-level-artwork-border-color": null,
                 "second-level-artwork-width": null,

@@ -10,7 +10,6 @@ $media-options: (
     "max-width": null,
     "min-width": null,
     "margin-bottom": null,
-    "margin-x": null,
     "caption": null,
 );
 
@@ -37,36 +36,6 @@ $media-options: (
                         > p {
                             > img {
                                 #{$property}: $value;
-                            }
-                        }
-                    }
-                    @else if $property == "margin-x" {
-                        figure.wp-block-image {
-                            &.alignleft{
-                                margin-right: $value;
-                            }
-                            &.alignright{
-                                margin-left: $value;
-                            }
-                        }
-                        *[class^='wp-block'] {
-                            img {
-                                &.alignleft{
-                                    margin-right: $value;
-                                }
-                                &.alignright{
-                                    margin-left: $value;
-                                }
-                            }
-                        }
-                        > p {
-                            > img{
-                                &.alignleft{
-                                    margin-right: $value;
-                                }
-                                &.alignright{
-                                    margin-left: $value;
-                                }
                             }
                         }
                     }
@@ -114,9 +83,6 @@ $media-options: (
                         figure {
                             #{$property}: $value;
                         }
-                    }
-                    @else if $property == "margin-x" {
-                        @error "Sanity doesn't support margin-x styles for images";
                     }
                     @else if $property == "caption" {
                         figure {

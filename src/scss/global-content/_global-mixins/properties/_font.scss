@@ -12,6 +12,7 @@ $font-options: (
     "text-underline-position": null,
     "className": null,
     "margin-bottom": null,
+    "margin-bottom-before-lists": null,
     "padding-top": null,
     "text-align": null,
     "bold-font-weight": null,
@@ -35,6 +36,13 @@ $font-options: (
                     display: -webkit-box;
                     -webkit-line-clamp: $value;
                     -webkit-box-orient: vertical;
+                } @else if $property == "margin-bottom-before-lists" {
+                    &:has(
+                      + ul,
+                      + ol
+                    ){
+                      margin-bottom: $value;
+                    }
                 } @else {
                     #{$property}: $value;
                 }

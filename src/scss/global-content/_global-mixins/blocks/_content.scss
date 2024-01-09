@@ -5,15 +5,15 @@
 @import "./content-block-image.scss";
 @import "./content-block-quote.scss";
 @import "./content-block-separator.scss";
-// @import "./content-block-table.scss";
-// @import "./content-block-video";
+@import "./content-block-table.scss";
+@import "./content-block-video";
 @import "./content-heading.scss";
 @import "./content-links.scss";
 @import "./content-list.scss";
 @import "./content-paragraph.scss";
-// @import "./content-utilities.scss";
+@import "./content-utilities.scss";
 
-@mixin make-content-01 (
+@mixin make-content (
     $platform: (),
     $btn-options: (),
 ) {
@@ -43,8 +43,17 @@
         //* paragraphs
         @include paragraphs();
 
-        //* paragraphs
+        //* lists
         @include lists();
+
+        //* video
+        @include block-video-wp();
+
+        //* table
+        @include block-table-wp();
+
+        //* utilities
+        @include utilities-wp();
     }
     @else if $platform == sanity {
         //* btn
@@ -69,15 +78,21 @@
         //* paragraphs
         @include paragraphs();
 
-        //* paragraphs
+        //* lists
         @include lists();
+
+        //* video
+
+        //* table
+
+        //* utilities
     }
     @else {
         @error "The platform must be set (wp or sanity)";
     }
 }
 
-@mixin make-content-01-modifier (
+@mixin make-content-modifier (
     $platform: (),
     $btn-options: (),
     $columns-options: (),
@@ -90,6 +105,10 @@
     $link-options: (),
     $paragraphs-options: (),
     $lists-options: (),
+    $video-options: (),
+    $table-options: (),
+    $utilities-options: (),
+    $custom-options: (),
 ) {
     @if $platform == wp {
         //* btn
@@ -166,36 +185,6 @@
                     }
                 }
             }
-            @if map-get($image-options, "margin-x") == null {
-                figure.wp-block-image {
-                    &.alignleft{
-                        margin-right: $measure*5;
-                    }
-                    &.alignright{
-                        margin-left: $measure*5;
-                    }
-                }
-                *[class^='wp-block'] {
-                    img {
-                        &.alignleft{
-                            margin-right: $measure*5;
-                        }
-                        &.alignright{
-                            margin-left: $measure*5;
-                        }
-                    }
-                }
-                > p {
-                    > img{
-                        &.alignleft{
-                            margin-right: $measure*5;
-                        }
-                        &.alignright{
-                            margin-left: $measure*5;
-                        }
-                    }
-                }
-            }
         }
 
         //* quote
@@ -247,6 +236,35 @@
 
         //* lists
         @include lists-modifier($options: $lists-options);
+
+        //* video
+        @include block-video-wp-modifier($options: $video-options);
+        @if length(map-keys($video-options)) > 0 {
+            @if map-get($video-options, "margin-bottom") == null {
+                .wp-block-embed {
+                    margin-bottom: $measure * 5;
+                }
+            }
+        }
+
+        //* table
+        @include block-table-wp-modifier($options: $table-options);
+
+        //* utilities
+        @include utilities-wp-modifier($options: $utilities-options);
+        @if length(map-keys($utilities-options)) > 0 {
+            @if map-get($utilities-options, "media-text-aligned-margin-x") == null {
+                *.alignleft{
+                    margin-right: $measure*5;
+                }
+                *.alignright{
+                    margin-left: $measure*5;
+                }
+            }
+        }
+
+        //* custom
+        @include make-custom-options($options: $custom-options);
     }
 
     @else if $platform == sanity {
@@ -316,6 +334,24 @@
 
         //* lists
         @include lists-modifier($options: $lists-options);
+
+        //* video
+        @if length(map-keys($video-options)) > 0 {
+            @error "Sanity doesn't support video styles";
+        }
+
+        //* table
+        @if length(map-keys($table-options)) > 0 {
+            @error "Sanity doesn't support table styles";
+        }
+
+        //* utilities
+        @if length(map-keys($utilities-options)) > 0 {
+            @error "Sanity doesn't support utilities styles";
+        }
+
+        //* custom
+        @include make-custom-options($options: $custom-options);
     }
     @else {
         @error "The platform must be set (wp or sanity)";
