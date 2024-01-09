@@ -12,7 +12,7 @@ Each block has its own set of options for customization. If you want to learn mo
 - [Links](./readme/blocks/Links.md)
 - [Lists](./readme/blocks/Lists.md)
 - [Paragraphs](./readme/blocks/Paragraphs.md)
-- [Quote](./readme/blocks/Quote.md)
+- [Quote](./readme/blocks/Quote.md) (for Sanity, it doesn't have a cite option.)
 - [Footnote](./readme/blocks/Footnote.md), this is a custom block (just for WP)
 - [Highlighted](./readme/blocks/Highlighted.md), this is a custom block (just for WP)
 - [Button](./readme/blocks/Button.md) (just for WP)
