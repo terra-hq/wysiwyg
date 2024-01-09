@@ -441,19 +441,6 @@ Each block has its own set of options for customization. If you want to learn mo
         "media-text-aligned-margin-x": $measure*5
       )
     );
-
-    & > h2:first-child,
-    & > h3:first-child,
-    & > h4:first-child,
-    & > h5:first-child,
-    & > h6:first-child,
-    & > p:first-child  {   
-        padding-top: 0;
-    }
-    *:last-child {
-        margin-bottom: 0;
-    }
-  }
 ```
 
 
@@ -720,17 +707,5 @@ Each block has its own set of options for customization. If you want to learn mo
         // ),
       ),
     );
-
-    & > h2:first-child,
-    & > h3:first-child,
-    & > h4:first-child,
-    & > h5:first-child,
-    & > h6:first-child,
-    & > p:first-child  {   
-        padding-top: 0;
-    }
-    *:last-child {
-        margin-bottom: 0;
-    }
   }
 ```

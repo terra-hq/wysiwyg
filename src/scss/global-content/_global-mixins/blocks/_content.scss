@@ -90,6 +90,13 @@
     @else {
         @error "The platform must be set (wp or sanity)";
     }
+
+    & > *:first-child {   
+        padding-top: 0 !important;
+    }
+    & > *:last-child {
+        margin-bottom: 0 !important;
+    }
 }
 
 @mixin make-content-modifier (
