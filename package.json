@@ -1,5 +1,5 @@
 {
-  "name": "@terra-hq/gc",
+  "name": "@terra-hq/wysiwyg",
   "private": false,
   "version": "0.0.3",
   "type": "module",
@@ -9,8 +9,7 @@
     "preview": "vite preview"
   },
   "exports": {
-    "./library": "./src/scss/global-components/_library.scss",
-    "./global-mixins": "./src/scss/global-components/_global-mixins/_global-mixins.scss"
+    "./global-mixins": "./src/scss/global-content/_global-mixins/_global-mixins.scss"
   },
   "devDependencies": {
     "@types/node": "^20.8.5",
