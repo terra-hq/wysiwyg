@@ -2,6 +2,65 @@
 
 This package offers a seamless solution to effortlessly style the WYSIWYG and Gutenberg editor fields in WordPress and Sanity. With user-friendly customization options, it provides a hassle-free way to enhance the visual aesthetics of these content editors, ensuring a polished and cohesive design for your web content.
 
+## Installation
+
+1. Download the ZIP File
+2. Add the File to the Root of Your Project
+3. Install the File using npm
+
+```sh
+npm install terra-hq-wysiwyg-0.0.1.tgz
+```
+
+## Import Mixins Globally
+
+Import the mixins globally according to the build tool you are using.
+
+#### Example in Webpack:
+
+In your Webpack configuration file (webpack.config.js):
+
+```js
+  module.exports = {
+    module: {
+      rules: [
+        // Sass Loader
+        {
+          use: [
+            {
+              options: {
+                resources: [
+                  path.resolve(__dirname, "@terra-hq/wysiwyg/library"),
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
+  };
+```
+
+#### Example in Astro:
+
+In your Astro configuration file (astro.config.mjs):
+
+```mjs
+export default defineConfig({
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @import '@terra-hq/wysiwyg/library';
+          `,
+        },
+      },
+    },
+  },
+});
+```
+
 ## How to Use
 
 The c--content consists of two mixins. One is responsible for styling properties to ensure components look visually appealing, while the other provides options to customize blocks for each project. In both mixins, it is crucial to specify the platform for which they are intended to be used (wp or sanity).
