@@ -4,7 +4,7 @@ This package offers a seamless solution to effortlessly style the WYSIWYG and Gu
 
 ## Installation
 
-1. Download the ZIP File
+1. Download the TGZ File
 2. Add the File to the Root of Your Project
 3. Install the File using npm
 
