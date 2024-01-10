@@ -45,7 +45,7 @@
     @include paragraphs-wysiwyg();
 
     //* lists
-    @include lists-wysiwyg();
+    @include lists-wysiwyg-wp();
 
     //* video
     @include block-video-wp();
@@ -205,7 +205,7 @@
         @include paragraphs-wysiwyg-wp-modifier($options: $paragraphs-options);
 
         //* lists
-        @include lists-wysiwyg-modifier($options: $lists-options);
+        @include lists-wysiwyg-wp-modifier($options: $lists-options);
 
         //* video
         @include block-video-wp-modifier($options: $video-options);

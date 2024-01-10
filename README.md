@@ -9,7 +9,7 @@ This package offers a seamless solution to effortlessly style the WYSIWYG and Gu
 3. Install the File using npm
 
 ```sh
-npm install terra-hq-wysiwyg-0.0.1.tgz
+  npm install terra-hq-wysiwyg-0.0.1.tgz
 ```
 
 ## Import Mixins Globally
@@ -94,11 +94,8 @@ Each block has its own set of options for customization. If you want to learn mo
 
 ```scss
   .c--content-a {
-    @include make-content (
-      $platform: wp,
-    );
+    @include make-content ();
     @include make-content-modifier (
-      $platform: wp,
       $headings-options: (
         // "h1": (
         //   "color": #638c1d,
@@ -252,7 +249,7 @@ Each block has its own set of options for customization. If you want to learn mo
       ),
       $lists-options: (
         // "first-number-width": 14px,
-        // "number-color": map-get($color-options, d),
+        // "first-level-number-color": map-get($color-options, d),
         // "first-level-artwork-width": 8px,
         // "first-level-artwork-top": 8px,
         // "first-level-artwork-image": '(../img/artwork.png)',
@@ -260,6 +257,7 @@ Each block has its own set of options for customization. If you want to learn mo
         // "first-level-artwork-border-radius": 50%,
         // "first-level-artwork-border-width": 1px,
         // "first-level-artwork-border-color": map-get($color-options, d),
+        // "second-level-number-color": map-get($color-options, d),
         // "second-level-artwork-width": 8px,
         // "second-level-artwork-top": 8px,
         // "second-level-artwork-image": '(../img/artwork.png)',
@@ -267,6 +265,7 @@ Each block has its own set of options for customization. If you want to learn mo
         // "second-level-artwork-border-radius": 50%,
         // "second-level-artwork-border-width": 1px,
         // "second-level-artwork-border-color": map-get($color-options, d),
+        // "third-level-number-color": map-get($color-options, d),
         // "third-level-artwork-width": 8px,
         // "third-level-artwork-top": 8px,
         // "third-level-artwork-image": '(../img/artwork.png)',
@@ -515,11 +514,8 @@ Each block has its own set of options for customization. If you want to learn mo
 
 ```scss
   .c--content-a {
-    @include make-content (
-      $platform: sanity,
-    );
+    @include make-content ();
     @include make-content-modifier (
-      $platform: sanity,
       $headings-options: (
         // "h1": (
         //   "color": #638c1d,
@@ -673,7 +669,7 @@ Each block has its own set of options for customization. If you want to learn mo
       ),
       $lists-options: (
         // "first-number-width": 14px,
-        // "number-color": map-get($color-options, d),
+        // "first-level-number-color": map-get($color-options, d),
         // "first-level-artwork-width": 8px,
         // "first-level-artwork-top": 8px,
         // "first-level-artwork-image": '(../img/artwork.png)',
@@ -681,6 +677,7 @@ Each block has its own set of options for customization. If you want to learn mo
         // "first-level-artwork-border-radius": 50%,
         // "first-level-artwork-border-width": 1px,
         // "first-level-artwork-border-color": map-get($color-options, d),
+        // "second-level-number-color": map-get($color-options, d),
         // "second-level-artwork-width": 8px,
         // "second-level-artwork-top": 8px,
         // "second-level-artwork-image": '(../img/artwork.png)',
@@ -688,6 +685,7 @@ Each block has its own set of options for customization. If you want to learn mo
         // "second-level-artwork-border-radius": 50%,
         // "second-level-artwork-border-width": 1px,
         // "second-level-artwork-border-color": map-get($color-options, d),
+        // "third-level-number-color": map-get($color-options, d),
         // "third-level-artwork-width": 8px,
         // "third-level-artwork-top": 8px,
         // "third-level-artwork-image": '(../img/artwork.png)',

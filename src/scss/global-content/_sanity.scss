@@ -34,7 +34,7 @@
         @include paragraphs-wysiwyg();
 
         //* lists
-        @include lists-wysiwyg();
+        @include lists-wysiwyg-sanity();
 
         //* video
 
@@ -133,7 +133,7 @@
         @include paragraphs-wysiwyg-sanity-modifier($options: $paragraphs-options);
 
         //* lists
-        @include lists-wysiwyg-modifier($options: $lists-options);
+        @include lists-wysiwyg-sanity-modifier($options: $lists-options);
 
         //* video
         @if length(map-keys($video-options)) > 0 {
