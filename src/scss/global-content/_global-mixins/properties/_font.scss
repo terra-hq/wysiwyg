@@ -36,6 +36,11 @@ $font-wysiwyg-options: (
                     display: -webkit-box;
                     -webkit-line-clamp: $value;
                     -webkit-box-orient: vertical;
+                } @else if $property == "bold-font-weight" {
+                    b,
+                    strong {
+                        font-weight: $value;
+                    }
                 } @else if $property == "margin-bottom-before-lists" {
                     &:has(
                       + ul,
