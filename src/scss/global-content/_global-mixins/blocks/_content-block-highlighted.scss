@@ -1,5 +1,6 @@
 @mixin block-highlighted-wp-modifier($options: $options) {
-    .highlighted{
-        @include make-font-options($options)
+    .highlighted,
+    .wp-block-column > .highlighted {
+        @include make-font-wysiwyg-options($options)
     }
 }

@@ -246,7 +246,7 @@ Each block has its own set of options for customization. If you want to learn mo
           "text-align": right,
           // "bold-font-weight": 800,
         ),
-      )
+      ),
       $link-options: (
         // "className": g--link-01 g--link-01--second,
       ),
@@ -667,7 +667,7 @@ Each block has its own set of options for customization. If you want to learn mo
           "text-align": right,
           // "bold-font-weight": 800,
         ),
-      )
+      ),
       $link-options: (
         // "className": g--link-01 g--link-01--second,
       ),

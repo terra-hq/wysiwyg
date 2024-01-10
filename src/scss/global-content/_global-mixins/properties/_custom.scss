@@ -1,4 +1,4 @@
-@mixin make-custom-options($options) {
+@mixin make-custom-wysiwyg-options($options) {
   @each $selector, $properties in $options {
     @if $selector {
       @if $selector != "parent" {

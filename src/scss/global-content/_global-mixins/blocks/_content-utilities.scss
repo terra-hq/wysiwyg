@@ -1,4 +1,4 @@
-$utilities-options: (
+$utilities-wysiwyg-options: (
     "media-text-aligned-margin-x": null,
 );
 
@@ -17,7 +17,7 @@ $utilities-options: (
 
 @mixin utilities-wp-modifier($options) {
     @each $property, $value in $options {
-        @if map-has-key($utilities-options, $property) {
+        @if map-has-key($utilities-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "media-text-aligned-margin-x" {
                     *.alignleft{

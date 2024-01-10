@@ -1,11 +1,11 @@
-$btn-options: (
+$btn-wysiwyg-options: (
     "className": null,
     "margin-bottom": null,
 );
 
 @mixin block-btn-wp-modifier ($options) {
     @each $property, $value in $options {
-        @if map-has-key($btn-options, $property) {
+        @if map-has-key($btn-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "className" {
                     .wp-block-buttons,

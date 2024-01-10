@@ -1,4 +1,4 @@
-$separator-options: (
+$separator-wysiwyg-options: (
     "margin": null,
     "width": null,
     "color": null,
@@ -6,7 +6,7 @@ $separator-options: (
 );
 
 @mixin block-separator-wp () {
-    .wp-block-separator{
+    .wp-block-separator {
         width: 100%;
         display: block;
         border: none;
@@ -16,7 +16,7 @@ $separator-options: (
 @mixin block-separator-wp-modifier($options) {
     .wp-block-separator {
         @each $property, $value in $options {
-            @if map-has-key($separator-options, $property) {
+            @if map-has-key($separator-wysiwyg-options, $property) {
                 @if $value {
                     @if $property == "color" {
                         background: $value;

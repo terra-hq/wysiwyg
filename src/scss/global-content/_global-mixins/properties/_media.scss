@@ -1,4 +1,4 @@
-$media-options: (
+$media-wysiwyg-options: (
     "border-color": null,
     "border-radius": null,
     "border-style": null,
@@ -13,10 +13,10 @@ $media-options: (
     "caption": null,
 );
 
-@mixin make-media-options($options, $platform) {
+@mixin make-media-wysiwyg-options($options, $platform) {
 
     @each $property, $value in $options {
-        @if map-has-key($media-options, $property) {
+        @if map-has-key($media-wysiwyg-options, $property) {
             @if $value {
                 @if $platform == wp {
                     @if $property == "margin-bottom" {
@@ -42,13 +42,13 @@ $media-options: (
                     @else if $property == "caption" {
                         figure.wp-block-image {
                             figcaption{
-                                @include make-font-options($options: $value);
+                                @include make-font-wysiwyg-options($options: $value);
                             }
                         }
                         div.wp-block-image{
                             figure{
                                 figcaption{
-                                    @include make-font-options($options: $value);
+                                    @include make-font-wysiwyg-options($options: $value);
                                 }
                             }
                         }
@@ -87,7 +87,7 @@ $media-options: (
                     @else if $property == "caption" {
                         figure {
                             figcaption {
-                                @include make-font-options($options: $value);
+                                @include make-font-wysiwyg-options($options: $value);
                             }
                         }
                     }

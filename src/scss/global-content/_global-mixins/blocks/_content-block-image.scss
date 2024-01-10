@@ -70,7 +70,7 @@
 }
 
 @mixin block-image-wp-modifier ($options) {
-    @include make-media-options($options, $platform: wp);
+    @include make-media-wysiwyg-options($options, $platform: wp);
 }
 
 
@@ -118,5 +118,5 @@
 }
 
 @mixin block-image-sanity-modifier ($options) {
-    @include make-media-options($options, $platform: sanity);
+    @include make-media-wysiwyg-options($options, $platform: sanity);
 }

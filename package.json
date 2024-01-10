@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "exports": {
-    "./library": "./src/scss/global-content/_library.scss",
-    "./global-mixins": "./src/scss/global-content/_global-mixins/_global-mixins.scss"
+    "./wordpress": "./src/scss/wordpress/index.scss",
+    "./sanity": "./src/scss/sanity/index.scss"
   },
   "devDependencies": {
     "@types/node": "^20.8.5",

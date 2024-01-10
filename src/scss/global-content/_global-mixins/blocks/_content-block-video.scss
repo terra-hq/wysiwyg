@@ -1,4 +1,4 @@
-$video-options: (
+$video-wysiwyg-options: (
     "margin-bottom": null,
 );
 
@@ -18,7 +18,7 @@ $video-options: (
 @mixin block-video-wp-modifier($options) {
     .wp-block-embed {
         @each $property, $value in $options {
-            @if map-has-key($video-options, $property) {
+            @if map-has-key($video-wysiwyg-options, $property) {
                 @if $value {
                     #{$property}: $value;
                 }

@@ -1,4 +1,4 @@
-$lists-options: (
+$lists-wysiwyg-options: (
     "first-number-width": null,
     "number-color": null,
     "first-level-artwork-width": null,
@@ -26,7 +26,7 @@ $lists-options: (
     "font-styles": null,
 );
 
-@mixin lists() {
+@mixin lists-wysiwyg() {
   ul,
   ol {
     list-style: none;
@@ -56,9 +56,9 @@ $lists-options: (
   }
 }
 
-@mixin lists-modifier($options) {
+@mixin lists-wysiwyg-modifier($options) {
   @each $property, $value in $options {
-    @if map-has-key($lists-options, $property) {
+    @if map-has-key($lists-wysiwyg-options, $property) {
       @if $value {
         @if $property == "first-number-width" {
           ol {
@@ -401,7 +401,7 @@ $lists-options: (
           ul,
           ol {
             li {
-              @include make-font-options($options: $value);
+              @include make-font-wysiwyg-options($options: $value);
             }
           }
         }

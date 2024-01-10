@@ -1,4 +1,4 @@
-$columns-options: (
+$columns-wysiwyg-options: (
     "margin-bottom": null,
     "breakpoint": null,
 );
@@ -15,7 +15,7 @@ $columns-options: (
 
 @mixin block-columns-wp-modifier($options) {
     @each $property, $value in $options {
-        @if map-has-key($columns-options, $property) {
+        @if map-has-key($columns-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "breakpoint" {
                     .wp-block-columns {

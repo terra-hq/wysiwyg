@@ -1,20 +1,20 @@
-@mixin paragraphs() {
+@mixin paragraphs-wysiwyg() {
   em {
     font-style: italic;
   }
 }
 
 
-@mixin paragraphs-wp-modifier($options) {
+@mixin paragraphs-wysiwyg-wp-modifier($options) {
   & > p,
-  .wp-block-column p,
+  .wp-block-column > p,
   .wp-block-media-text p {
-    @include make-font-options($options: $options);
+    @include make-font-wysiwyg-options($options: $options);
   }
 }
 
-@mixin paragraphs-sanity-modifier($options) {
+@mixin paragraphs-wysiwyg-sanity-modifier($options) {
   & > p {
-    @include make-font-options($options: $options);
+    @include make-font-wysiwyg-options($options: $options);
   }
 }

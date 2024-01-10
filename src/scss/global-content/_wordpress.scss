@@ -1,0 +1,238 @@
+//* Global Mixins
+@import "./_global-mixins/global-mixins";
+
+@import "./_global-mixins/blocks/content-block-btn";
+@import "./_global-mixins/blocks/content-block-columns";
+@import "./_global-mixins/blocks/content-block-footnote";
+@import "./_global-mixins/blocks/content-block-highlighted.scss";
+@import "./_global-mixins/blocks/content-block-image.scss";
+@import "./_global-mixins/blocks/content-block-quote.scss";
+@import "./_global-mixins/blocks/content-block-separator.scss";
+@import "./_global-mixins/blocks/content-block-table.scss";
+@import "./_global-mixins/blocks/content-block-video";
+@import "./_global-mixins/blocks/content-heading.scss";
+@import "./_global-mixins/blocks/content-links.scss";
+@import "./_global-mixins/blocks/content-list.scss";
+@import "./_global-mixins/blocks/content-paragraph.scss";
+@import "./_global-mixins/blocks/content-utilities.scss";
+
+@mixin make-content (
+    $btn-options: (),
+) {
+    //* btn
+
+    //* columns
+    @include block-columns-wp();
+
+    //* footnote
+
+    //* highlighted
+
+    //* image
+    @include block-image-wp();
+
+    //* quote
+    @include block-quote-wp();
+
+    //* separator
+    @include block-separator-wp();
+
+    //* headings
+
+    //* link
+
+    //* paragraphs
+    @include paragraphs-wysiwyg();
+
+    //* lists
+    @include lists-wysiwyg();
+
+    //* video
+    @include block-video-wp();
+
+    //* table
+    @include block-table-wp();
+
+    //* utilities
+    @include utilities-wp();
+
+    & > *:first-child {   
+        padding-top: 0 !important;
+    }
+    & > *:last-child {
+        margin-bottom: 0 !important;
+    }
+}
+
+@mixin make-content-modifier (
+    $btn-options: (),
+    $columns-options: (),
+    $footnote-options: (),
+    $highlighted-options: (),
+    $image-options: (),
+    $quote-options: (),
+    $separator-options: (),
+    $headings-options: (),
+    $link-options: (),
+    $paragraphs-options: (),
+    $lists-options: (),
+    $video-options: (),
+    $table-options: (),
+    $utilities-options: (),
+    $custom-options: (),
+) {
+        //* btn
+        @include block-btn-wp-modifier ($options: $btn-options);
+        @if length(map-keys($btn-options)) > 0 {
+            @if map-get($btn-options, "margin-bottom") == null {
+                .wp-block-buttons,
+                .wp-block-button{
+                    margin-bottom: $measure*4;
+                }
+            }
+        }
+
+        //* columns
+        @include block-columns-wp-modifier ($options: $columns-options);
+        @if length(map-keys($columns-options)) > 0 {
+            @if map-get($columns-options, "margin-bottom") == null {
+                .wp-block-columns {
+                    margin-bottom: $measure*4;
+                }
+            }
+            @if map-get($columns-options, "breakpoint") == null {
+                .wp-block-columns {
+                    .wp-block-column {
+                        @media all and ($viewport-type: $tablets) {
+                            flex-basis: 100% !important;
+                            flex-wrap: wrap !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        //* footnote
+        @include block-footnote-wp-modifier ($options: $footnote-options);
+        @if length(map-keys($footnote-options)) > 0 {
+            @if map-get($footnote-options, "margin-bottom") == null {
+                .footnote {
+                    margin-bottom: $measure*2;
+                }
+            }
+        }
+
+        //* highlighted
+        @include block-highlighted-wp-modifier ($options: $highlighted-options);
+        @if length(map-keys($highlighted-options)) > 0 {
+            @if map-get($highlighted-options, "margin-bottom") == null {
+                .highlighted {
+                    margin-bottom: $measure*4;
+                }
+            }
+        }
+
+        //* image
+        @include block-image-wp-modifier ($options: $image-options);
+        @if length(map-keys($image-options)) > 0 {
+            @if map-get($image-options, "margin-bottom") == null {
+                figure.wp-block-image {
+                    margin-bottom: $measure*5;
+                }
+                div.wp-block-image {
+                    figure {
+                        margin-bottom: $measure*5;
+                    }
+                }
+                *[class^='wp-block'] {
+                    img {
+                        margin-bottom: $measure*5;
+                    }
+                }
+                > p {
+                    > img {
+                        margin-bottom: $measure*5;
+                    }
+                }
+            }
+        }
+
+        //* quote
+        @include block-quote-wp-modifier($options: $quote-options);
+        @if length(map-keys($quote-options)) > 0 {
+            @if map-get($quote-options, "padding") == null {
+                .wp-block-quote,
+                blockquote {
+                    padding: $measure * 3 0;
+                }
+            }
+            @if map-get($quote-options, "margin-top") == null {
+                .wp-block-quote,
+                blockquote {
+                    margin-top: $measure * 5;
+                }
+            }
+            @if map-get($quote-options, "margin-bottom") == null {
+                .wp-block-quote,
+                blockquote {
+                    margin-top: $measure * 6;
+                }
+            }
+            @if map-get($quote-options, "cite") == null {
+                cite{
+                    margin-top: $measure*3;
+                }
+            }
+        }
+
+        //* separator
+        @include block-separator-wp-modifier($options: $separator-options);
+        @if length(map-keys($separator-options)) > 0 {
+            @if map-get($separator-options, "margin") == null {
+                .wp-block-separator{
+                    margin: $measure * 6 0;
+                }
+            }
+        }
+
+        //* headings
+        @include headings-wp-modifier($options: $headings-options);
+
+        //* link
+        @include block-link-wysiwyg-modifier($options: $link-options);
+
+        //* paragraphs
+        @include paragraphs-wysiwyg-wp-modifier($options: $paragraphs-options);
+
+        //* lists
+        @include lists-wysiwyg-modifier($options: $lists-options);
+
+        //* video
+        @include block-video-wp-modifier($options: $video-options);
+        @if length(map-keys($video-options)) > 0 {
+            @if map-get($video-options, "margin-bottom") == null {
+                .wp-block-embed {
+                    margin-bottom: $measure * 5;
+                }
+            }
+        }
+
+        //* table
+        @include block-table-wp-modifier($options: $table-options);
+
+        //* utilities
+        @include utilities-wp-modifier($options: $utilities-options);
+        @if length(map-keys($utilities-options)) > 0 {
+            @if map-get($utilities-options, "media-text-aligned-margin-x") == null {
+                *.alignleft{
+                    margin-right: $measure*5;
+                }
+                *.alignright{
+                    margin-left: $measure*5;
+                }
+            }
+        }
+
+        //* custom
+        @include make-custom-wysiwyg-options($options: $custom-options);
+}

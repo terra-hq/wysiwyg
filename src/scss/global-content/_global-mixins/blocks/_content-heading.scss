@@ -1,4 +1,4 @@
-$headings-options: (
+$headings-wysiwyg-options: (
     "h1": null,
     "h2": null,
     "h3": null,
@@ -11,13 +11,13 @@ $headings-options: (
     @for $i from 1 through 6 {
         $property: "h#{$i}";
 
-        @if map-has-key($headings-options, $property) {
+        @if map-has-key($headings-wysiwyg-options, $property) {
 
             @if map-get($options, $property) {
                 & > #{$property},
                 .wp-block-column #{$property},
                 .wp-block-media-text #{$property} {
-                    @include make-font-options($options: map-get($options, $property));
+                    @include make-font-wysiwyg-options($options: map-get($options, $property));
                 }
             }
         }
@@ -28,11 +28,11 @@ $headings-options: (
     @for $i from 1 through 6 {
         $property: "h#{$i}";
 
-        @if map-has-key($headings-options, $property) {
+        @if map-has-key($headings-wysiwyg-options, $property) {
 
             @if map-get($options, $property) {
                 & > #{$property} {
-                    @include make-font-options($options: map-get($options, $property));
+                    @include make-font-wysiwyg-options($options: map-get($options, $property));
                 }
             }
         }

@@ -1,4 +1,4 @@
-$font-options: (
+$font-wysiwyg-options: (
     "color": null,
     "font-family": null,
     "font-size": null,
@@ -18,9 +18,9 @@ $font-options: (
     "bold-font-weight": null,
 );
 
-@mixin make-font-options($options) {
+@mixin make-font-wysiwyg-options($options) {
     @each $property, $value in $options {
-        @if map-has-key($font-options, $property) {
+        @if map-has-key($font-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "className" {
                     @if type-of($value) == list {

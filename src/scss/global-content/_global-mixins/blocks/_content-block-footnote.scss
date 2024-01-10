@@ -1,5 +1,6 @@
 @mixin block-footnote-wp-modifier($options: $options) {
-    .footnote{
-        @include make-font-options($options)
+    .footnote,
+    .wp-block-column > .footnote {
+        @include make-font-wysiwyg-options($options)
     }
 }
