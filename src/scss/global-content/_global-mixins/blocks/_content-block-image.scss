@@ -9,15 +9,27 @@
             margin: 0;
             display: block;
         }
+        figcaption {
+            display: block;
+        }
         &.alignleft{
             float: left;
+            figcaption {
+                display: block;
+            }
         }
         &.alignright{
             float: right;
+            figcaption {
+                display: block;
+            }
         }
         &.aligncenter{
             margin-left: auto;
             margin-right: auto;
+            figcaption {
+                display: block;
+            }
         }
     }
     div.wp-block-image{
@@ -28,6 +40,9 @@
                 width: auto;
                 height: auto;
                 margin: 0;
+                display: block;
+            }
+            figcaption {
                 display: block;
             }
         }

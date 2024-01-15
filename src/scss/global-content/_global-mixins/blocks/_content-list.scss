@@ -1,4 +1,5 @@
 $lists-wysiwyg-options: (
+    "number-font": null,
     "first-number-width": null,
     "first-level-number-color": null,
     "first-level-artwork-width": null,
@@ -32,6 +33,10 @@ $lists-wysiwyg-options: (
   ul,
   ol {
     list-style: none;
+    ol,
+    ul {
+      margin-bottom: 0;
+    }
   }
   ul {
     > li {
@@ -62,7 +67,16 @@ $lists-wysiwyg-options: (
   @each $property, $value in $options {
     @if map-has-key($lists-wysiwyg-options, $property) {
       @if $value {
-        @if $property == "first-number-width" {
+        @if $property == "number-font" {
+          ol {
+            > li{
+              &::before {
+                @include make-font-wysiwyg-options($options: $value);
+              }
+            }
+          }
+        }
+        @else if $property == "first-number-width" {
           ol {
             > li{
               padding-left: calc(#{$measure*2} + #{$value}); //* space between number and text + number width
@@ -435,6 +449,12 @@ $lists-wysiwyg-options: (
             li {
               @include make-font-wysiwyg-options($options: $value);
             }
+            @if map-has-key($value, "margin-bottom") {
+              ul,
+              ol {
+                margin-top: map-get($value, "margin-bottom");
+              }
+            }
           }
         }
         @else {
@@ -452,6 +472,10 @@ $lists-wysiwyg-options: (
   ul,
   ol {
     list-style: none;
+    ol,
+    ul {
+      margin-bottom: 0;
+    }
   }
   ul {
     > li {
@@ -491,7 +515,16 @@ $lists-wysiwyg-options: (
   @each $property, $value in $options {
     @if map-has-key($lists-wysiwyg-options, $property) {
       @if $value {
-        @if $property == "first-number-width" {
+        @if $property == "number-font" {
+          ol {
+            > li{
+              &::before {
+                @include make-font-wysiwyg-options($options: $value);
+              }
+            }
+          }
+        }
+        @else if $property == "first-number-width" {
           ol {
             > li{
               padding-left: calc(#{$measure*2} + #{$value}); //* space between number and text + number width

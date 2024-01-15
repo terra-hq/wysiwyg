@@ -4,6 +4,12 @@ Here are the styling options for lists.
 
 ## Editable options
 
+### number-font
+
+This property is used to determine the font of the numbers in ordered lists. If we want it to be the same as li items (font-styles), we don't have to specify anything.
+
+The number-font property accepts the text-related styling options listed [here](../properties/Font.md).
+
 ### first-number-width
 
 This property is used to determine the width of the numbers in ordered lists, allowing for proper spacing to accommodate their size.
@@ -242,6 +248,9 @@ The font-styles property accepts the text-related styling options listed [here](
     .c--content-X {
         @include make-content-modifier (
             $lists-options: (
+                "number-font": (
+                    "font-weight": 600,
+                ),
                 "first-number-width": 14px,
                 "first-level-number-color": map-get($color-options, d),
                 "first-level-artwork-width": 8px,

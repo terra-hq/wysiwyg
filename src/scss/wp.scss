@@ -152,6 +152,9 @@
                 "bold-font-weight": 600,
             ),
             $lists-options: (
+                "number-font": (
+                    "font-weight": 600,
+                ),
                 "first-number-width": 14px,
                 "first-level-number-color": map-get($color-options, d),
                 "first-level-artwork-width": 8px,
@@ -180,6 +183,7 @@
                 "margin-bottom": $measure*4,
                 "font-styles": (
                     "className": f--font-e f--color-e,
+                    "margin-bottom": $measure,
                 ),
             ),
             $table-options: (
