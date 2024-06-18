@@ -524,6 +524,7 @@ Each block has its own set of options for customization. If you want to learn mo
         "media-text-aligned-margin-x": $measure*5
       )
     );
+}
 ```
 
 
