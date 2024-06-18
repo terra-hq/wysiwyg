@@ -18,27 +18,33 @@ Import the mixins globally according to the build tool you are using.
 
 #### Example in Webpack:
 
-In your Webpack configuration file (webpack.config.js):
+In your Webpack configuration file (webpack.dev.js and webpack.prod.js):
 
 ```js
-  module.exports = {
-    module: {
-      rules: [
-        // Sass Loader
-        {
-          use: [
-            {
-              options: {
-                resources: [
-                  path.resolve(__dirname, "@terra-hq/wysiwyg/library"),
-                ],
-              },
+module.exports = {
+  module: {
+    rules: [
+      // Sass Loader
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+          {
+            loader: "sass-resources-loader",
+            options: {
+              resources: [
+                path.resolve(__dirname, 'node_modules/@terrahq/gc/src/scss/global-components/_library.scss')
+              ],
             },
-          ],
-        },
-      ],
-    },
-  };
+          },
+        ],
+      },
+    ],
+  },
+};
 ```
 
 #### Example in Astro:
