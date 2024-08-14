@@ -15,10 +15,12 @@ $columns-wysiwyg-options: (
             @if $value {
                 @if $property == "breakpoint" {
                     .wp-block-columns {
+                        @media all and ($viewport-type: $value) {
+                            flex-wrap: wrap !important;
+                        }
                         .wp-block-column {
                             @media all and ($viewport-type: $value) {
                                 flex-basis: 100% !important;
-                                flex-wrap: wrap;
                             }
                         }
                     }
