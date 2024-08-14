@@ -36,7 +36,7 @@ module.exports = {
             loader: "sass-resources-loader",
             options: {
               resources: [
-                path.resolve(__dirname, 'node_modules/@terrahq/gc/src/scss/global-components/_library.scss')
+                path.resolve(__dirname, 'node_modules/@terrahq/wysiwyg/wordpress')
               ],
             },
           },
@@ -58,7 +58,7 @@ export default defineConfig({
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @import '@terra-hq/wysiwyg/library';
+            @import '@terra-hq/wysiwyg/sanity';
           `,
         },
       },
