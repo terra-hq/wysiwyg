@@ -16,23 +16,27 @@ $table-wysiwyg-options: (
 @mixin block-table-wp() {
     .wp-block-table,
     table {
-        width: 100%;
-        text-align: left;
-        margin: 0;
-        border: none;
-        padding: 0px;
-        border-spacing: 0;
-        border-collapse: collapse;
-        thead,
-        tfoot,
+        & {
+            width: 100%;
+            text-align: left;
+            margin: 0;
+            border: none;
+            padding: 0px;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
         thead,
         tfoot {
-            border: none;
-            border: none;
+            & {
+                border: none;
+            }
         }
-        td,
+
         td { //* all rows
-            margin: 0px;
+            & {
+                margin: 0px;
+            }
         }
     }
 }
@@ -70,19 +74,16 @@ $table-wysiwyg-options: (
                         }
                     }
                     @else if $property == "body-font-styles" {
-                        td,
                         td { //* all rows
                             @include make-font-wysiwyg-options($options: $value);
                         }
                     }
                     @else if $property == "body-cells-padding" {
-                        td,
                         td { //* all rows
                             padding: $value;
                         }
                     }
                     @else if $property == "body-border" {
-                        td,
                         td {
                             @include make-border-wysiwyg-options($options: $value);
                         }
@@ -103,19 +104,18 @@ $table-wysiwyg-options: (
                         }
                     }
                     @else if $property == "caption" {
-                        figcaption{
+                        figcaption {
                             @include make-font-wysiwyg-options($options: $value);
                         }
                     }
                     @else {
-                        #{$property}: $value;
+                        // Wrap property declarations in & {} to opt into new behavior
+                        & {
+                            #{$property}: $value;
+                        }
                     }
                 }
             }
         }
-
-
-        
-        
     }
 }
