@@ -58,7 +58,7 @@ export default defineConfig({
       preprocessorOptions: {
         scss: {
           additionalData: `
-            @import '@terra-hq/wysiwyg/sanity';
+            @import '@terrahq/wysiwyg/sanity';
           `,
         },
       },
