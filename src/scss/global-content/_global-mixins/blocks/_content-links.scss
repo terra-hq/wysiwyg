@@ -7,7 +7,8 @@ $link-wysiwyg-options: (
         @if map-has-key($link-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "className" {
-                    a:not([class]){
+                    a:not([class]),
+                    a[class^='wp-'] {
                         @include make-class-options($value);
                     }
                 }

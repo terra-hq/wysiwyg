@@ -31,14 +31,17 @@ $lists-wysiwyg-options: (
 
 @mixin lists-wysiwyg-wp() {
   ul:not([class]),
-  ol:not([class]) {
+  ol:not([class]),
+  ul[class^='wp-'],
+  ol[class^='wp-'] {
     list-style: none;
     ol,
     ul {
       margin-bottom: 0;
     }
   }
-  ul:not([class]) {
+  ul:not([class]),
+  ul[class^='wp-'] {
     > li {
       position: relative;
       &:before {
@@ -48,7 +51,8 @@ $lists-wysiwyg-options: (
       }
     }
   }
-  ol:not([class]) {
+  ol:not([class]),
+  ol[class^='wp-'] {
     counter-reset: item;
     > li{
       position: relative;
@@ -68,7 +72,8 @@ $lists-wysiwyg-options: (
     @if map-has-key($lists-wysiwyg-options, $property) {
       @if $value {
         @if $property == "number-font" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             > li{
               &::before {
                 @include make-font-wysiwyg-options($options: $value);
@@ -77,7 +82,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-number-width" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             > li{
               padding-left: calc(#{$measure*2} + #{$value}); //* space between number and text + number width
               //* Nested ol
@@ -110,7 +116,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-number-color" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             > li {
               &:before {
                 color: $value;
@@ -119,7 +126,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               padding-left: calc(#{$measure*2} + #{$value}); //* space between artwork and text + artwork width
               &:before {
@@ -130,7 +138,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-top" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 top: $value;
@@ -139,7 +148,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-image" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 background-image: url#{$value};
@@ -151,7 +161,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-background" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 background: $value;
@@ -160,7 +171,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-border-radius" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 border-radius: $value;
@@ -169,7 +181,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-border-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 border-width: $value;
@@ -179,7 +192,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-border-color" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 border-color: $value;
@@ -188,7 +202,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-number-color" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             > li {
               ol {
                 > li {
@@ -201,7 +216,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               //* Nested ul
               ul{
@@ -217,7 +233,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-top" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               //* Nested ul
               ul{
@@ -231,7 +248,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-image" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -247,7 +265,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-background" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -260,7 +279,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-border-radius" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -273,7 +293,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-border-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -287,7 +308,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-border-color" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -300,7 +322,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-number-color" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             > li {
               ol {
                 > li {
@@ -317,7 +340,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               //* Nested ul
               ul{
@@ -337,7 +361,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-top" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               //* Nested ul
               ul{
@@ -355,7 +380,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-image" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -375,7 +401,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-background" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -392,7 +419,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-border-radius" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -409,7 +437,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-border-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -427,7 +456,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-border-color" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -445,7 +475,9 @@ $lists-wysiwyg-options: (
         }
         @else if $property == "font-styles" {
           ul:not([class]),
-          ol:not([class]) {
+          ol:not([class]),
+          ul[class^='wp-'],
+          ol[class^='wp-'] {
             li {
               @include make-font-wysiwyg-options($options: $value);
             }
@@ -459,7 +491,9 @@ $lists-wysiwyg-options: (
         }
         @else {
           ul:not([class]),
-          ol:not([class]) {
+          ol:not([class]),
+          ul[class^='wp-'],
+          ol[class^='wp-'] {
             #{$property}: $value;
           }
         }
@@ -470,14 +504,17 @@ $lists-wysiwyg-options: (
 
 @mixin lists-wysiwyg-sanity() {
   ul:not([class]),
-  ol:not([class]) {
+  ol:not([class]),
+  ul[class^='wp-'],
+  ol[class^='wp-'] {
     list-style: none;
     ol,
     ul {
       margin-bottom: 0;
     }
   }
-  ul:not([class]) {
+  ul:not([class]),
+  ul[class^='wp-'] {
     > li {
       position: relative;
       &:before {
@@ -487,7 +524,8 @@ $lists-wysiwyg-options: (
       }
     }
   }
-  ol:not([class]) {
+  ol:not([class]),
+  ol[class^='wp-'] {
     counter-reset: item;
     > li{
       position: relative;
@@ -516,7 +554,8 @@ $lists-wysiwyg-options: (
     @if map-has-key($lists-wysiwyg-options, $property) {
       @if $value {
         @if $property == "number-font" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             > li{
               &::before {
                 @include make-font-wysiwyg-options($options: $value);
@@ -525,7 +564,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-number-width" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             > li{
               padding-left: calc(#{$measure*2} + #{$value}); //* space between number and text + number width
             }
@@ -563,7 +603,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-number-color" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             > li {
               &:before {
                 color: $value;
@@ -572,7 +613,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               padding-left: calc(#{$measure*2} + #{$value}); //* space between artwork and text + artwork width
               &:before {
@@ -583,7 +625,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-top" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 top: $value;
@@ -592,7 +635,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-image" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 background-image: url#{$value};
@@ -604,7 +648,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-background" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 background: $value;
@@ -613,7 +658,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-border-radius" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 border-radius: $value;
@@ -622,7 +668,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-border-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 border-width: $value;
@@ -632,7 +679,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "first-level-artwork-border-color" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               &:before {
                 border-color: $value;
@@ -641,7 +689,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-number-color" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             ol {
               > li {
                 &:before {
@@ -652,7 +701,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               //* Nested ul
               ul{
@@ -668,7 +718,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-top" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               //* Nested ul
               ul{
@@ -682,7 +733,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-image" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -698,7 +750,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-background" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -711,7 +764,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-border-radius" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -724,7 +778,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-border-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -738,7 +793,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "second-level-artwork-border-color" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -751,7 +807,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-number-color" {
-          ol:not([class]) {
+          ol:not([class]),
+          ol[class^='wp-'] {
             ol {
               ol {
                 > li {
@@ -764,7 +821,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               //* Nested ul
               ul{
@@ -784,7 +842,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-top" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               //* Nested ul
               ul{
@@ -802,7 +861,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-image" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -822,7 +882,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-background" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -839,7 +900,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-border-radius" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -856,7 +918,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-border-width" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -874,7 +937,8 @@ $lists-wysiwyg-options: (
           }
         }
         @else if $property == "third-level-artwork-border-color" {
-          ul:not([class]) {
+          ul:not([class]),
+          ul[class^='wp-'] {
             > li {
               ul {
                 > li {
@@ -892,7 +956,9 @@ $lists-wysiwyg-options: (
         }
         @else if $property == "font-styles" {
           ul:not([class]),
-          ol:not([class]) {
+          ol:not([class]),
+          ul[class^='wp-'],
+          ol[class^='wp-'] {
             li {
               @include make-font-wysiwyg-options($options: $value);
             }
@@ -900,7 +966,9 @@ $lists-wysiwyg-options: (
         }
         @else {
           ul:not([class]),
-          ol:not([class]) {
+          ol:not([class]),
+          ul[class^='wp-'],
+          ol[class^='wp-'] {
             #{$property}: $value;
           }
         }
