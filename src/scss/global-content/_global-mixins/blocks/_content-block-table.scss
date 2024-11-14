@@ -103,10 +103,7 @@ $table-wysiwyg-options: (
                         }
                     }
                     @else {
-                        // Wrap property declarations in & {} to opt into new behavior
-                        & {
-                            #{$property}: $value;
-                        }
+                        #{$property}: $value;
                     }
                 }
             }
