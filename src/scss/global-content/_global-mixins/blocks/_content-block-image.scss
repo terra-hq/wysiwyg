@@ -85,7 +85,7 @@
 }
 
 @mixin block-image-wp-modifier ($options) {
-    @include make-media-wysiwyg-options($options, $platform: wp);
+    @include make-media-wysiwyg-options($options, $platform: wp, $media-type: "image");
 }
 
 

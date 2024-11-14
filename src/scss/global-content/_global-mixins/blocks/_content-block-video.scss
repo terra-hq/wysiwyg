@@ -16,19 +16,11 @@ $video-wysiwyg-options: (
         }
         video {
             width: 100%;
+            display: block;
         }
     }
 }
 
 @mixin block-video-wp-modifier($options) {
-    .wp-block-embed,
-    .wp-block-video {
-        @each $property, $value in $options {
-            @if map-has-key($video-wysiwyg-options, $property) {
-                @if $value {
-                    #{$property}: $value;
-                }
-            }
-        }
-    }
+    @include make-media-wysiwyg-options($options, $platform: wp, $media-type: "video");
 }
