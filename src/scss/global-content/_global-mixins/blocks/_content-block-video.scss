@@ -3,7 +3,9 @@ $video-wysiwyg-options: (
 );
 
 @mixin block-video-wp() {
-    .wp-block-embed {
+    .wp-block-embed,
+    .wp-block-video {
+        width: 100%;
         margin: 0 auto;
         .wp-block-embed__wrapper {
             iframe {
@@ -12,11 +14,15 @@ $video-wysiwyg-options: (
                 height: auto;
             }
         }
+        video {
+            width: 100%;
+        }
     }
 }
 
 @mixin block-video-wp-modifier($options) {
-    .wp-block-embed {
+    .wp-block-embed,
+    .wp-block-video {
         @each $property, $value in $options {
             @if map-has-key($video-wysiwyg-options, $property) {
                 @if $value {

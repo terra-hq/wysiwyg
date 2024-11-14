@@ -34,7 +34,9 @@ $quote-wysiwyg-options: (
                         }
                     }
                     @else {
-                        #{$property}: $value;
+                        & {
+                            #{$property}: $value;
+                        }
                     }
                 }
             }
