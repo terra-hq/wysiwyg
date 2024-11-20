@@ -547,6 +547,7 @@ Each block has its own set of options for customization. If you want to learn mo
           "text-align": right,
           // "margin-bottom-before-lists": 24px,
           // "bold-font-weight": 800,
+        )
       ),
       $utilities-options: (
         "media-text-aligned-margin-x": $measure*5
