@@ -484,7 +484,7 @@ $lists-wysiwyg-options: (
             @if map-has-key($value, "margin-bottom") {
               ul,
               ol {
-                margin-top: map-get($value, "margin-bottom");
+                margin-bottom: map-get($value, "margin-bottom");
               }
             }
           }
@@ -972,6 +972,22 @@ $lists-wysiwyg-options: (
             #{$property}: $value;
           }
         }
+      }
+    }
+  }
+}
+
+ol {
+  li {
+    list-style: decimal;
+    padding-left: 20px !important;
+    margin-left: 18px;
+    &::before {
+      content: none !important;
+    }
+    ol {
+      li {
+        // list-style: decimal-leading-zero;
       }
     }
   }
