@@ -1,3 +1,3 @@
-@import './blocks/content';
-@import './helpers/helpers';
-@import './properties/properties';
+@forward "./blocks/content";
+@forward "./helpers/helpers";
+@forward "./properties/properties";

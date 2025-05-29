@@ -1,108 +1,6 @@
-# WYSIWYG By Terra
-
-This package offers a seamless solution to effortlessly style the WYSIWYG and Gutenberg editor fields in WordPress and Sanity. With user-friendly customization options, it provides a hassle-free way to enhance the visual aesthetics of these content editors, ensuring a polished and cohesive design for your web content.
-
-## Installation
-
-1. Download the TGZ File
-2. Add the File to the Root of Your Project
-3. Install the File using npm
-
-```sh
-  npm install terrahq-wysiwyg-0.0.6.tgz
-```
-
-## Import Mixins Globally
-
-Import the mixins globally according to the build tool you are using.
-
-#### Example in Webpack:
-
-In your Webpack configuration file (webpack.dev.js and webpack.prod.js):
-
-```js
-module.exports = {
-  module: {
-    rules: [
-      // Sass Loader
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-          {
-            loader: "sass-resources-loader",
-            options: {
-              resources: [
-                path.resolve(
-                  __dirname,
-                  "node_modules/@terrahq/wysiwyg/wordpress"
-                ),
-              ],
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
-```
-
-#### Example in Astro:
-
-In your Astro configuration file (astro.config.mjs):
-
-```mjs
-export default defineConfig({
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `
-            @import '@terrahq/wysiwyg/sanity';
-          `,
-        },
-      },
-    },
-  },
-});
-```
-
-## How to Use
-
-The c--content consists of two mixins. One is responsible for styling properties to ensure components look visually appealing, while the other provides options to customize blocks for each project. In both mixins, it is crucial to specify the platform for which they are intended to be used (wp or sanity).
-
-Each block has its own set of options for customization. If you want to learn more about any specific block, click on it. The blocks that are styled include:
-
-- [Headings](./readme/blocks/Headings.md)
-- [Image](./readme/blocks/Image.md)
-- [Links](./readme/blocks/Links.md)
-- [Lists](./readme/blocks/Lists.md)
-- [Paragraphs](./readme/blocks/Paragraphs.md)
-- [Quote](./readme/blocks/Quote.md) (for Sanity, it doesn't have a cite option.)
-- [Footnote](./readme/blocks/Footnote.md), this is a custom block (just for WP)
-- [Highlighted](./readme/blocks/Highlighted.md), this is a custom block (just for WP)
-- [Button](./readme/blocks/Button.md) (just for WP)
-- [Columns](./readme/blocks/Columns.md) (just for WP)
-- [Separator](./readme/blocks/Separator.md) (just for WP)
-- [Table](./readme/blocks/Table.md) (just for WP)
-- [Video](./readme/blocks/Video.md) (just for WP)
-- [Utilities](./readme/blocks/Utilities.md) (just for WP)
-- [Custom](./readme/properties/Custom.md)
-
-### WP
-
-#### HTML code
-
-```html
-<div class="c--content-a"></div>
-```
-
-#### SCSS code
-
-```scss
+@use "sass:map";
+@use "@scss/framework/foundation/_foundation.scss";
+@use "@scss/framework/_var/_vars.scss" as *;
 .c--content-a {
   @include make-content();
   @include make-content-modifier(
@@ -390,7 +288,7 @@ Each block has its own set of options for customization. If you want to learn mo
           "padding-top": $measure * 3,
           // "text-align": right,
           // "margin-bottom-before-lists": 24px,
-          // "bold-font-weight": 800,,
+          // "bold-font-weight": 800,,,,
         ),
     ),
     $footnote-options: (
@@ -410,7 +308,7 @@ Each block has its own set of options for customization. If you want to learn mo
       // "padding-top": $measure*2,
       // "text-align": right,
       // "margin-bottom-before-lists": 24px,
-      // "bold-font-weight": 800,,
+      // "bold-font-weight": 800,,,,
     ),
     $highlighted-options: (
       // "className": f--font-a,
@@ -429,7 +327,7 @@ Each block has its own set of options for customization. If you want to learn mo
       // "padding-top": $measure*2,
       // "text-align": right,
       // "margin-bottom-before-lists": 24px,
-      // "bold-font-weight": 800,,
+      // "bold-font-weight": 800,,,,
     ),
     $btn-options: (
       // "className": g--btn-01,
@@ -443,7 +341,7 @@ Each block has its own set of options for customization. If you want to learn mo
       "margin": $measure * 6 auto,
       // "width": 60%,
       // "color": orange,
-      // "height": 2px,,
+      // "height": 2px,,,,
     ),
     $table-options: (
       "margin-bottom": $measure * 4,
@@ -521,7 +419,7 @@ Each block has its own set of options for customization. If you want to learn mo
       "text-align": right,
       //   "margin-bottom-before-lists": 24px,
       //   "bold-font-weight": 800,
-      // ),,
+      // ),,,,
     ),
     $video-options: (
       // "border-color": red,
@@ -560,289 +458,3 @@ Each block has its own set of options for customization. If you want to learn mo
     )
   );
 }
-```
-
-### Sanity
-
-#### HTML code
-
-```html
-<div class="c--content-a"></div>
-```
-
-#### SCSS code
-
-```scss
-.c--content-a {
-  @include make-content();
-  @include make-content-modifier(
-    $headings-options: (
-      // "h1": (
-      //   "className": f--font-a,
-      //   "color": #638c1d,
-      //   "font-family": arial,
-      //   "font-size": 2rem,
-      //   "font-style": italic,
-      //   "font-weight": 400,
-      //   "letter-spacing": 1px,
-      //   "line-height": 1.5,
-      //   "max-lines": 3,
-      //   "text-decoration": underline,
-      //   "text-decoration-color": #000000,
-      //   "text-underline-position": under,
-      //   "margin-bottom": $measure*2,
-      //   "padding-top": $measure*2,
-      //   "text-align": right,
-      //   "margin-bottom-before-lists": 24px,
-      //   "bold-font-weight": 800,
-      // ),
-      "h2":
-        (
-          //   "className": f--font-a,
-          //   "color": #638c1d,
-          //   "font-family": arial,
-          //   "font-size": 2rem,
-          //   "font-style": italic,
-          //   "font-weight": 400,
-          //   "letter-spacing": 1px,
-          //   "line-height": 1.5,
-          //   "max-lines": 3,
-          //   "text-decoration": underline,
-          //   "text-decoration-color": #000000,
-          //   "text-underline-position": under,
-          "margin-bottom": $measure * 3,
-          "padding-top": $measure * 5,
-          //   "text-align": right,
-          //   "margin-bottom-before-lists": 24px,
-          //   "bold-font-weight": 800,
-        ),
-      "h3": (
-        //   "className": f--font-a,
-        //   "color": #638c1d,
-        //   "font-family": arial,
-        //   "font-size": 2rem,
-        //   "font-style": italic,
-        //   "font-weight": 400,
-        //   "letter-spacing": 1px,
-        //   "line-height": 1.5,
-        //   "max-lines": 3,
-        //   "text-decoration": underline,
-        //   "text-decoration-color": #000000,
-        //   "text-underline-position": under,
-        "margin-bottom": $measure * 3,
-        "padding-top": $measure * 5,
-        //   "text-align": right,
-        //   "margin-bottom-before-lists": 24px,
-        //   "bold-font-weight": 800,
-      ),
-      "h4": (
-        //   "className": f--font-a,
-        //   "color": #638c1d,
-        //   "font-family": arial,
-        //   "font-size": 2rem,
-        //   "font-style": italic,
-        //   "font-weight": 400,
-        //   "letter-spacing": 1px,
-        //   "line-height": 1.5,
-        //   "max-lines": 3,
-        //   "text-decoration": underline,
-        //   "text-decoration-color": #000000,
-        //   "text-underline-position": under,
-        "margin-bottom": $measure * 2,
-        "padding-top": $measure * 5,
-        //   "text-align": right,
-        //   "margin-bottom-before-lists": 24px,
-        //   "bold-font-weight": 800,
-      ),
-      "h5": (
-        //   "className": f--font-a,
-        //   "color": #638c1d,
-        //   "font-family": arial,
-        //   "font-size": 2rem,
-        //   "font-style": italic,
-        //   "font-weight": 400,
-        //   "letter-spacing": 1px,
-        //   "line-height": 1.5,
-        //   "max-lines": 3,
-        //   "text-decoration": underline,
-        //   "text-decoration-color": #000000,
-        //   "text-underline-position": under,
-        "margin-bottom": $measure * 2,
-        "padding-top": $measure * 5,
-        //   "text-align": right,
-        //   "margin-bottom-before-lists": 24px,
-        //   "bold-font-weight": 800,
-      ),
-      "h6": (
-        //   "className": f--font-a,
-        //   "color": #638c1d,
-        //   "font-family": arial,
-        //   "font-size": 2rem,
-        //   "font-style": italic,
-        //   "font-weight": 400,
-        //   "letter-spacing": 1px,
-        //   "line-height": 1.5,
-        //   "max-lines": 3,
-        //   "text-decoration": underline,
-        //   "text-decoration-color": #000000,
-        //   "text-underline-position": under,
-        "margin-bottom": $measure,
-        "padding-top": $measure * 5,
-        //   "text-align": right,
-        //   "margin-bottom-before-lists": 24px,
-        //   "bold-font-weight": 800,
-      ),
-    ),
-    $image-options: (
-      // "border-color": red,
-      // "border-radius": 20px,
-      // "border-style": solid,
-      // "border-width": 2px,
-      // "object-fit": cover,
-      // "max-height": 700px,
-      // "min-height": 0,
-      // "object-position": center,
-      // "max-width": 100%,
-      // "min-width": 30px,
-      "margin-bottom": $measure * 5,
-      "caption": (
-        // "className": f--font-a,
-        // "color": #638c1d,
-        // "font-family": arial,
-        // "font-size": 2rem,
-        // "font-style": italic,
-        // "font-weight": 400,
-        // "letter-spacing": 1px,
-        // "line-height": 1.5,
-        // "max-lines": 3,
-        // "text-decoration": underline,
-        // "text-decoration-color": #000000,
-        // "text-underline-position": under,
-        // "margin-bottom": $measure*2,
-        "padding-top": $measure * 2,
-        "text-align": right,
-        // "margin-bottom-before-lists": 24px,
-        // "bold-font-weight": 800,
-      ),
-    ),
-    $link-options: (
-      // "className": g--link-01 g--link-01--second,
-    ),
-    $lists-options: (
-      // "number-font": (
-      //   "className": f--font-a,
-      //   "color": #638c1d,
-      //   "font-family": arial,
-      //   "font-size": 2rem,
-      //   "font-style": italic,
-      //   "font-weight": 400,
-      //   "letter-spacing": 1px,
-      //   "line-height": 1.5,
-      //   "max-lines": 3,
-      //   "text-decoration": underline,
-      //   "text-decoration-color": #000000,
-      //   "text-underline-position": under,
-      //   "margin-bottom": $measure*2,
-      //   "padding-top": $measure*5,
-      //   "text-align": right,
-      //   "margin-bottom-before-lists": 24px,
-      //   "bold-font-weight": 800,
-      // ),
-      // "first-number-width": 14px,
-      // "first-level-number-color": map.get($color-options, d),
-      // "first-level-artwork-width": 8px,
-      // "first-level-artwork-top": 8px,
-      // "first-level-artwork-image": '(../img/artwork.png)',
-      // "first-level-artwork-background": map.get($color-options, d),
-      // "first-level-artwork-border-radius": 50%,
-      // "first-level-artwork-border-width": 1px,
-      // "first-level-artwork-border-color": map.get($color-options, d),
-      // "second-level-number-color": map.get($color-options, d),
-      // "second-level-artwork-width": 8px,
-      // "second-level-artwork-top": 8px,
-      // "second-level-artwork-image": '(../img/artwork.png)',
-      // "second-level-artwork-background": map.get($color-options, d),
-      // "second-level-artwork-border-radius": 50%,
-      // "second-level-artwork-border-width": 1px,
-      // "second-level-artwork-border-color": map.get($color-options, d),
-      // "third-level-number-color": map.get($color-options, d),
-      // "third-level-artwork-width": 8px,
-      // "third-level-artwork-top": 8px,
-      // "third-level-artwork-image": '(../img/artwork.png)',
-      // "third-level-artwork-background": map.get($color-options, d),
-      // "third-level-artwork-border-radius": 50%,
-      // "third-level-artwork-border-width": 1px,
-      // "third-level-artwork-border-color": map.get($color-options, d),
-      "margin-bottom": $measure * 4,
-      "font-styles": (
-        // "className": f--font-a,
-        // "color": #638c1d,
-        // "font-family": arial,
-        // "font-size": 2rem,
-        // "font-style": italic,
-        // "font-weight": 400,
-        // "letter-spacing": 1px,
-        // "line-height": 1.5,
-        // "max-lines": 3,
-        // "text-decoration": underline,
-        // "text-decoration-color": #000000,
-        // "text-underline-position": under,
-        "margin-bottom": $measure * 2,
-        // "padding-top": $measure*5,
-        // "text-align": right,
-        // "margin-bottom-before-lists": 24px,
-        // "bold-font-weight": 800,
-      ),
-    ),
-    $paragraphs-options: (
-      // "className": f--font-a,
-      // "color": #638c1d,
-      // "font-family": arial,
-      // "font-size": 2rem,
-      // "font-style": italic,
-      // "font-weight": 400,
-      // "letter-spacing": 1px,
-      // "line-height": 1.5,
-      // "max-lines": 3,
-      // "text-decoration": underline,
-      // "text-decoration-color": #000000,
-      // "text-underline-position": under,
-      "margin-bottom": $measure * 4,
-      // "padding-top": $measure*5,
-      // "text-align": right,
-      "margin-bottom-before-lists": $measure * 3,
-      // "bold-font-weight": 800,
-    ),
-    $quote-options: (
-      "padding": $measure * 3 0,
-      "margin-top": $measure * 5,
-      "margin-bottom": $measure * 6,
-      // "border": (
-      //   "border-color": red,
-      //   "border-radius": 0,
-      //   "border-style": solid,
-      //   "border-width": 2px 0,
-      // ),
-      // "paragraph": (
-      //   "className": f--font-a,
-      //   "color": #638c1d,
-      //   "font-family": arial,
-      //   "font-size": 2rem,
-      //   "font-style": italic,
-      //   "font-weight": 400,
-      //   "letter-spacing": 1px,
-      //   "line-height": 1.5,
-      //   "max-lines": 3,
-      //   "text-decoration": underline,
-      //   "text-decoration-color": #000000,
-      //   "text-underline-position": under,
-      //   "margin-bottom": $measure*2,
-      //   "padding-top": $measure*5,
-      //   "text-align": right,
-      //   "margin-bottom-before-lists": 24px,
-      //   "bold-font-weight": 800,
-      // ),,
-    )
-  );
-}
-```

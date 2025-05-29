@@ -10,13 +10,13 @@ This property set the text color.
 
 Possible values include:
 
--   Transparent (transparent)
--   Color name (red)
--   Hexadecimal color (#ffffff)
--   RGB color (rgb(255, 255, 255))
--   RGBA color (rgba(255, 255, 255, .5))
--   A variable referencing any of the above options ($color-a)
--   A color within a variable map (map-get($color-options, a))
+- Transparent (transparent)
+- Color name (red)
+- Hexadecimal color (#ffffff)
+- RGB color (rgb(255, 255, 255))
+- RGBA color (rgba(255, 255, 255, .5))
+- A variable referencing any of the above options ($color-a)
+- A color within a variable map (map.get($color-options, a))
 
 ### font-family
 
@@ -72,13 +72,13 @@ This property set the color of the text decoration. It'll only be notticeable if
 
 Possible values include:
 
--   Transparent (transparent)
--   Color name (red)
--   Hexadecimal color (#ffffff)
--   RGB color (rgb(255, 255, 255))
--   RGBA color (rgba(255, 255, 255, .5))
--   A variable referencing any of the above options ($color-a)
--   A color within a variable map (map-get($color-options, a))
+- Transparent (transparent)
+- Color name (red)
+- Hexadecimal color (#ffffff)
+- RGB color (rgb(255, 255, 255))
+- RGBA color (rgba(255, 255, 255, .5))
+- A variable referencing any of the above options ($color-a)
+- A color within a variable map (map.get($color-options, a))
 
 ### text-underline-position
 
@@ -125,27 +125,27 @@ Values can include those accepted by the CSS 'font-weight' property.
 ## SCSS
 
 ```scss
-    .c--content-X {
-        @include make-content-modifier(
-            $font-options: (
-                "color": #638c1d,
-                "font-family": arial,
-                "font-size": 2rem,
-                "font-style": italic,
-                "font-weight": 400,
-                "letter-spacing": 1px,
-                "line-height": 1.5,
-                "max-lines": 3,
-                "text-decoration": underline,
-                "text-decoration-color": #000000,
-                "text-underline-position": under,
-                "className": f--font-a,
-                "margin-bottom": 32px,
-                "margin-bottom-before-lists": 24px,
-                "padding-top": 8px,
-                "text-align": center,
-                "bold-font-weight": 800,
-            )
-        );
-    }
+.c--content-X {
+  @include make-content-modifier(
+    $font-options: (
+      "color": #638c1d,
+      "font-family": arial,
+      "font-size": 2rem,
+      "font-style": italic,
+      "font-weight": 400,
+      "letter-spacing": 1px,
+      "line-height": 1.5,
+      "max-lines": 3,
+      "text-decoration": underline,
+      "text-decoration-color": #000000,
+      "text-underline-position": under,
+      "className": f--font-a,
+      "margin-bottom": 32px,
+      "margin-bottom-before-lists": 24px,
+      "padding-top": 8px,
+      "text-align": center,
+      "bold-font-weight": 800,
+    )
+  );
+}
 ```

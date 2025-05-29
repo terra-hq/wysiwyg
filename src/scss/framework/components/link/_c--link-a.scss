@@ -1,0 +1,13 @@
+@use "@scss/framework/foundation/_foundation.scss";
+@use "@scss/framework/_var/_vars.scss" as *;
+.c--link-a {
+  @extend .f--color-e;
+  text-decoration: none;
+  transition: all $time-b $ease-standard-a;
+
+  @media all and (hover: hover) {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

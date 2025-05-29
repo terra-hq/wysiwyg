@@ -28,7 +28,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### first-level-artwork-width
 
@@ -60,7 +60,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### first-level-artwork-border-radius
 
@@ -86,7 +86,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### second-level-number-color
 
@@ -100,7 +100,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### second-level-artwork-width
 
@@ -132,7 +132,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### second-level-artwork-border-radius
 
@@ -158,7 +158,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### third-level-number-color
 
@@ -172,7 +172,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### third-level-artwork-width
 
@@ -204,7 +204,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### third-level-artwork-border-radius
 
@@ -230,7 +230,7 @@ The possible values include:
 - RGB color (rgb(255, 255, 255))
 - RGBA color (rgba(255, 255, 255, .5))
 - A variable referencing any of the above options ($color-a)
-- A color within a variable map (map-get($color-options, a))
+- A color within a variable map (map.get($color-options, a))
 
 ### margin-bottom
 
@@ -245,74 +245,74 @@ The font-styles property accepts the text-related styling options listed [here](
 ## SCSS
 
 ```scss
-    .c--content-X {
-        @include make-content-modifier (
-            $lists-options: (
-                "number-font": (
-                    "color": #638c1d,
-                    "font-family": arial,
-                    "font-size": 2rem,
-                    "font-style": italic,
-                    "font-weight": 400,
-                    "letter-spacing": 1px,
-                    "line-height": 1.5,
-                    "max-lines": 3,
-                    "text-decoration": underline,
-                    "text-decoration-color": #000000,
-                    "text-underline-position": under,
-                    "className": f--font-a,
-                    "margin-bottom": 32px,
-                    "margin-bottom-before-lists": 24px,
-                    "padding-top": 8px,
-                    "text-align": center,
-                    "bold-font-weight": 800,
-                ),
-                "first-number-width": 14px,
-                "first-level-number-color": map-get($color-options, d),
-                "first-level-artwork-width": 8px,
-                "first-level-artwork-top": 8px,
-                "first-level-artwork-image": '(../img/artwork.png)',
-                "first-level-artwork-background": map-get($color-options, d),
-                "first-level-artwork-border-radius": 50%,
-                "first-level-artwork-border-width": 1px,
-                "first-level-artwork-border-color": map-get($color-options, d),
-                "second-level-number-color": map-get($color-options, d),
-                "second-level-artwork-width": 8px,
-                "second-level-artwork-top": 8px,
-                "second-level-artwork-image": '(../img/artwork.png)',
-                "second-level-artwork-background": map-get($color-options, d),
-                "second-level-artwork-border-radius": 50%,
-                "second-level-artwork-border-width": 1px,
-                "second-level-artwork-border-color": map-get($color-options, d),
-                "third-level-number-color": map-get($color-options, d),
-                "third-level-artwork-width": 8px,
-                "third-level-artwork-top": 8px,
-                "third-level-artwork-image": '(../img/artwork.png)',
-                "third-level-artwork-background": map-get($color-options, d),
-                "third-level-artwork-border-radius": 50%,
-                "third-level-artwork-border-width": 1px,
-                "third-level-artwork-border-color": map-get($color-options, d),
-                "margin-bottom": $measure*4,
-                "font-styles": (
-                    "color": #638c1d,
-                    "font-family": arial,
-                    "font-size": 2rem,
-                    "font-style": italic,
-                    "font-weight": 400,
-                    "letter-spacing": 1px,
-                    "line-height": 1.5,
-                    "max-lines": 3,
-                    "text-decoration": underline,
-                    "text-decoration-color": #000000,
-                    "text-underline-position": under,
-                    "className": f--font-a,
-                    "margin-bottom": 32px,
-                    "margin-bottom-before-lists": 24px,
-                    "padding-top": 8px,
-                    "text-align": center,
-                    "bold-font-weight": 800,
-                ),
-            )
-        );
-    }
+.c--content-X {
+  @include make-content-modifier(
+    $lists-options: (
+      "number-font": (
+        "color": #638c1d,
+        "font-family": arial,
+        "font-size": 2rem,
+        "font-style": italic,
+        "font-weight": 400,
+        "letter-spacing": 1px,
+        "line-height": 1.5,
+        "max-lines": 3,
+        "text-decoration": underline,
+        "text-decoration-color": #000000,
+        "text-underline-position": under,
+        "className": f--font-a,
+        "margin-bottom": 32px,
+        "margin-bottom-before-lists": 24px,
+        "padding-top": 8px,
+        "text-align": center,
+        "bold-font-weight": 800,
+      ),
+      "first-number-width": 14px,
+      "first-level-number-color": map.get($color-options, d),
+      "first-level-artwork-width": 8px,
+      "first-level-artwork-top": 8px,
+      "first-level-artwork-image": "(../img/artwork.png)",
+      "first-level-artwork-background": map.get($color-options, d),
+      "first-level-artwork-border-radius": 50%,
+      "first-level-artwork-border-width": 1px,
+      "first-level-artwork-border-color": map.get($color-options, d),
+      "second-level-number-color": map.get($color-options, d),
+      "second-level-artwork-width": 8px,
+      "second-level-artwork-top": 8px,
+      "second-level-artwork-image": "(../img/artwork.png)",
+      "second-level-artwork-background": map.get($color-options, d),
+      "second-level-artwork-border-radius": 50%,
+      "second-level-artwork-border-width": 1px,
+      "second-level-artwork-border-color": map.get($color-options, d),
+      "third-level-number-color": map.get($color-options, d),
+      "third-level-artwork-width": 8px,
+      "third-level-artwork-top": 8px,
+      "third-level-artwork-image": "(../img/artwork.png)",
+      "third-level-artwork-background": map.get($color-options, d),
+      "third-level-artwork-border-radius": 50%,
+      "third-level-artwork-border-width": 1px,
+      "third-level-artwork-border-color": map.get($color-options, d),
+      "margin-bottom": $measure * 4,
+      "font-styles": (
+        "color": #638c1d,
+        "font-family": arial,
+        "font-size": 2rem,
+        "font-style": italic,
+        "font-weight": 400,
+        "letter-spacing": 1px,
+        "line-height": 1.5,
+        "max-lines": 3,
+        "text-decoration": underline,
+        "text-decoration-color": #000000,
+        "text-underline-position": under,
+        "className": f--font-a,
+        "margin-bottom": 32px,
+        "margin-bottom-before-lists": 24px,
+        "padding-top": 8px,
+        "text-align": center,
+        "bold-font-weight": 800,
+      ),
+    )
+  );
+}
 ```

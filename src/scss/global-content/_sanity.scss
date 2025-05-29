@@ -1,4 +1,7 @@
 //* Global Mixins
+@use "sass:map";
+
+@use "@scss/framework/_var/_vars.scss" as *;
 @import "./_global-mixins/global-mixins";
 
 @import "./_global-mixins/blocks/content-block-image.scss";
@@ -8,154 +11,151 @@
 @import "./_global-mixins/blocks/content-list.scss";
 @import "./_global-mixins/blocks/content-paragraph.scss";
 
-@mixin make-content (
-    $btn-options: (),
-) {
-        //* btn
+@mixin make-content($btn-options: ()) {
+  //* btn
 
-        //* columns
+  //* columns
 
-        //* footnote
+  //* footnote
 
-        //* highlighted
+  //* highlighted
 
-        //* image
-        @include block-image-sanity();
+  //* image
+  @include block-image-sanity();
 
-        //* quote
+  //* quote
 
-        //* separator
+  //* separator
 
-        //* headings
+  //* headings
 
-        //* link
+  //* link
 
-        //* paragraphs
-        @include paragraphs-wysiwyg();
+  //* paragraphs
+  @include paragraphs-wysiwyg();
 
-        //* lists
-        @include lists-wysiwyg-sanity();
+  //* lists
+  @include lists-wysiwyg-sanity();
 
-        //* video
+  //* video
 
-        //* table
+  //* table
 
-        //* utilities
+  //* utilities
 
-    & > h1:first-child,
-    & > h2:first-child,
-    & > h3:first-child,
-    & > h4:first-child,
-    & > h5:first-child,
-    & > h6:first-child,
-    & > p:first-child {   
-        padding-top: 0 !important;
-    }
-    & > *:last-child {
-        margin-bottom: 0 !important;
-    }
+  & > h1:first-child,
+  & > h2:first-child,
+  & > h3:first-child,
+  & > h4:first-child,
+  & > h5:first-child,
+  & > h6:first-child,
+  & > p:first-child {
+    padding-top: 0 !important;
+  }
+  & > *:last-child {
+    margin-bottom: 0 !important;
+  }
 }
 
-@mixin make-content-modifier (
-    $btn-options: (),
-    $columns-options: (),
-    $footnote-options: (),
-    $highlighted-options: (),
-    $image-options: (),
-    $quote-options: (),
-    $separator-options: (),
-    $headings-options: (),
-    $link-options: (),
-    $paragraphs-options: (),
-    $lists-options: (),
-    $video-options: (),
-    $table-options: (),
-    $utilities-options: (),
-    $custom-options: (),
+@mixin make-content-modifier(
+  $btn-options: (),
+  $columns-options: (),
+  $footnote-options: (),
+  $highlighted-options: (),
+  $image-options: (),
+  $quote-options: (),
+  $separator-options: (),
+  $headings-options: (),
+  $link-options: (),
+  $paragraphs-options: (),
+  $lists-options: (),
+  $video-options: (),
+  $table-options: (),
+  $utilities-options: (),
+  $custom-options: ()
 ) {
+  //* btn
+  @if length(map-keys($btn-options)) > 0 {
+    @error "Sanity doesn't support button styles";
+  }
 
-        //* btn
-        @if length(map-keys($btn-options)) > 0 {
-            @error "Sanity doesn't support button styles";
-        }
+  //* columns
+  @if length(map-keys($columns-options)) > 0 {
+    @error "Sanity doesn't support columns styles";
+  }
 
-        //* columns
-        @if length(map-keys($columns-options)) > 0 {
-            @error "Sanity doesn't support columns styles";
-        }
+  //* footnote
+  @if length(map-keys($footnote-options)) > 0 {
+    @error "Sanity doesn't support footnote styles";
+  }
 
-        //* footnote
-        @if length(map-keys($footnote-options)) > 0 {
-            @error "Sanity doesn't support footnote styles";
-        }
+  //* highlighted
+  @if length(map-keys($highlighted-options)) > 0 {
+    @error "Sanity doesn't support highlighted styles";
+  }
 
-        //* highlighted
-        @if length(map-keys($highlighted-options)) > 0 {
-            @error "Sanity doesn't support highlighted styles";
-        }
+  //* image
+  @include block-image-sanity-modifier($options: $image-options);
+  @if length(map-keys($image-options)) > 0 {
+    @if map.get($image-options, "margin-bottom") == null {
+      figure {
+        margin-bottom: $measure * 5;
+      }
+    }
+  }
 
-        //* image
-        @include block-image-sanity-modifier ($options: $image-options);
-        @if length(map-keys($image-options)) > 0 {
-            @if map-get($image-options, "margin-bottom") == null {
-                figure {
-                    margin-bottom: $measure*5;
-                }
-            }
-        }
+  //* quote
+  @include block-quote-sanity-modifier($options: $quote-options);
+  @if length(map-keys($quote-options)) > 0 {
+    @if map.get($quote-options, "padding") == null {
+      blockquote {
+        padding: $measure * 3 0;
+      }
+    }
+    @if map.get($quote-options, "margin-top") == null {
+      blockquote {
+        margin-top: $measure * 5;
+      }
+    }
+    @if map.get($quote-options, "margin-bottom") == null {
+      blockquote {
+        margin-top: $measure * 6;
+      }
+    }
+  }
 
-        //* quote
-        @include block-quote-sanity-modifier($options: $quote-options);
-        @if length(map-keys($quote-options)) > 0 {
-            @if map-get($quote-options, "padding") == null {
-                blockquote {
-                    padding: $measure * 3 0;
-                }
-            }
-            @if map-get($quote-options, "margin-top") == null {
-                blockquote {
-                    margin-top: $measure * 5;
-                }
-            }
-            @if map-get($quote-options, "margin-bottom") == null {
-                blockquote {
-                    margin-top: $measure * 6;
-                }
-            }
-        }
+  //* separator
+  @if length(map-keys($separator-options)) > 0 {
+    @error "Sanity doesn't support separator styles";
+  }
 
-        //* separator
-        @if length(map-keys($separator-options)) > 0 {
-            @error "Sanity doesn't support separator styles";
-        }
+  //* headings
+  @include headings-sanity-modifier($options: $headings-options);
 
-        //* headings
-        @include headings-sanity-modifier($options: $headings-options);
+  //* link
+  @include block-link-wysiwyg-modifier($options: $link-options);
 
-        //* link
-        @include block-link-wysiwyg-modifier($options: $link-options);
+  //* paragraphs
+  @include paragraphs-wysiwyg-sanity-modifier($options: $paragraphs-options);
 
-        //* paragraphs
-        @include paragraphs-wysiwyg-sanity-modifier($options: $paragraphs-options);
+  //* lists
+  @include lists-wysiwyg-sanity-modifier($options: $lists-options);
 
-        //* lists
-        @include lists-wysiwyg-sanity-modifier($options: $lists-options);
+  //* video
+  @if length(map-keys($video-options)) > 0 {
+    @error "Sanity doesn't support video styles";
+  }
 
-        //* video
-        @if length(map-keys($video-options)) > 0 {
-            @error "Sanity doesn't support video styles";
-        }
+  //* table
+  @if length(map-keys($table-options)) > 0 {
+    @error "Sanity doesn't support table styles";
+  }
 
-        //* table
-        @if length(map-keys($table-options)) > 0 {
-            @error "Sanity doesn't support table styles";
-        }
+  //* utilities
+  @if length(map-keys($utilities-options)) > 0 {
+    @error "Sanity doesn't support utilities styles";
+  }
 
-        //* utilities
-        @if length(map-keys($utilities-options)) > 0 {
-            @error "Sanity doesn't support utilities styles";
-        }
-
-        //* custom
-        @include make-custom-wysiwyg-options($options: $custom-options);
+  //* custom
+  @include make-custom-wysiwyg-options($options: $custom-options);
 }

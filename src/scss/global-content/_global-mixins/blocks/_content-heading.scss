@@ -1,40 +1,44 @@
+@use "sass:map";
+
 $headings-wysiwyg-options: (
-    "h1": null,
-    "h2": null,
-    "h3": null,
-    "h4": null,
-    "h5": null,
-    "h6": null,
+  "h1": null,
+  "h2": null,
+  "h3": null,
+  "h4": null,
+  "h5": null,
+  "h6": null,
 );
 
-@mixin headings-wp-modifier($options){
-    @for $i from 1 through 6 {
-        $property: "h#{$i}";
+@mixin headings-wp-modifier($options) {
+  @for $i from 1 through 6 {
+    $property: "h#{$i}";
 
-        @if map-has-key($headings-wysiwyg-options, $property) {
-
-            @if map-get($options, $property) {
-                & > #{$property},
-                .wp-block-column #{$property},
-                .wp-block-media-text #{$property} {
-                    @include make-font-wysiwyg-options($options: map-get($options, $property));
-                }
-            }
+    @if map-has-key($headings-wysiwyg-options, $property) {
+      @if map.get($options, $property) {
+        & > #{$property},
+        .wp-block-column #{$property},
+        .wp-block-media-text #{$property} {
+          @include make-font-wysiwyg-options(
+            $options: map.get($options, $property)
+          );
         }
+      }
     }
+  }
 }
 
-@mixin headings-sanity-modifier($options){
-    @for $i from 1 through 6 {
-        $property: "h#{$i}";
+@mixin headings-sanity-modifier($options) {
+  @for $i from 1 through 6 {
+    $property: "h#{$i}";
 
-        @if map-has-key($headings-wysiwyg-options, $property) {
-
-            @if map-get($options, $property) {
-                & > #{$property} {
-                    @include make-font-wysiwyg-options($options: map-get($options, $property));
-                }
-            }
+    @if map-has-key($headings-wysiwyg-options, $property) {
+      @if map.get($options, $property) {
+        & > #{$property} {
+          @include make-font-wysiwyg-options(
+            $options: map.get($options, $property)
+          );
         }
+      }
     }
+  }
 }

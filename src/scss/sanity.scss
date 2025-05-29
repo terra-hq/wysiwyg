@@ -1,5 +1,7 @@
-@import "./framework/components/btn/c--btn-a.scss";
-@import "./framework/components/link/c--link-a.scss";
+@use "sass:map";
+@use "@scss/framework/_var/_vars.scss" as *;
+@use "./framework/components/btn/c--btn-a.scss";
+@use "./framework/components/link/c--link-a.scss";
 
 // * global content
 @import "./global-content/library";
@@ -7,113 +9,113 @@
 @import "./sanity/index.scss";
 
 .c--content-a {
-    &--sanity {
-        @include make-content ();
-        @include make-content-modifier (
-            $image-options: (
-                // "border-color": red,
-                "border-radius": 20px,
-                // "border-style": solid,
-                // "border-width": 2px,
-                "object-fit": cover,
-                "max-height": 700px,
-                "min-height": 0,
-                "object-position": center,
-                "max-width": 100%,
-                "min-width": 30px,
-                "margin-bottom": $measure*7,
-                "caption": (
-                    "color": red,
-                    "font-family": arial,
-                    // "font-size": 2rem,
-                    "font-style": italic,
-                    "font-weight": 400,
-                    "letter-spacing": 1px,
-                    "line-height": 1.5,
-                    "max-lines": 3,
-                    "text-decoration": none,
-                    "text-decoration-color": #000000,
-                    "text-underline-position": under,
-                    "className": f--font-f,
-                    "margin-bottom": $measure*3,
-                    "padding-top": $measure,
-                    "text-align": right,
-                ),
-            ),
-            $quote-options: (
-                "padding": $measure*5 $measure*2,
-                "margin-top": $measure,
-                "margin-bottom": $measure*5,
-                "border": (
-                    "border-color": red,
-                    "border-radius": 0,
-                    "border-style": solid,
-                    "border-width": 2px 0,
-                ),
-                "paragraph": (
-                    // "color": red,
-                    "font-family": arial,
-                    // "font-size": 2rem,
-                    "font-style": italic,
-                    "font-weight": 400,
-                    "letter-spacing": 1px,
-                    "line-height": 1.5,
-                    // "max-lines": 3,
-                    "text-decoration": none,
-                    "text-decoration-color": #000000,
-                    "text-underline-position": under,
-                    "className": f--font-d,
-                    // "margin-bottom": $measure*3,
-                    // "padding-top": $measure,
-                    // "text-align": right,
-                ),
-            ),
-            $headings-options: (
-                "h2": (
-                    "color": orange,
-                ),
-                "h4": (
-                    "color": purple,
-                )
-            ),
-            $link-options: (
-                "className": c--link-a,
-            ),
-            $paragraphs-options: (
-                "className": f--font-e f--color-f,
-                "margin-bottom": $measure*4,
-            ),
-            $lists-options: (
-                "first-number-width": 14px,
-                "first-level-number-color": map-get($color-options, g),
-                "first-level-artwork-width": 12px,
-                "first-level-artwork-top": 6px,
-                "first-level-artwork-image": '(/img/Diana-Blue.png)',
-                // "first-level-artwork-background": map-get($color-options, d),
-                // "first-level-artwork-border-radius": 50%,
-                "first-level-artwork-border-width": null,
-                "first-level-artwork-border-color": null,
-                "second-level-number-color": map-get($color-options, i),
-                "second-level-artwork-width": null,
-                "second-level-artwork-top": null,
-                "second-level-artwork-image": null,
-                "second-level-artwork-background": null,
-                "second-level-artwork-border-radius": null,
-                "second-level-artwork-border-width": null,
-                "second-level-artwork-border-color": null,
-                "third-level-number-color": map-get($color-options, h),
-                "third-level-artwork-width": null,
-                "third-level-artwork-top": null,
-                "third-level-artwork-image": null,
-                "third-level-artwork-background": null,
-                "third-level-artwork-border-radius": null,
-                "third-level-artwork-border-width": null,
-                "third-level-artwork-border-color": null,
-                "margin-bottom": $measure*4,
-                "font-styles": (
-                    "className": f--font-e f--color-e,
-                ),
-            ),
-        );
-    }
+  &--sanity {
+    @include make-content();
+    @include make-content-modifier(
+      $image-options: (
+        // "border-color": red,
+        "border-radius": 20px,
+        // "border-style": solid,
+        // "border-width": 2px,
+        "object-fit": cover,
+        "max-height": 700px,
+        "min-height": 0,
+        "object-position": center,
+        "max-width": 100%,
+        "min-width": 30px,
+        "margin-bottom": $measure * 7,
+        "caption": (
+          "color": red,
+          "font-family": arial,
+          // "font-size": 2rem,
+          "font-style": italic,
+          "font-weight": 400,
+          "letter-spacing": 1px,
+          "line-height": 1.5,
+          "max-lines": 3,
+          "text-decoration": none,
+          "text-decoration-color": #000000,
+          "text-underline-position": under,
+          "className": f--font-f,
+          "margin-bottom": $measure * 3,
+          "padding-top": $measure,
+          "text-align": right
+        ),
+      ),
+      $quote-options: (
+        "padding": $measure * 5 $measure * 2,
+        "margin-top": $measure,
+        "margin-bottom": $measure * 5,
+        "border": (
+          "border-color": red,
+          "border-radius": 0,
+          "border-style": solid,
+          "border-width": 2px 0,
+        ),
+        "paragraph": (
+          // "color": red,
+          "font-family": arial,
+          // "font-size": 2rem,
+          "font-style": italic,
+          "font-weight": 400,
+          "letter-spacing": 1px,
+          "line-height": 1.5,
+          // "max-lines": 3,
+          "text-decoration": none,
+          "text-decoration-color": #000000,
+          "text-underline-position": under,
+          "className": f--font-d,
+          // "margin-bottom": $measure*3,
+          // "padding-top": $measure,
+          // "text-align": right,,,,,
+        ),
+      ),
+      $headings-options: (
+        "h2": (
+          "color": orange,
+        ),
+        "h4": (
+          "color": purple,
+        ),
+      ),
+      $link-options: (
+        "className": c--link-a,
+      ),
+      $paragraphs-options: (
+        "className": f--font-e f--color-f,
+        "margin-bottom": $measure * 4,
+      ),
+      $lists-options: (
+        "first-number-width": 14px,
+        "first-level-number-color": map.get($color-options, g),
+        "first-level-artwork-width": 12px,
+        "first-level-artwork-top": 6px,
+        "first-level-artwork-image": "(/img/Diana-Blue.png)",
+        // "first-level-artwork-background": map.get($color-options, d),
+        // "first-level-artwork-border-radius": 50%,
+        "first-level-artwork-border-width": null,
+        "first-level-artwork-border-color": null,
+        "second-level-number-color": map.get($color-options, i),
+        "second-level-artwork-width": null,
+        "second-level-artwork-top": null,
+        "second-level-artwork-image": null,
+        "second-level-artwork-background": null,
+        "second-level-artwork-border-radius": null,
+        "second-level-artwork-border-width": null,
+        "second-level-artwork-border-color": null,
+        "third-level-number-color": map.get($color-options, h),
+        "third-level-artwork-width": null,
+        "third-level-artwork-top": null,
+        "third-level-artwork-image": null,
+        "third-level-artwork-background": null,
+        "third-level-artwork-border-radius": null,
+        "third-level-artwork-border-width": null,
+        "third-level-artwork-border-color": null,
+        "margin-bottom": $measure * 4,
+        "font-styles": (
+          "className": f--font-e f--color-e,
+        ),
+      )
+    );
+  }
 }
