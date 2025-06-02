@@ -1,10 +1,13 @@
+@use "sass:map";
+@use "@scss/global-content/_global-mixins/_global-mixins" as *;
+
 $link-wysiwyg-options: (
     "className": null,
 );
 
 @mixin block-link-wysiwyg-modifier ($options) {
     @each $property, $value in $options {
-        @if map-has-key($link-wysiwyg-options, $property) {
+        @if map.has-key($link-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "className" {
                     a:not([class]),

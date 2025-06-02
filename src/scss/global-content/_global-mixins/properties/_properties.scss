@@ -1,4 +1,3 @@
-@import "./border";
-@import "./custom";
-@import "./font";
-@import "./media";
+@forward "./border";
+@forward "./font";
+@forward "./media";

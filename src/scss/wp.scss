@@ -1,12 +1,12 @@
 @use "sass:map";
 @use "@scss/framework/_var/_vars.scss" as *;
-@import "./framework/components/btn/c--btn-a.scss";
-@import "./framework/components/link/c--link-a.scss";
+@use "./framework/components/btn/c--btn-a.scss";
+@use "./framework/components/link/c--link-a.scss";
 
 // * global content
-@import "./global-content/library";
+@use "./global-content/library";
 
-@import "./wordpress/index.scss";
+@use "./wordpress/index.scss" as *;
 
 .c--content-a {
   &--wp {

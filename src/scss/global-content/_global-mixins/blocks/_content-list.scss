@@ -1,4 +1,6 @@
 @use "sass:map";
+@use "@scss/global-content/_global-mixins/_global-mixins" as *;
+@use "@scss/framework/_var/_vars.scss" as *;
 
 $lists-wysiwyg-options: (
   "number-font": null,
@@ -71,7 +73,7 @@ $lists-wysiwyg-options: (
 
 @mixin lists-wysiwyg-wp-modifier($options) {
   @each $property, $value in $options {
-    @if map-has-key($lists-wysiwyg-options, $property) {
+    @if map.has-key($lists-wysiwyg-options, $property) {
       @if $value {
         @if $property == "number-font" {
           ol:not([class]),
@@ -475,7 +477,7 @@ $lists-wysiwyg-options: (
             li {
               @include make-font-wysiwyg-options($options: $value);
             }
-            @if map-has-key($value, "margin-bottom") {
+            @if map.has-key($value, "margin-bottom") {
               ul,
               ol {
                 margin-bottom: map.get($value, "margin-bottom");
@@ -544,7 +546,7 @@ $lists-wysiwyg-options: (
 
 @mixin lists-wysiwyg-sanity-modifier($options) {
   @each $property, $value in $options {
-    @if map-has-key($lists-wysiwyg-options, $property) {
+    @if map.has-key($lists-wysiwyg-options, $property) {
       @if $value {
         @if $property == "number-font" {
           ol:not([class]),

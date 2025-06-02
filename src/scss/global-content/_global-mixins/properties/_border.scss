@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @mixin make-border-wysiwyg-options($options) {
     $border-wysiwyg-options: (
         "border-color": null,
@@ -7,7 +9,7 @@
     );
 
     @each $property, $value in $options {
-        @if map-has-key($border-wysiwyg-options, $property) {
+        @if map.has-key($border-wysiwyg-options, $property) {
             @if $value {
                 #{$property}: $value;
             }

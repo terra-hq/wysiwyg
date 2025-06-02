@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "./font" as *;
+
 $media-wysiwyg-options: (
     "border-color": null,
     "border-radius": null,
@@ -16,7 +19,7 @@ $media-wysiwyg-options: (
 @mixin make-media-wysiwyg-options($options, $platform, $media-type: false) {
 
     @each $property, $value in $options {
-        @if map-has-key($media-wysiwyg-options, $property) {
+        @if map.has-key($media-wysiwyg-options, $property) {
             @if $value {
                 @if $platform == wp {
                     @if $media-type == "image" {

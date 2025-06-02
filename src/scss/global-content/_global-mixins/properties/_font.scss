@@ -1,3 +1,6 @@
+@use "sass:meta";
+@use "sass:map";
+
 $font-wysiwyg-options: (
     "color": null,
     "font-family": null,
@@ -20,10 +23,10 @@ $font-wysiwyg-options: (
 
 @mixin make-font-wysiwyg-options($options) {
     @each $property, $value in $options {
-        @if map-has-key($font-wysiwyg-options, $property) {
+        @if map.has-key($font-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "className" {
-                    @if type-of($value) == list {
+                    @if meta.type-of($value) == list {
                         @each $class in $value {
                             @extend .#{$class};
                         }

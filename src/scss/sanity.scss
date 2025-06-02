@@ -4,14 +4,17 @@
 @use "./framework/components/link/c--link-a.scss";
 
 // * global content
-@import "./global-content/library";
+@use "./global-content/library";
 
-@import "./sanity/index.scss";
+@use "./sanity/index.scss" as *;
 
 .c--content-a {
   &--sanity {
     @include make-content();
     @include make-content-modifier(
+      // $highlighted-options: (
+      //   "class": edf
+      // ),
       $image-options: (
         // "border-color": red,
         "border-radius": 20px,
@@ -73,9 +76,23 @@
       $headings-options: (
         "h2": (
           "color": orange,
+          "className": f--font-b,
+        ),
+        "h3": (
+          "color": orange,
+          "className": f--font-c,
         ),
         "h4": (
           "color": purple,
+          "className": f--font-d,
+        ),
+        "h5": (
+          "color": orange,
+          "className": f--font-e,
+        ),
+        "h6": (
+          "color": orange,
+          "className": f--font-f,
         ),
       ),
       $link-options: (

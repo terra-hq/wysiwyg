@@ -1,3 +1,7 @@
+@use "sass:map";
+
+@use "@scss/global-content/_global-mixins/_global-mixins" as *;
+
 $table-wysiwyg-options: (
     "header-font-styles": null,
     "body-font-styles": null,
@@ -39,7 +43,7 @@ $table-wysiwyg-options: (
     .wp-block-table,
     table {
         @each $property, $value in $options {
-            @if map-has-key($table-wysiwyg-options, $property) {
+            @if map.has-key($table-wysiwyg-options, $property) {
                 @if $value {
                     @if $property == "header-font-styles" {
                         thead tr { //* first row

@@ -1,15 +1,10 @@
 //* Global Mixins
 @use "sass:map";
+@use "sass:list";
 
 @use "@scss/framework/_var/_vars.scss" as *;
-@import "./_global-mixins/global-mixins";
-
-@import "./_global-mixins/blocks/content-block-image.scss";
-@import "./_global-mixins/blocks/content-block-quote.scss";
-@import "./_global-mixins/blocks/content-heading.scss";
-@import "./_global-mixins/blocks/content-links.scss";
-@import "./_global-mixins/blocks/content-list.scss";
-@import "./_global-mixins/blocks/content-paragraph.scss";
+@use "@scss/global-content/_global-mixins/blocks/content" as *;
+@use "@scss/global-content/_global-mixins/properties/custom" as *;
 
 @mixin make-content($btn-options: ()) {
   //* btn
@@ -75,28 +70,28 @@
   $custom-options: ()
 ) {
   //* btn
-  @if length(map-keys($btn-options)) > 0 {
+  @if list.length(map.keys($btn-options)) > 0 {
     @error "Sanity doesn't support button styles";
   }
 
   //* columns
-  @if length(map-keys($columns-options)) > 0 {
+  @if list.length(map.keys($columns-options)) > 0 {
     @error "Sanity doesn't support columns styles";
   }
 
   //* footnote
-  @if length(map-keys($footnote-options)) > 0 {
+  @if list.length(map.keys($footnote-options)) > 0 {
     @error "Sanity doesn't support footnote styles";
   }
 
   //* highlighted
-  @if length(map-keys($highlighted-options)) > 0 {
+  @if list.length(map.keys($highlighted-options)) > 0 {
     @error "Sanity doesn't support highlighted styles";
   }
 
   //* image
   @include block-image-sanity-modifier($options: $image-options);
-  @if length(map-keys($image-options)) > 0 {
+  @if list.length(map.keys($image-options)) > 0 {
     @if map.get($image-options, "margin-bottom") == null {
       figure {
         margin-bottom: $measure * 5;
@@ -106,7 +101,7 @@
 
   //* quote
   @include block-quote-sanity-modifier($options: $quote-options);
-  @if length(map-keys($quote-options)) > 0 {
+  @if list.length(map.keys($quote-options)) > 0 {
     @if map.get($quote-options, "padding") == null {
       blockquote {
         padding: $measure * 3 0;
@@ -125,7 +120,7 @@
   }
 
   //* separator
-  @if length(map-keys($separator-options)) > 0 {
+  @if list.length(map.keys($separator-options)) > 0 {
     @error "Sanity doesn't support separator styles";
   }
 
@@ -142,17 +137,17 @@
   @include lists-wysiwyg-sanity-modifier($options: $lists-options);
 
   //* video
-  @if length(map-keys($video-options)) > 0 {
+  @if list.length(map.keys($video-options)) > 0 {
     @error "Sanity doesn't support video styles";
   }
 
   //* table
-  @if length(map-keys($table-options)) > 0 {
+  @if list.length(map.keys($table-options)) > 0 {
     @error "Sanity doesn't support table styles";
   }
 
   //* utilities
-  @if length(map-keys($utilities-options)) > 0 {
+  @if list.length(map.keys($utilities-options)) > 0 {
     @error "Sanity doesn't support utilities styles";
   }
 

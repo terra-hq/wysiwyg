@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "@scss/global-content/_global-mixins/_global-mixins" as *;
 
 $headings-wysiwyg-options: (
   "h1": null,
@@ -13,7 +14,7 @@ $headings-wysiwyg-options: (
   @for $i from 1 through 6 {
     $property: "h#{$i}";
 
-    @if map-has-key($headings-wysiwyg-options, $property) {
+    @if map.has-key($headings-wysiwyg-options, $property) {
       @if map.get($options, $property) {
         & > #{$property},
         .wp-block-column #{$property},
@@ -31,7 +32,7 @@ $headings-wysiwyg-options: (
   @for $i from 1 through 6 {
     $property: "h#{$i}";
 
-    @if map-has-key($headings-wysiwyg-options, $property) {
+    @if map.has-key($headings-wysiwyg-options, $property) {
       @if map.get($options, $property) {
         & > #{$property} {
           @include make-font-wysiwyg-options(

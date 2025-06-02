@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "@scss/global-content/_global-mixins/_global-mixins" as *;
+
 $quote-wysiwyg-options: (
     "padding": null,
     "margin-top": null,
@@ -18,7 +21,7 @@ $quote-wysiwyg-options: (
 @mixin block-quote-wp-modifier ($options) {
     .wp-block-quote, blockquote {
         @each $property, $value in $options {
-            @if map-has-key($quote-wysiwyg-options, $property) {
+            @if map.has-key($quote-wysiwyg-options, $property) {
                 @if $value {
                     @if $property == "border" {
                         @include make-border-wysiwyg-options($value);
@@ -46,7 +49,7 @@ $quote-wysiwyg-options: (
 @mixin block-quote-sanity-modifier ($options) {
     blockquote {
         @each $property, $value in $options {
-            @if map-has-key($quote-wysiwyg-options, $property) {
+            @if map.has-key($quote-wysiwyg-options, $property) {
                 @if $value {
                     @if $property == "border" {
                         @include make-border-wysiwyg-options($value);

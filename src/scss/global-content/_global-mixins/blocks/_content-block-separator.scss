@@ -1,3 +1,5 @@
+@use "sass:map";
+
 $separator-wysiwyg-options: (
     "margin": null,
     "width": null,
@@ -16,7 +18,7 @@ $separator-wysiwyg-options: (
 @mixin block-separator-wp-modifier($options) {
     .wp-block-separator {
         @each $property, $value in $options {
-            @if map-has-key($separator-wysiwyg-options, $property) {
+            @if map.has-key($separator-wysiwyg-options, $property) {
                 @if $value {
                     @if $property == "color" {
                         background: $value;
