@@ -1,6 +1,6 @@
 @use "sass:map";
 
-@use "@scss/global-content/_global-mixins/_global-mixins" as *;
+@use "../_global-mixins" as *;
 
 $table-wysiwyg-options: (
     "header-font-styles": null,

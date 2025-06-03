@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "@scss/global-content/_global-mixins/_global-mixins" as *;
+@use "../_global-mixins" as *;
 
 $headings-wysiwyg-options: (
   "h1": null,

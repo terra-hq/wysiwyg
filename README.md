@@ -9,7 +9,7 @@ This package offers a seamless solution to effortlessly style the WYSIWYG and Gu
 3. Install the File using npm
 
 ```sh
-  npm install terrahq-wysiwyg-0.0.6.tgz
+  npm install terrahq-wysiwyg-0.0.7.tgz
 ```
 
 ## Import Mixins Globally

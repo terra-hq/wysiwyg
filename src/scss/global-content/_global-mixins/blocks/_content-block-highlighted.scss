@@ -1,4 +1,4 @@
-@use "@scss/global-content/_global-mixins/_global-mixins" as *;
+@use "../_global-mixins" as *;
 
 @mixin block-highlighted-wp-modifier($options: $options) {
     .highlighted,

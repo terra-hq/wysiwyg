@@ -3,8 +3,8 @@
 
 @use "@scss/framework/_var/_vars.scss" as *;
 //* Global Mixins
-@use "@scss/global-content/_global-mixins/blocks/content" as *;
-@use "@scss/global-content/_global-mixins/properties/custom" as *;
+@use "./_global-mixins/blocks/content" as *;
+@use "./_global-mixins/properties/custom" as *;
 
 @mixin make-content($btn-options: ()) {
   //* btn

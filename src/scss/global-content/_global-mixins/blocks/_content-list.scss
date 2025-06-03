@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "@scss/global-content/_global-mixins/_global-mixins" as *;
+@use "../_global-mixins" as *;
 @use "@scss/framework/_var/_vars.scss" as *;
 
 $lists-wysiwyg-options: (
