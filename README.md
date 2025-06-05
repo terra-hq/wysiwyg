@@ -9,65 +9,23 @@ This package offers a seamless solution to effortlessly style the WYSIWYG and Gu
 3. Install the File using npm
 
 ```sh
-  npm install terrahq-wysiwyg-0.0.7.tgz
+  npm install terrahq-wysiwyg-0.0.8.tgz
 ```
 
 ## Import Mixins Globally
 
-Import the mixins globally according to the build tool you are using.
+Import the mixing into the c--content file:
 
-#### Example in Webpack:
+### For Wordpress
 
-In your Webpack configuration file (webpack.dev.js and webpack.prod.js):
-
-```js
-module.exports = {
-  module: {
-    rules: [
-      // Sass Loader
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-          {
-            loader: "sass-resources-loader",
-            options: {
-              resources: [
-                path.resolve(
-                  __dirname,
-                  "node_modules/@terrahq/wysiwyg/wordpress"
-                ),
-              ],
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
+```scss
+@use "@terrahq/wysiwyg/wordpress" as *;
 ```
 
-#### Example in Astro:
+### For Sanity
 
-In your Astro configuration file (astro.config.mjs):
-
-```mjs
-export default defineConfig({
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `
-            @import '@terrahq/wysiwyg/sanity';
-          `,
-        },
-      },
-    },
-  },
-});
+```scss
+@use "@terrahq/wysiwyg/sanity" as *;
 ```
 
 ## How to Use
@@ -390,7 +348,7 @@ Each block has its own set of options for customization. If you want to learn mo
           "padding-top": $measure * 3,
           // "text-align": right,
           // "margin-bottom-before-lists": 24px,
-          // "bold-font-weight": 800,,
+          // "bold-font-weight": 800,,,,,,,,,
         ),
     ),
     $footnote-options: (
@@ -410,7 +368,7 @@ Each block has its own set of options for customization. If you want to learn mo
       // "padding-top": $measure*2,
       // "text-align": right,
       // "margin-bottom-before-lists": 24px,
-      // "bold-font-weight": 800,,
+      // "bold-font-weight": 800,,,,,,,,,
     ),
     $highlighted-options: (
       // "className": f--font-a,
@@ -429,7 +387,7 @@ Each block has its own set of options for customization. If you want to learn mo
       // "padding-top": $measure*2,
       // "text-align": right,
       // "margin-bottom-before-lists": 24px,
-      // "bold-font-weight": 800,,
+      // "bold-font-weight": 800,,,,,,,,,
     ),
     $btn-options: (
       // "className": g--btn-01,
@@ -443,7 +401,7 @@ Each block has its own set of options for customization. If you want to learn mo
       "margin": $measure * 6 auto,
       // "width": 60%,
       // "color": orange,
-      // "height": 2px,,
+      // "height": 2px,,,,,,,,,
     ),
     $table-options: (
       "margin-bottom": $measure * 4,
@@ -521,7 +479,7 @@ Each block has its own set of options for customization. If you want to learn mo
       "text-align": right,
       //   "margin-bottom-before-lists": 24px,
       //   "bold-font-weight": 800,
-      // ),,
+      // ),,,,,,,,,
     ),
     $video-options: (
       // "border-color": red,
@@ -841,7 +799,7 @@ Each block has its own set of options for customization. If you want to learn mo
       //   "text-align": right,
       //   "margin-bottom-before-lists": 24px,
       //   "bold-font-weight": 800,
-      // ),,
+      // ),,,,,,,,,
     )
   );
 }
