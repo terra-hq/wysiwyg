@@ -558,7 +558,7 @@ This table shows which blocks are compatible with Gutenberg (WordPress), classic
 );
 ```
 
-Now for WP, we have another option to add a zoom to the image, when you click a modal appears and the image have a button.
+Now for WP (implemented on WordPress 6.4), we have another option to add a zoom to the image, when you click a modal appears and the image have a button.
 You have the option to change the zoom-button properties that you can find inside $image-options. You also have to add the zoom-modal-image mixin and the zoom-modal-image-modifier mixin OUTSIDE the .c--content-a class.
 
 Example:
