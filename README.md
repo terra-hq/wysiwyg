@@ -352,7 +352,7 @@ Each block has its own set of options for customization. If you want to learn mo
           "padding-top": $measure * 3,
           // "text-align": right,
           // "margin-bottom-before-lists": 24px,
-          // "bold-font-weight": 800,,,,,,,,,,,,,
+          // "bold-font-weight": 800,
         ),
     ),
     $footnote-options: (
@@ -372,7 +372,7 @@ Each block has its own set of options for customization. If you want to learn mo
       // "padding-top": $measure*2,
       // "text-align": right,
       // "margin-bottom-before-lists": 24px,
-      // "bold-font-weight": 800,,,,,,,,,,,,,
+      // "bold-font-weight": 800,
     ),
     $highlighted-options: (
       // "className": f--font-a,
@@ -391,7 +391,7 @@ Each block has its own set of options for customization. If you want to learn mo
       // "padding-top": $measure*2,
       // "text-align": right,
       // "margin-bottom-before-lists": 24px,
-      // "bold-font-weight": 800,,,,,,,,,,,,,
+      // "bold-font-weight": 800,
     ),
     $btn-options: (
       // "className": g--btn-01,
@@ -405,7 +405,7 @@ Each block has its own set of options for customization. If you want to learn mo
       "margin": $measure * 6 auto,
       // "width": 60%,
       // "color": orange,
-      // "height": 2px,,,,,,,,,,,,,
+      // "height": 2px,
     ),
     $table-options: (
       "margin-bottom": $measure * 4,
@@ -527,7 +527,7 @@ Each block has its own set of options for customization. If you want to learn mo
 @include zoom-modal-image-modifier(
   $option: (
     // "zoom-modal-bg-overlay": red,
-    // "zoom-close-btn-color": yellow,,,,,
+    // "zoom-close-btn-color": yellow,
   )
 );
 ```
@@ -542,7 +542,7 @@ Example:
 @include zoom-modal-image-modifier(
   $option: (
     // "zoom-modal-bg-overlay": red,
-    // "zoom-close-btn-color": yellow,,,,,
+    // "zoom-close-btn-color": yellow,
   )
 );
 ```
@@ -826,8 +826,7 @@ Example:
       //   "text-align": right,
       //   "margin-bottom-before-lists": 24px,
       //   "bold-font-weight": 800,
-      // ),,,,,,,,,,,,,
-    )
+      // ),
   );
 }
 ```
