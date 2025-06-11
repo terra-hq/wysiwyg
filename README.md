@@ -9,7 +9,7 @@ This package offers a seamless solution to effortlessly style the WYSIWYG and Gu
 3. Install the File using npm
 
 ```sh
-  npm install terrahq-wysiwyg-0.0.8.tgz
+  npm install terrahq-wysiwyg-0.0.13.tgz
 ```
 
 ## Import Mixins Globally
@@ -211,6 +211,10 @@ Each block has its own set of options for customization. If you want to learn mo
         "text-align": right,
         // "margin-bottom-before-lists": 24px,
         // "bold-font-weight": 800,
+        // "zoom-button-background-color": red,
+        // "zoom-button-bottom": 0px,
+        // "zoom-button-right": 0px,
+        // "zoom-button-border-radius": 0 0 8px 0,
       ),
     ),
     $link-options: (
@@ -348,7 +352,7 @@ Each block has its own set of options for customization. If you want to learn mo
           "padding-top": $measure * 3,
           // "text-align": right,
           // "margin-bottom-before-lists": 24px,
-          // "bold-font-weight": 800,,,,,,,,,
+          // "bold-font-weight": 800,,,,,,,,,,,,,
         ),
     ),
     $footnote-options: (
@@ -368,7 +372,7 @@ Each block has its own set of options for customization. If you want to learn mo
       // "padding-top": $measure*2,
       // "text-align": right,
       // "margin-bottom-before-lists": 24px,
-      // "bold-font-weight": 800,,,,,,,,,
+      // "bold-font-weight": 800,,,,,,,,,,,,,
     ),
     $highlighted-options: (
       // "className": f--font-a,
@@ -387,7 +391,7 @@ Each block has its own set of options for customization. If you want to learn mo
       // "padding-top": $measure*2,
       // "text-align": right,
       // "margin-bottom-before-lists": 24px,
-      // "bold-font-weight": 800,,,,,,,,,
+      // "bold-font-weight": 800,,,,,,,,,,,,,
     ),
     $btn-options: (
       // "className": g--btn-01,
@@ -401,7 +405,7 @@ Each block has its own set of options for customization. If you want to learn mo
       "margin": $measure * 6 auto,
       // "width": 60%,
       // "color": orange,
-      // "height": 2px,,,,,,,,,
+      // "height": 2px,,,,,,,,,,,,,
     ),
     $table-options: (
       "margin-bottom": $measure * 4,
@@ -479,7 +483,7 @@ Each block has its own set of options for customization. If you want to learn mo
       "text-align": right,
       //   "margin-bottom-before-lists": 24px,
       //   "bold-font-weight": 800,
-      // ),,,,,,,,,
+      // ),,,,,,,,,,,,,
     ),
     $video-options: (
       // "border-color": red,
@@ -518,6 +522,29 @@ Each block has its own set of options for customization. If you want to learn mo
     )
   );
 }
+
+@include zoom-modal-image();
+@include zoom-modal-image-modifier(
+  $option: (
+    // "zoom-modal-bg-overlay": red,
+    // "zoom-close-btn-color": yellow,,,,,
+  )
+);
+```
+
+Now for WP, we have another option to add a zoom button to the images.
+You have the option to change the zoom-button properties that you can find inside $image-options. You also have to add the zoom-modal-image mixin and the zoom-modal-image-modifier mixin OUTSIDE the .c--content-a class.
+
+Example:
+
+```scss
+@include zoom-modal-image();
+@include zoom-modal-image-modifier(
+  $option: (
+    // "zoom-modal-bg-overlay": red,
+    // "zoom-close-btn-color": yellow,,,,,
+  )
+);
 ```
 
 ### Sanity
@@ -799,7 +826,7 @@ Each block has its own set of options for customization. If you want to learn mo
       //   "text-align": right,
       //   "margin-bottom-before-lists": 24px,
       //   "bold-font-weight": 800,
-      // ),,,,,,,,,
+      // ),,,,,,,,,,,,,
     )
   );
 }

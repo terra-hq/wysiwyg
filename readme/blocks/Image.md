@@ -82,6 +82,10 @@ The value must be a numerical value expressed in any unit.
 
 The caption property accepts the text-related styling options listed [here](../properties/Font.md).
 
+### zoom image (just for WP)
+
+This property sets the styling options for the zoom image button
+
 ## SCSS
 
 ```scss

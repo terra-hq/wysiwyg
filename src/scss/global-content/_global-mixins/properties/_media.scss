@@ -2,174 +2,187 @@
 @use "./font" as *;
 
 $media-wysiwyg-options: (
-    "border-color": null,
-    "border-radius": null,
-    "border-style": null,
-    "border-width": null,
-    "object-fit": null,
-    "max-height": null,
-    "min-height": null,
-    "object-position": null,
-    "max-width": null,
-    "min-width": null,
-    "margin-bottom": null,
-    "caption": null,
+  "border-color": null,
+  "border-radius": null,
+  "border-style": null,
+  "border-width": null,
+  "object-fit": null,
+  "max-height": null,
+  "min-height": null,
+  "object-position": null,
+  "max-width": null,
+  "min-width": null,
+  "margin-bottom": null,
+  "caption": null,
+  "zoom-button-background-color": null,
+  "zoom-button-bottom": null,
+  "zoom-button-right": null,
+  "zoom-button-border-radius": null,
 );
 
 @mixin make-media-wysiwyg-options($options, $platform, $media-type: false) {
-
-    @each $property, $value in $options {
-        @if map.has-key($media-wysiwyg-options, $property) {
-            @if $value {
-                @if $platform == wp {
-                    @if $media-type == "image" {
-                        @if $property == "margin-bottom" {
-                            figure.wp-block-image {
-                                #{$property}: $value;
-                            }
-                            div.wp-block-image {
-                                figure {
-                                    #{$property}: $value;
-                                }
-                            }
-                            *[class^='wp-block'] {
-                                img {
-                                    #{$property}: $value;
-                                }
-                            }
-                            > p {
-                                > img {
-                                    #{$property}: $value;
-                                }
-                            }
-                        }
-                        @else if $property == "caption" {
-                            figure.wp-block-image {
-                                figcaption{
-                                    @include make-font-wysiwyg-options($options: $value);
-                                }
-                            }
-                            div.wp-block-image{
-                                figure{
-                                    figcaption{
-                                        @include make-font-wysiwyg-options($options: $value);
-                                    }
-                                }
-                            }
-                        }
-                        @else {
-                            figure.wp-block-image {
-                                img {
-                                    #{$property}: $value;
-                                }
-                            }
-                            div.wp-block-image {
-                                figure {
-                                    img {
-                                        #{$property}: $value;
-                                    }
-                                }
-                            }
-                            *[class^='wp-block'] {
-                                img {
-                                    #{$property}: $value;
-                                }
-                            }
-                            > p {
-                                > img {
-                                    #{$property}: $value;
-                                }
-                            }
-                        }
-                    } @else if $media-type == "video" {
-                        @if $property == "margin-bottom" {
-                            figure.wp-block-embed,
-                            figure.wp-block-video {
-                                #{$property}: $value;
-                            }
-                            div.wp-block-embed,
-                            div.wp-block-video {
-                                figure {
-                                    #{$property}: $value;
-                                }
-                            }
-                            > p {
-                                > iframe,
-                                > video {
-                                    #{$property}: $value;
-                                }
-                            }
-                        }
-                        @else if $property == "caption" {
-                            figure.wp-block-embed,
-                            figure.wp-block-video {
-                                figcaption{
-                                    @include make-font-wysiwyg-options($options: $value);
-                                }
-                            }
-                            div.wp-block-embed,
-                            div.wp-block-video {
-                                figure{
-                                    figcaption{
-                                        @include make-font-wysiwyg-options($options: $value);
-                                    }
-                                }
-                            }
-                        }
-                        @else {
-                            figure.wp-block-embed,
-                            figure.wp-block-video {
-                                iframe,
-                                video {
-                                    #{$property}: $value;
-                                }
-                            }
-                            div.wp-block-embed,
-                            div.wp-block-video {
-                                figure {
-                                    iframe,
-                                video {
-                                        #{$property}: $value;
-                                    }
-                                }
-                            }
-                            *[class^='wp-block'] {
-                                iframe,
-                                video {
-                                    #{$property}: $value;
-                                }
-                            }
-                            > p {
-                                > iframe,
-                                > video {
-                                    #{$property}: $value;
-                                }
-                            }
-                        }
-                    }
+  @each $property, $value in $options {
+    @if map.has-key($media-wysiwyg-options, $property) {
+      @if $value {
+        @if $platform == wp {
+          @if $media-type == "image" {
+            @if $property == "margin-bottom" {
+              figure.wp-block-image {
+                #{$property}: $value;
+              }
+              div.wp-block-image {
+                figure {
+                  #{$property}: $value;
                 }
-                @if $platform == sanity {
-                    @if $property == "margin-bottom" {
-                        figure {
-                            #{$property}: $value;
-                        }
-                    }
-                    @else if $property == "caption" {
-                        figure {
-                            figcaption {
-                                @include make-font-wysiwyg-options($options: $value);
-                            }
-                        }
-                    }
-                    @else {
-                        figure {
-                            img {
-                                #{$property}: $value;
-                            }
-                        }
-                    }
+              }
+              *[class^="wp-block"] {
+                img {
+                  #{$property}: $value;
                 }
+              }
+              > p {
+                > img {
+                  #{$property}: $value;
+                }
+              }
+            } @else if $property == "caption" {
+              figure.wp-block-image {
+                figcaption {
+                  @include make-font-wysiwyg-options($options: $value);
+                }
+              }
+              div.wp-block-image {
+                figure {
+                  figcaption {
+                    @include make-font-wysiwyg-options($options: $value);
+                  }
+                }
+              }
+            } @else if $property == "zoom-button-background-color" {
+              button.lightbox-trigger {
+                background-color: $value;
+              }
+            } @else if $property == "zoom-button-right" {
+              button.lightbox-trigger {
+                right: $value !important;
+              }
+            } @else if $property == "zoom-button-bottom" {
+              button.lightbox-trigger {
+                transform: translateY(calc(-100% - #{$value})) !important;
+              }
+            } @else if $property == "zoom-button-border-radius" {
+              button.lightbox-trigger {
+                border-radius: $value;
+              }
+            } @else {
+              figure.wp-block-image {
+                img {
+                  #{$property}: $value;
+                }
+              }
+              div.wp-block-image {
+                figure {
+                  img {
+                    #{$property}: $value;
+                  }
+                }
+              }
+              *[class^="wp-block"] {
+                img {
+                  #{$property}: $value;
+                }
+              }
+              > p {
+                > img {
+                  #{$property}: $value;
+                }
+              }
             }
+          } @else if $media-type == "video" {
+            @if $property == "margin-bottom" {
+              figure.wp-block-embed,
+              figure.wp-block-video {
+                #{$property}: $value;
+              }
+              div.wp-block-embed,
+              div.wp-block-video {
+                figure {
+                  #{$property}: $value;
+                }
+              }
+              > p {
+                > iframe,
+                > video {
+                  #{$property}: $value;
+                }
+              }
+            } @else if $property == "caption" {
+              figure.wp-block-embed,
+              figure.wp-block-video {
+                figcaption {
+                  @include make-font-wysiwyg-options($options: $value);
+                }
+              }
+              div.wp-block-embed,
+              div.wp-block-video {
+                figure {
+                  figcaption {
+                    @include make-font-wysiwyg-options($options: $value);
+                  }
+                }
+              }
+            } @else {
+              figure.wp-block-embed,
+              figure.wp-block-video {
+                iframe,
+                video {
+                  #{$property}: $value;
+                }
+              }
+              div.wp-block-embed,
+              div.wp-block-video {
+                figure {
+                  iframe,
+                  video {
+                    #{$property}: $value;
+                  }
+                }
+              }
+              *[class^="wp-block"] {
+                iframe,
+                video {
+                  #{$property}: $value;
+                }
+              }
+              > p {
+                > iframe,
+                > video {
+                  #{$property}: $value;
+                }
+              }
+            }
+          }
         }
+        @if $platform == sanity {
+          @if $property == "margin-bottom" {
+            figure {
+              #{$property}: $value;
+            }
+          } @else if $property == "caption" {
+            figure {
+              figcaption {
+                @include make-font-wysiwyg-options($options: $value);
+              }
+            }
+          } @else {
+            figure {
+              img {
+                #{$property}: $value;
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }
