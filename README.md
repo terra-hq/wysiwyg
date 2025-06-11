@@ -50,6 +50,32 @@ Each block has its own set of options for customization. If you want to learn mo
 - [Utilities](./readme/blocks/Utilities.md) (just for WP)
 - [Custom](./readme/properties/Custom.md)
 
+### Block Compatibility Table
+
+This table shows which blocks are compatible with Gutenberg (WordPress), classic WYSIWYG content (like ACF fields or raw HTML editors), and Sanity:
+
+| Block         | Gutenberg (WP)      | Classic WYSIWYG WP      | Sanity               |
+|---------------|---------------------|-----------------------|-----------------------|
+| Headings      | ✅                  | ✅                    | ✅                    |
+| Paragraphs    | ✅                  | ✅                    | ✅                    |
+| Lists         | ✅                  | ✅                    | ✅                    |
+| Links         | ✅                  | ✅                    | ✅                    |
+| Images        | ✅ (with zoom)      | ✅ (no zoom, no cite) | ✅ (no zoom, no cite) |
+| Quote         | ✅ (with cite)      | ✅ (no cite)          | ✅ (no cite)          |
+| Footnote      | ✅                  | ❌                    | ❌                    |
+| Highlighted   | ✅                  | ❌                    | ❌                    |
+| Button        | ✅                  | ❌                    | ❌                    |
+| Columns       | ✅                  | ❌                    | ❌                    |
+| Separator     | ✅                  | ❌                    | ❌                    |
+| Table         | ✅                  | ✅                    | ❌                    |
+| Video         | ✅                  | ✅                    | ❌                    |
+| Utilities     | ✅                  | ❌                    | ❌                    |
+| Custom        | ✅                  | ✅                    | ✅                    |
+
+
+
+
+
 ### WP
 
 #### HTML code

@@ -82,9 +82,20 @@ The value must be a numerical value expressed in any unit.
 
 The caption property accepts the text-related styling options listed [here](../properties/Font.md).
 
-### zoom image (just for WP)
+#### zoom-button-background-color (just for gutenberg)
 
-This property sets the styling options for the zoom image button
+This property sets the background color of the zoom image button.
+#### zoom-button-bottom (just for gutenberg)
+
+This property sets the bottom position of the zoom image button.
+
+#### zoom-button-right (just for gutenberg)
+
+This property sets the right position of the zoom image button.
+
+#### zoom-button-border-radius (just for gutenberg)
+ 
+This property sets the border-radius of the zoom image button.
 
 ## SCSS
 
@@ -103,6 +114,10 @@ This property sets the styling options for the zoom image button
       "max-width": 100%,
       "min-width": 30px,
       "margin-bottom": $measure * 7,
+      "zoom-button-background-color": red,
+      "zoom-button-bottom": 0px,
+      "zoom-button-right": 0px,
+      "zoom-button-border-radius": 0 0 8px 0,
       "caption": (
         "color": #638c1d,
         "font-family": arial,
