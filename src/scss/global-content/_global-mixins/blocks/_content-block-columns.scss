@@ -1,7 +1,5 @@
 @use "sass:map";
 
-@use "@scss/framework/_var/_vars.scss" as *;
-
 $columns-wysiwyg-options: (
     "margin-bottom": null,
     "breakpoint": null,
@@ -19,11 +17,11 @@ $columns-wysiwyg-options: (
             @if $value {
                 @if $property == "breakpoint" {
                     .wp-block-columns {
-                        @media all and ($viewport-type: $value) {
+                        @media all and (max-width: $value) {
                             flex-wrap: wrap !important;
                         }
                         .wp-block-column {
-                            @media all and ($viewport-type: $value) {
+                            @media all and (max-width: $value) {
                                 flex-basis: 100% !important;
                             }
                         }

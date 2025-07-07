@@ -1,6 +1,5 @@
 @use "sass:map";
 @use "../_global-mixins" as *;
-@use "@scss/framework/_var/_vars.scss" as *;
 
 $lists-wysiwyg-options: (
   "number-font": null,
@@ -89,33 +88,33 @@ $lists-wysiwyg-options: (
           ol[class^="wp-"] {
             > li {
               padding-left: calc(
-                #{$measure * 2} + #{$value}
+                1rem + #{$value}
               ); //* space between number and text + number width
               //* Nested ol
               ol {
                 > li {
                   padding-left: calc(
-                    #{$measure * 2} + #{$value * 2}
+                    1rem + #{$value * 2}
                   ); //* space between number and text + number width
                   ol {
                     > li {
                       padding-left: calc(
-                        #{$measure * 2} + #{$value * 3}
+                        1rem + #{$value * 3}
                       ); //* space between number and text + number width
                       ol {
                         > li {
                           padding-left: calc(
-                            #{$measure * 2} + #{$value * 4}
+                            1rem + #{$value * 4}
                           ); //* space between number and text + number width
                           ol {
                             > li {
                               padding-left: calc(
-                                #{$measure * 2} + #{$value * 5}
+                                1rem + #{$value * 5}
                               ); //* space between number and text + number width
                               ol {
                                 > li {
                                   padding-left: calc(
-                                    #{$measure * 2} + #{$value * 6}
+                                    1rem + #{$value * 6}
                                   ); //* space between number and text + number width
                                 }
                               }
@@ -143,7 +142,7 @@ $lists-wysiwyg-options: (
           ul[class^="wp-"] {
             > li {
               padding-left: calc(
-                #{$measure * 2} + #{$value}
+                1rem + #{$value}
               ); //* space between artwork and text + artwork width
               &:before {
                 width: $value;
@@ -230,7 +229,7 @@ $lists-wysiwyg-options: (
               ul {
                 > li {
                   padding-left: calc(
-                    #{$measure * 2} + #{$value}
+                    1rem + #{$value}
                   ); //* space between artwork and text + artwork width
                   &::before {
                     width: $value;
@@ -350,7 +349,7 @@ $lists-wysiwyg-options: (
                   ul {
                     > li {
                       padding-left: calc(
-                        #{$measure * 2} + #{$value}
+                        1rem + #{$value}
                       ); //* space between artwork and text + artwork width
                       &::before {
                         width: $value;
@@ -562,53 +561,53 @@ $lists-wysiwyg-options: (
           ol[class^="wp-"] {
             > li {
               padding-left: calc(
-                #{$measure * 2} + #{$value}
+                1rem + #{$value}
               ); //* space between number and text + number width
             }
             //* Nested ol
             ol {
               padding-left: calc(
-                #{$measure * 2} + #{$value}
+                1rem + #{$value}
               ); //* space between number and text + number width
               > li {
                 padding-left: calc(
-                  #{$measure * 2} + #{$value * 2}
+                  1rem + #{$value * 2}
                 ); //* space between number and text + number width
               }
               ol {
                 padding-left: calc(
-                  #{$measure * 2} + #{$value * 2}
+                  1rem + #{$value * 2}
                 ); //* space between number and text + number width
                 > li {
                   padding-left: calc(
-                    #{$measure * 2} + #{$value * 3}
+                    1rem + #{$value * 3}
                   ); //* space between number and text + number width
                 }
                 ol {
                   padding-left: calc(
-                    #{$measure * 2} + #{$value * 3}
+                    1rem + #{$value * 3}
                   ); //* space between number and text + number width
                   > li {
                     padding-left: calc(
-                      #{$measure * 2} + #{$value * 4}
+                      1rem + #{$value * 4}
                     ); //* space between number and text + number width
                   }
                   ol {
                     padding-left: calc(
-                      #{$measure * 2} + #{$value * 4}
+                      1rem + #{$value * 4}
                     ); //* space between number and text + number width
                     > li {
                       padding-left: calc(
-                        #{$measure * 2} + #{$value * 5}
+                        1rem + #{$value * 5}
                       ); //* space between number and text + number width
                     }
                     ol {
                       padding-left: calc(
-                        #{$measure * 2} + #{$value * 5}
+                        1rem + #{$value * 5}
                       ); //* space between number and text + number width
                       > li {
                         padding-left: calc(
-                          #{$measure * 2} + #{$value * 6}
+                          1rem + #{$value * 6}
                         ); //* space between number and text + number width
                       }
                     }
@@ -631,7 +630,7 @@ $lists-wysiwyg-options: (
           ul[class^="wp-"] {
             > li {
               padding-left: calc(
-                #{$measure * 2} + #{$value}
+                1rem + #{$value}
               ); //* space between artwork and text + artwork width
               &:before {
                 width: $value;
@@ -716,7 +715,7 @@ $lists-wysiwyg-options: (
               ul {
                 > li {
                   padding-left: calc(
-                    #{$measure * 2} + #{$value}
+                    1rem + #{$value}
                   ); //* space between artwork and text + artwork width
                   &::before {
                     width: $value;
@@ -832,7 +831,7 @@ $lists-wysiwyg-options: (
                   ul {
                     > li {
                       padding-left: calc(
-                        #{$measure * 2} + #{$value}
+                        1rem + #{$value}
                       ); //* space between artwork and text + artwork width
                       &::before {
                         width: $value;

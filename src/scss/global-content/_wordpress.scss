@@ -1,7 +1,5 @@
 @use "sass:map";
 @use "sass:list";
-
-@use "@scss/framework/_var/_vars.scss" as *;
 //* Global Mixins
 @forward "./_global-mixins/blocks/content";
 @use "./_global-mixins/blocks/content" as *;
