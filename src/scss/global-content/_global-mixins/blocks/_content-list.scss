@@ -971,19 +971,3 @@ $lists-wysiwyg-options: (
     }
   }
 }
-
-ol {
-  li {
-    list-style: decimal;
-    padding-left: 20px !important;
-    margin-left: 18px;
-    &::before {
-      content: none !important;
-    }
-    ol {
-      li {
-        // list-style: decimal-leading-zero;
-      }
-    }
-  }
-}
