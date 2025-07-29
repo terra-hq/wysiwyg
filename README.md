@@ -855,6 +855,7 @@ Example:
       //   "margin-bottom-before-lists": 24px,
       //   "bold-font-weight": 800,
       // ),
+    )
   );
 }
 ```
