@@ -292,6 +292,7 @@ This table shows which blocks are compatible with Gutenberg (WordPress), classic
       // "third-level-artwork-border-width": 1px,
       // "third-level-artwork-border-color": map.get($color-options, d),
       "margin-bottom": $measure * 4,
+      // "nested-list-spacing": $measure,
       "font-styles": (
         // "className": f--font-a,
         // "color": #638c1d,
@@ -785,6 +786,7 @@ Example:
       // "third-level-artwork-border-width": 1px,
       // "third-level-artwork-border-color": map.get($color-options, d),
       "margin-bottom": $measure * 4,
+      // "nested-list-spacing": $measure,
       "font-styles": (
         // "className": f--font-a,
         // "color": #638c1d,
