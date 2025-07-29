@@ -238,6 +238,14 @@ This property sets the margin-bottom of the lists.
 
 The value must be a numerical value expressed in any unit.
 
+### nested-list-spacing
+
+This property sets the top spacing between a list item and its nested list. It helps control the visual separation between hierarchical levels in both ordered (<ol>) and unordered (<ul>) lists.
+
+By default, nested lists often have browser-defined vertical spacing. This property gives you precise control over that spacing.
+
+The value must be a numerical value expressed in any unit.
+
 ### font-styles
 
 The font-styles property accepts the text-related styling options listed [here](../properties/Font.md).
@@ -293,6 +301,7 @@ The font-styles property accepts the text-related styling options listed [here](
       "third-level-artwork-border-width": 1px,
       "third-level-artwork-border-color": map.get($color-options, d),
       "margin-bottom": $measure * 4,
+      "nested-list-spacing": $measure,
       "font-styles": (
         "color": #638c1d,
         "font-family": arial,

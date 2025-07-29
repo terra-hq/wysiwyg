@@ -5,6 +5,8 @@
 @use "./_global-mixins/blocks/content" as *;
 @use "./_global-mixins/properties/custom" as *;
 
+$wysiwyg-measure: .5rem;
+
 @mixin make-content($btn-options: ()) {
   //* btn
 
@@ -93,7 +95,7 @@
   @if list.length(map.keys($image-options)) > 0 {
     @if map.get($image-options, "margin-bottom") == null {
       figure {
-        margin-bottom: $measure * 5;
+        margin-bottom: $wysiwyg-measure * 5;
       }
     }
   }
@@ -103,17 +105,17 @@
   @if list.length(map.keys($quote-options)) > 0 {
     @if map.get($quote-options, "padding") == null {
       blockquote {
-        padding: $measure * 3 0;
+        padding: $wysiwyg-measure * 3 0;
       }
     }
     @if map.get($quote-options, "margin-top") == null {
       blockquote {
-        margin-top: $measure * 5;
+        margin-top: $wysiwyg-measure * 5;
       }
     }
     @if map.get($quote-options, "margin-bottom") == null {
       blockquote {
-        margin-top: $measure * 6;
+        margin-top: $wysiwyg-measure * 6;
       }
     }
   }

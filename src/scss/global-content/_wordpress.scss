@@ -5,6 +5,8 @@
 @use "./_global-mixins/blocks/content" as *;
 @use "./_global-mixins/properties/custom" as *;
 
+$wysiwyg-measure: .5rem;
+
 @mixin make-content($btn-options: ()) {
   //* btn
 
@@ -80,7 +82,7 @@
     @if map.get($btn-options, "margin-bottom") == null {
       .wp-block-buttons,
       .wp-block-button {
-        margin-bottom: $measure * 4;
+        margin-bottom: $wysiwyg-measure * 4;
       }
     }
   }
@@ -90,7 +92,7 @@
   @if list.length(map.keys($columns-options)) > 0 {
     @if map.get($columns-options, "margin-bottom") == null {
       .wp-block-columns {
-        margin-bottom: $measure * 4;
+        margin-bottom: $wysiwyg-measure * 4;
       }
     }
     @if map.get($columns-options, "breakpoint") == null {
@@ -110,7 +112,7 @@
   @if list.length(map.keys($footnote-options)) > 0 {
     @if map.get($footnote-options, "margin-bottom") == null {
       .footnote {
-        margin-bottom: $measure * 2;
+        margin-bottom: $wysiwyg-measure * 2;
       }
     }
   }
@@ -120,7 +122,7 @@
   @if list.length(map.keys($highlighted-options)) > 0 {
     @if map.get($highlighted-options, "margin-bottom") == null {
       .highlighted {
-        margin-bottom: $measure * 4;
+        margin-bottom: $wysiwyg-measure * 4;
       }
     }
   }
@@ -130,21 +132,21 @@
   @if list.length(map.keys($image-options)) > 0 {
     @if map.get($image-options, "margin-bottom") == null {
       figure.wp-block-image {
-        margin-bottom: $measure * 5;
+        margin-bottom: $wysiwyg-measure * 5;
       }
       div.wp-block-image {
         figure {
-          margin-bottom: $measure * 5;
+          margin-bottom: $wysiwyg-measure * 5;
         }
       }
       *[class^="wp-block"] {
         img {
-          margin-bottom: $measure * 5;
+          margin-bottom: $wysiwyg-measure * 5;
         }
       }
       > p {
         > img {
-          margin-bottom: $measure * 5;
+          margin-bottom: $wysiwyg-measure * 5;
         }
       }
     }
@@ -156,24 +158,24 @@
     @if map.get($quote-options, "padding") == null {
       .wp-block-quote,
       blockquote {
-        padding: $measure * 3 0;
+        padding: $wysiwyg-measure * 3 0;
       }
     }
     @if map.get($quote-options, "margin-top") == null {
       .wp-block-quote,
       blockquote {
-        margin-top: $measure * 5;
+        margin-top: $wysiwyg-measure * 5;
       }
     }
     @if map.get($quote-options, "margin-bottom") == null {
       .wp-block-quote,
       blockquote {
-        margin-top: $measure * 6;
+        margin-top: $wysiwyg-measure * 6;
       }
     }
     @if map.get($quote-options, "cite") == null {
       cite {
-        margin-top: $measure * 3;
+        margin-top: $wysiwyg-measure * 3;
       }
     }
   }
@@ -183,7 +185,7 @@
   @if list.length(map.keys($separator-options)) > 0 {
     @if map.get($separator-options, "margin") == null {
       .wp-block-separator {
-        margin: $measure * 6 0;
+        margin: $wysiwyg-measure * 6 0;
       }
     }
   }
@@ -205,7 +207,7 @@
   @if list.length(map.keys($video-options)) > 0 {
     @if map.get($video-options, "margin-bottom") == null {
       .wp-block-embed {
-        margin-bottom: $measure * 5;
+        margin-bottom: $wysiwyg-measure * 5;
       }
     }
   }
@@ -218,10 +220,10 @@
   @if list.length(map.keys($utilities-options)) > 0 {
     @if map.get($utilities-options, "media-text-aligned-margin-x") == null {
       *.alignleft {
-        margin-right: $measure * 5;
+        margin-right: $wysiwyg-measure * 5;
       }
       *.alignright {
-        margin-left: $measure * 5;
+        margin-left: $wysiwyg-measure * 5;
       }
     }
   }
