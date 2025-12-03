@@ -1,3 +1,5 @@
+@use "sass:meta";
+
 @mixin make-custom-wysiwyg-options($options) {
   @each $selector, $properties in $options {
     @if $selector {
@@ -5,39 +7,45 @@
         #{$selector} {
           @each $property, $value in $properties {
             @if $property != "class" {
+              & {
+                #{$property}: $value;
+              }
+            } @else {
+              @if meta.type-of($value) == list {
+                @each $class in $value {
+                  & {
+                    @extend .#{$class};
+                  }
+                }
+              } @else {
+                & {
+                  @extend .#{$value};
+                }
+              }
+            }
+          }
+        }
+      } @else {
+        @each $property, $value in $properties {
+          @if $property != "class" {
+            & {
               #{$property}: $value;
             }
-            @else {
-              @if type-of($value) == list {
-                @each $class in $value {
+          } @else {
+            @if meta.type-of($value) == list {
+              @each $class in $value {
+                & {
                   @extend .#{$class};
                 }
               }
-              @else {
+            } @else {
+              & {
                 @extend .#{$value};
               }
             }
           }
         }
       }
-      @else {
-        @each $property, $value in $properties {
-          @if $property != "class" {
-            #{$property}: $value;
-          }
-          @else {
-            @if type-of($value) == list {
-              @each $class in $value {
-                @extend .#{$class};
-              }
-            }
-            @else {
-              @extend .#{$value};
-            }
-          }
-        }
-      }
-      
     }
   }
 }
