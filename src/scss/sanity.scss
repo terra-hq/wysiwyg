@@ -28,6 +28,7 @@
         "min-width": 30px,
         "margin-bottom": $measure * 7,
         "caption": (
+          // "bold-color": red,
           "color": red,
           "font-family": arial,
           // "font-size": 2rem,
@@ -56,6 +57,7 @@
           "border-width": 2px 0,
         ),
         "paragraph": (
+          // "bold-color": red,
           // "color": red,
           "font-family": arial,
           // "font-size": 2rem,
@@ -75,22 +77,27 @@
       ),
       $headings-options: (
         "h2": (
+          // "bold-color": red,
           "color": orange,
           "className": f--font-b,
         ),
         "h3": (
+          // "bold-color": red,
           "color": orange,
           "className": f--font-c,
         ),
         "h4": (
+          // "bold-color": red,
           "color": purple,
           "className": f--font-d,
         ),
         "h5": (
+          // "bold-color": red,
           "color": orange,
           "className": f--font-e,
         ),
         "h6": (
+          // "bold-color": red,
           "color": orange,
           "className": f--font-f,
         ),
@@ -99,6 +106,7 @@
         "className": c--link-a,
       ),
       $paragraphs-options: (
+        // "bold-color": red,
         "className": f--font-e f--color-f,
         "margin-bottom": $measure * 4,
       ),
@@ -130,6 +138,7 @@
         "third-level-artwork-border-color": null,
         "margin-bottom": $measure * 4,
         "font-styles": (
+          // "bold-color": red,
           "className": f--font-e f--color-e,
         ),
       )

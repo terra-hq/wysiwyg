@@ -4,6 +4,7 @@
 .c--btn-a {
   @extend .f--font-d;
   @extend .f--color-b;
+  cursor: pointer;
   padding: $measure $measure * 3;
   text-align: center;
   text-decoration: none;

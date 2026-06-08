@@ -5,6 +5,9 @@ $separator-wysiwyg-options: (
     "width": null,
     "color": null,
     "height": null,
+    "dots-color": null,
+    "dots-size": null,
+    "dots-spacing": null,
 );
 
 @mixin block-separator-wp () {
@@ -12,7 +15,24 @@ $separator-wysiwyg-options: (
         width: 100%;
         display: block;
         border: none;
-    } 
+    }
+    //* is-style-dots: tres puntos centrados en lugar de línea.
+    //* (default e is-style-wide siguen siendo línea: comparten .wp-block-separator)
+    //* Mayor especificidad que .wp-block-separator -> sobrescribe la línea del modifier.
+    .wp-block-separator.is-style-dots {
+        width: auto;
+        height: auto;
+        background: none;
+        text-align: center;
+        line-height: 1;
+        &::before {
+            content: "\00b7\00b7\00b7";
+            display: inline-block;
+            font-size: 1.5rem;
+            letter-spacing: 2em;
+            font-family: serif;
+        }
+    }
 }
 
 @mixin block-separator-wp-modifier($options) {
@@ -21,10 +41,36 @@ $separator-wysiwyg-options: (
             @if map.has-key($separator-wysiwyg-options, $property) {
                 @if $value {
                     @if $property == "color" {
-                        background: $value;
+                        //* color de la línea; en is-style-dots tiñe los puntos por defecto
+                        & {
+                            background: $value;
+                        }
+                        &.is-style-dots::before {
+                            color: $value;
+                        }
+                    }
+                    @else if $property == "dots-color" {
+                        //* color propio de los puntos (sobrescribe a "color" en is-style-dots)
+                        &.is-style-dots::before {
+                            color: $value;
+                        }
+                    }
+                    @else if $property == "dots-size" {
+                        &.is-style-dots::before {
+                            font-size: $value;
+                        }
+                    }
+                    @else if $property == "dots-spacing" {
+                        &.is-style-dots::before {
+                            letter-spacing: $value;
+                            padding-left: $value;
+                        }
                     }
                     @else {
-                        #{$property}: $value;
+                        // * `& {}` evita mixed-decls (declaración tras regla anidada)
+                        & {
+                            #{$property}: $value;
+                        }
                     }
                 }
             }

@@ -5,6 +5,9 @@
 $btn-wysiwyg-options: (
     "className": null,
     "margin-bottom": null,
+    "row-gap": null,
+    "column-gap": null,
+    "even-className": null,
 );
 
 @mixin block-btn-wp-modifier ($options) {
@@ -12,16 +15,32 @@ $btn-wysiwyg-options: (
         @if map.has-key($btn-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "className" {
-                    .wp-block-buttons,
-                    .wp-block-button{
-                        .wp-block-button__link{
-                            @include make-class-options($value);
+                    .wp-block-buttons{
+                        .wp-block-button{
+                            .wp-block-button__link{
+                                @include make-class-options($value);
+                            }
                         }
                     }
                 }
+                @else if $property == "even-className" {
+                    .wp-block-buttons{
+                        .wp-block-button:nth-child(even){
+                            .wp-block-button__link{
+                                @include make-class-options($value);
+                            }
+                        }
+                    }
+                }
+                @else if $property == "row-gap" or $property == "column-gap" {
+                    .wp-block-buttons{
+                        display: flex;
+                        flex-wrap: wrap;
+                        #{$property}: $value;
+                    }
+                }
                 @else {
-                    .wp-block-buttons,
-                    .wp-block-button{
+                    .wp-block-buttons{
                         #{$property}: $value;
                     }
                 }

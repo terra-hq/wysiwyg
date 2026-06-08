@@ -1,13 +1,44 @@
 @use "@scss/framework/foundation/_foundation.scss";
 @use "@scss/framework/_var/_vars.scss" as *;
-.c--link-a {
-  @extend .f--color-e;
-  text-decoration: none;
-  transition: all $time-b $ease-standard-a;
+@use "@scss/paths" as paths;
+@use "sass:map";
 
-  @media all and (hover: hover) {
-    &:hover {
-      opacity: 0.5;
+.c--link-a {
+    display: inline-flex;
+    align-items: center;
+    @extend .f--color-e;
+    gap: $measure * 0.5;
+    width: fit-content;
+    text-decoration: none;
+    padding-bottom: 2px;
+    background-image: linear-gradient(
+        map.get($color-options, f),
+        map.get($color-options, f)
+    );
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    background-position: bottom left;
+    transition: background-size $time-b $ease-standard-a;
+
+    &::after {
+        content: '';
+        display: inline-block;
+        width: $measure*2.5;
+        height: $measure*2.5;
+        background-image: url(paths.asset-url("assets/icons/ArrowRight.svg"));
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transition: transform $time-b $ease-standard-a;
     }
-  }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-size: 100% 1px;
+
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
 }

@@ -122,6 +122,20 @@ This property sets the weight of the font when we set it to bold in the backend.
 
 Values can include those accepted by the CSS 'font-weight' property.
 
+### bold-color
+
+This property sets the color of the text when we set it to bold in the backend (the `<strong>` / `<b>` tags), independently of the regular text color.
+
+Possible values include:
+
+- Transparent (transparent)
+- Color name (red)
+- Hexadecimal color (#ffffff)
+- RGB color (rgb(255, 255, 255))
+- RGBA color (rgba(255, 255, 255, .5))
+- A variable referencing any of the above options ($color-a)
+- A color within a variable map (map.get($color-options, a))
+
 ## SCSS
 
 ```scss
@@ -145,6 +159,7 @@ Values can include those accepted by the CSS 'font-weight' property.
       "padding-top": 8px,
       "text-align": center,
       "bold-font-weight": 800,
+      "bold-color": red,
     )
   );
 }

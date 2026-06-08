@@ -5,6 +5,7 @@ $quote-wysiwyg-options: (
     "padding": null,
     "margin-top": null,
     "margin-bottom": null,
+    "background-color": null,
     "border": null,
     "paragraph": null,
     "cite": null,
@@ -24,7 +25,10 @@ $quote-wysiwyg-options: (
             @if map.has-key($quote-wysiwyg-options, $property) {
                 @if $value {
                     @if $property == "border" {
-                        @include make-border-wysiwyg-options($value);
+                        // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
+                        & {
+                            @include make-border-wysiwyg-options($value);
+                        }
                     }
                     @else if $property == "paragraph" {
                         p {
@@ -37,7 +41,9 @@ $quote-wysiwyg-options: (
                         }
                     }
                     @else {
-                        #{$property}: $value;
+                        & {
+                            #{$property}: $value;
+                        }
                     }
                 }
             }
@@ -52,7 +58,10 @@ $quote-wysiwyg-options: (
             @if map.has-key($quote-wysiwyg-options, $property) {
                 @if $value {
                     @if $property == "border" {
-                        @include make-border-wysiwyg-options($value);
+                        // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
+                        & {
+                            @include make-border-wysiwyg-options($value);
+                        }
                     }
                     @else if $property == "paragraph" {
                         p {
@@ -63,7 +72,9 @@ $quote-wysiwyg-options: (
                         @error "Sanity doesn't support cite styles for quotes";
                     }
                     @else {
-                        #{$property}: $value;
+                        & {
+                            #{$property}: $value;
+                        }
                     }
                 }
             }

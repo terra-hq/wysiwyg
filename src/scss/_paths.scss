@@ -1,4 +1,5 @@
-$base-path: "/wordpress-starter/" !default;
+// Sin barra final: el separador lo añade asset-url() para evitar dobles "//".
+$base-path: "/wordpress-starter" !default;
 
 @function asset-url($path) {
   @return "#{$base-path}/#{$path}";

@@ -3,11 +3,22 @@
 $columns-wysiwyg-options: (
     "margin-bottom": null,
     "breakpoint": null,
+    "column-gap": null,
+    "row-gap": null,
 );
 
 @mixin block-columns-wp() {
     .wp-block-columns{
         display: flex;
+        .wp-block-column {
+            //* columnas de igual ancho por defecto (como WordPress)
+            flex-grow: 1;
+            flex-basis: 0;
+            //* respeta el ancho propio si la columna lo trae inline (style="flex-basis:…")
+            &[style*="flex-basis"] {
+                flex-grow: 0;
+            }
+        }
     }
 }
 

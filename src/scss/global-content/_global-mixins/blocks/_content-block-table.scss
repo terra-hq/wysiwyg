@@ -9,9 +9,14 @@ $table-wysiwyg-options: (
     "margin-bottom": null,
     "header-cells-padding": null,
     "body-cells-padding": null,
-    "header-border": null,
+    "table-border": null,
+    "table-border-radius": null,
+    "scroll-breakpoint": null,
+    "header-border-right": null,
+    "header-border-bottom": null,
     "header-background": null,
-    "body-border": null,
+    "body-border-right": null,
+    "body-border-bottom": null,
     "body-background": null,
     "odd-rows-background": null,
     "odd-rows-text-color": null,
@@ -59,16 +64,20 @@ $table-wysiwyg-options: (
                             }
                         }
                     }
-                    @else if $property == "header-border" {
-                        thead tr {
-                            th {
-                                @include make-border-wysiwyg-options($options: $value);
-                            }
-                        }
-                    }
                     @else if $property == "header-background" {
                         thead tr {
                             background: $value;
+                        }
+                    }
+                    @else if $property == "header-border-right" {
+                        //* la última celda del header NO lleva borde derecho
+                        thead tr th:not(:last-child) {
+                            border-right: $value;
+                        }
+                    }
+                    @else if $property == "header-border-bottom" {
+                        thead tr th {
+                            border-bottom: $value;
                         }
                     }
                     @else if $property == "body-font-styles" {
@@ -81,14 +90,21 @@ $table-wysiwyg-options: (
                             padding: $value;
                         }
                     }
-                    @else if $property == "body-border" {
-                        td {
-                            @include make-border-wysiwyg-options($options: $value);
-                        }
-                    }
                     @else if $property == "body-background" {
                         tbody tr {
                             background: $value;
+                        }
+                    }
+                    @else if $property == "body-border-right" {
+                        //* la última celda de cada fila NO lleva borde derecho
+                        tbody tr td:not(:last-child) {
+                            border-right: $value;
+                        }
+                    }
+                    @else if $property == "body-border-bottom" {
+                        //* las celdas de la última fila NO llevan borde inferior
+                        tbody tr:not(:last-child) td {
+                            border-bottom: $value;
                         }
                     }
                     @else if $property == "odd-rows-background" {
@@ -106,8 +122,47 @@ $table-wysiwyg-options: (
                             @include make-font-wysiwyg-options($options: $value);
                         }
                     }
+                    @else if $property == "table-border" {
+                        //* borde de la etiqueta <table>
+                        table {
+                            border: $value;
+                        }
+                    }
+                    @else if $property == "table-border-radius" {
+                        //* el radius necesita separate + overflow para recortar las esquinas
+                        table {
+                            border-radius: $value;
+                            border-collapse: separate;
+                            border-spacing: 0;
+                            overflow: hidden;
+                        }
+                    }
+                    @else if $property == "margin-bottom" {
+                        //* el margin-bottom del bloque va en el wrapper (.wp-block-table),
+                        //* nunca en la etiqueta <table>
+                        &:not(table) {
+                            margin-bottom: $value;
+                        }
+                    }
+                    @else if $property == "scroll-breakpoint" {
+                        //* scroll horizontal por debajo de este max-width: el wrapper
+                        //* (.wp-block-table) desborda y la <table> no baja de $value
+                        @media all and (max-width: $value) {
+                            &:not(table) {
+                                display: block;
+                                overflow-x: auto;
+                                -webkit-overflow-scrolling: touch;
+                            }
+                            table {
+                                min-width: $value;
+                            }
+                        }
+                    }
                     @else {
-                        #{$property}: $value;
+                        // * `& {}` evita mixed-decls (declaración tras regla anidada)
+                        & {
+                            #{$property}: $value;
+                        }
                     }
                 }
             }

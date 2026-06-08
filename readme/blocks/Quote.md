@@ -22,6 +22,20 @@ This property sets the margin-bottom of the quote.
 
 The value must be a numerical value expressed in any unit.
 
+### background-color
+
+This property sets the background color of the quote.
+
+The possible values include:
+
+- Transparent (transparent)
+- A color name (red)
+- Hexadecimal color (#ffffff)
+- RGB color (rgb(255, 255, 255))
+- RGBA color (rgba(255, 255, 255, .5))
+- A variable referencing any of the above options ($color-a)
+- A color within a variable map (map.get($color-options, a))
+
 ### border
 
 The border property accepts the border styling options listed [here](../properties/Border.md).

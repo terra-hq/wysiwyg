@@ -2,6 +2,8 @@
 
 Here are the styling options for a link.
 
+The link styles are applied to text links only. Anchors that **wrap an image** (e.g. a linked image) and the **button block link** (`.wp-block-button__link`) are excluded, so they don't inherit the link styles (color, underline, hover, etc.).
+
 ## Editable options
 
 ### className
