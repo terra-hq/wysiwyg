@@ -13,8 +13,8 @@ $link-wysiwyg-options: (
 // @extend y un reset perdería por especificidad.
 @mixin link-not-image-wysiwyg($className) {
     a:not([class]):not(:has(img)),
-    a[class^='wp-']:not(.wp-block-button__link):not(:has(img)) {
-        @include make-class-options($className);
+    a[class^='wp-']:not([class*="button"]):not(:has(img)) {
+        @include make-class-options($value);
     }
 }
 
@@ -23,7 +23,10 @@ $link-wysiwyg-options: (
         @if map.has-key($link-wysiwyg-options, $property) {
             @if $value {
                 @if $property == "className" {
-                    @include link-not-image-wysiwyg($value);
+                    a:not([class]):not(:has(img)),
+                    a[class^='wp-']:not([class*="button"]):not(:has(img)) {
+                        @include make-class-options($value);
+                    }
                 }
             }
         }
