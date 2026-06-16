@@ -287,12 +287,14 @@
 				// "text-underline-position": under,
 			),
 			$quote-options: (
-				"background-color": color.adjust(map.get($color-options, e), $lightness: 50%),
-				"background-image": url("http://placeholder.terrahq.com/img-16by9.webp"),
-				"background-size": cover,
-				"background-position": center,
-				"background-repeat": no-repeat,
-				"overlay": linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+				"background": (
+					"background-color": color.adjust(map.get($color-options, e), $lightness: 50%),
+					"background-image": url("http://placeholder.terrahq.com/img-16by9.webp"),
+					"background-size": cover,
+					"background-position": center,
+					"background-repeat": no-repeat,
+					"overlay": linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+				),
 				"border": (
 				  	"border-color": color.adjust(map.get($color-options, e), $lightness: 45%),
 				  	"border-radius": $measure*2,

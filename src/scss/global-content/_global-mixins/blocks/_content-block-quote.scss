@@ -5,35 +5,11 @@ $quote-wysiwyg-options: (
     "padding": null,
     "margin-top": null,
     "margin-bottom": null,
-    "background-color": null,
-    "background-image": null,
-    "background-size": null,
-    "background-position": null,
-    "background-repeat": null,
-    "overlay": null,
+    "background": null,
     "border": null,
     "paragraph": null,
     "cite": null,
 );
-
-@mixin make-quote-overlay($value) {
-    & {
-        position: relative;
-    }
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: $value;
-        border-radius: inherit;
-        pointer-events: none;
-        z-index: 0;
-    }
-    > * {
-        position: relative;
-        z-index: 1;
-    }
-}
 
 @mixin block-quote-wp() {
     .wp-block-quote, blockquote {
@@ -48,7 +24,10 @@ $quote-wysiwyg-options: (
         @each $property, $value in $options {
             @if map.has-key($quote-wysiwyg-options, $property) {
                 @if $value {
-                    @if $property == "border" {
+                    @if $property == "background" {
+                        @include make-background-wysiwyg-options($value);
+                    }
+                    @else if $property == "border" {
                         // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
                         & {
                             @include make-border-wysiwyg-options($value);
@@ -63,9 +42,6 @@ $quote-wysiwyg-options: (
                         cite {
                             @include make-font-wysiwyg-options($value);
                         }
-                    }
-                    @else if $property == "overlay" {
-                        @include make-quote-overlay($value);
                     }
                     @else {
                         & {
@@ -84,7 +60,10 @@ $quote-wysiwyg-options: (
         @each $property, $value in $options {
             @if map.has-key($quote-wysiwyg-options, $property) {
                 @if $value {
-                    @if $property == "border" {
+                    @if $property == "background" {
+                        @include make-background-wysiwyg-options($value);
+                    }
+                    @else if $property == "border" {
                         // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
                         & {
                             @include make-border-wysiwyg-options($value);
@@ -97,9 +76,6 @@ $quote-wysiwyg-options: (
                     }
                     @else if $property == "cite" {
                         @error "Sanity doesn't support cite styles for quotes";
-                    }
-                    @else if $property == "overlay" {
-                        @include make-quote-overlay($value);
                     }
                     @else {
                         & {
