@@ -332,6 +332,11 @@ This table shows which blocks are compatible with Gutenberg (WordPress), classic
 			),
 			$quote-options: (
 				//"background-color": color.adjust(map.get($color-options, e), $lightness: 50%),
+				//"background-image": url("/images/quote-bg.jpg"),
+                //"background-size": cover,
+                //"background-position": center,
+                //"background-repeat": no-repeat,
+                //"overlay": linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
 				//"margin-bottom": $measure * 5,
 				//"margin-top": $measure,
 				//"padding": $measure * 5,

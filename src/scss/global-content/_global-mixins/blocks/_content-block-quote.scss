@@ -6,10 +6,34 @@ $quote-wysiwyg-options: (
     "margin-top": null,
     "margin-bottom": null,
     "background-color": null,
+    "background-image": null,
+    "background-size": null,
+    "background-position": null,
+    "background-repeat": null,
+    "overlay": null,
     "border": null,
     "paragraph": null,
     "cite": null,
 );
+
+@mixin make-quote-overlay($value) {
+    & {
+        position: relative;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: $value;
+        border-radius: inherit;
+        pointer-events: none;
+        z-index: 0;
+    }
+    > * {
+        position: relative;
+        z-index: 1;
+    }
+}
 
 @mixin block-quote-wp() {
     .wp-block-quote, blockquote {
@@ -39,6 +63,9 @@ $quote-wysiwyg-options: (
                         cite {
                             @include make-font-wysiwyg-options($value);
                         }
+                    }
+                    @else if $property == "overlay" {
+                        @include make-quote-overlay($value);
                     }
                     @else {
                         & {
@@ -70,6 +97,9 @@ $quote-wysiwyg-options: (
                     }
                     @else if $property == "cite" {
                         @error "Sanity doesn't support cite styles for quotes";
+                    }
+                    @else if $property == "overlay" {
+                        @include make-quote-overlay($value);
                     }
                     @else {
                         & {
