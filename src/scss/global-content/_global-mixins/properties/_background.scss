@@ -1,0 +1,50 @@
+@use "sass:map";
+
+$background-wysiwyg-options: (
+    "background-color": null,
+    "background-image": null,
+    "background-size": null,
+    "background-position": null,
+    "background-repeat": null,
+    "overlay": null,
+);
+
+// * Aplica estilos de fondo (color/imagen) y, opcionalmente, una capa
+// * (`overlay`) por encima de la imagen para mejorar la legibilidad.
+// * Es autocontenida: envuelve las declaraciones planas en `& {}` para evitar
+// * el warning mixed-decls de Dart Sass, así que puede llamarse desde cualquier
+// * bloque sin envoltorios extra.
+@mixin make-background-wysiwyg-options($options) {
+    @each $property, $value in $options {
+        @if map.has-key($background-wysiwyg-options, $property) {
+            @if $value {
+                @if $property == "overlay" {
+                    // * Capa de color/degradado sobre el background-image.
+                    // * Se pinta con un ::before absoluto y se eleva el
+                    // * contenido (> *) por encima de la capa.
+                    & {
+                        position: relative;
+                    }
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        inset: 0;
+                        background: $value;
+                        border-radius: inherit;
+                        pointer-events: none;
+                        z-index: 0;
+                    }
+                    > * {
+                        position: relative;
+                        z-index: 1;
+                    }
+                } @else {
+                    // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
+                    & {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+    }
+}

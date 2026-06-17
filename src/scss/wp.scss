@@ -287,7 +287,14 @@
 				// "text-underline-position": under,
 			),
 			$quote-options: (
-				"background-color": color.adjust(map.get($color-options, e), $lightness: 50%),
+				"background": (
+					"background-color": color.adjust(map.get($color-options, e), $lightness: 50%),
+					"background-image": url("http://placeholder.terrahq.com/img-16by9.webp"),
+					"background-size": cover,
+					"background-position": center,
+					"background-repeat": no-repeat,
+					"overlay": linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+				),
 				"border": (
 				  	"border-color": color.adjust(map.get($color-options, e), $lightness: 45%),
 				  	"border-radius": $measure*2,
@@ -298,7 +305,7 @@
 					// "bold-color": red,
 					//   "bold-font-weight": 600,
 					"className": f--font-f,
-					"color": map.get($color-options, e),	
+					"color": map.get($color-options, b),
 					//   "font-weight": 400,
 					//   "font-style": italic,
 					// 	 "margin-bottom": $measure * 3,
@@ -315,7 +322,7 @@
 					// "bold-color": red,
 					//   "bold-font-weight": 600,
 					"className": f--font-d,
-					"color": color.adjust(map.get($color-options, e), $lightness: -20%),
+					"color": map.get($color-options, b),
 					//   "font-style": italic,
 					//   "font-weight": 400,
 					"margin-bottom": $measure * 3,

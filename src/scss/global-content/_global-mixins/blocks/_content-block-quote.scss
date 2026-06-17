@@ -5,7 +5,7 @@ $quote-wysiwyg-options: (
     "padding": null,
     "margin-top": null,
     "margin-bottom": null,
-    "background-color": null,
+    "background": null,
     "border": null,
     "paragraph": null,
     "cite": null,
@@ -24,7 +24,10 @@ $quote-wysiwyg-options: (
         @each $property, $value in $options {
             @if map.has-key($quote-wysiwyg-options, $property) {
                 @if $value {
-                    @if $property == "border" {
+                    @if $property == "background" {
+                        @include make-background-wysiwyg-options($value);
+                    }
+                    @else if $property == "border" {
                         // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
                         & {
                             @include make-border-wysiwyg-options($value);
@@ -57,7 +60,10 @@ $quote-wysiwyg-options: (
         @each $property, $value in $options {
             @if map.has-key($quote-wysiwyg-options, $property) {
                 @if $value {
-                    @if $property == "border" {
+                    @if $property == "background" {
+                        @include make-background-wysiwyg-options($value);
+                    }
+                    @else if $property == "border" {
                         // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
                         & {
                             @include make-border-wysiwyg-options($value);

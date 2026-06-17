@@ -50,6 +50,13 @@
         "padding": $measure * 5 $measure * 2,
         "margin-top": $measure,
         "margin-bottom": $measure * 5,
+        "background": (
+          "background-image": url("http://placeholder.terrahq.com/img-16by9.webp"),
+          "background-size": cover,
+          "background-position": center,
+          "background-repeat": no-repeat,
+          "overlay": linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        ),
         "border": (
           "border-color": red,
           "border-radius": 0,
@@ -58,7 +65,7 @@
         ),
         "paragraph": (
           // "bold-color": red,
-          // "color": red,
+          "color": #fefefe,
           "font-family": arial,
           // "font-size": 2rem,
           "font-style": italic,

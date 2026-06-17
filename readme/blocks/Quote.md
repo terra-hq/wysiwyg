@@ -22,19 +22,9 @@ This property sets the margin-bottom of the quote.
 
 The value must be a numerical value expressed in any unit.
 
-### background-color
+### background
 
-This property sets the background color of the quote.
-
-The possible values include:
-
-- Transparent (transparent)
-- A color name (red)
-- Hexadecimal color (#ffffff)
-- RGB color (rgb(255, 255, 255))
-- RGBA color (rgba(255, 255, 255, .5))
-- A variable referencing any of the above options ($color-a)
-- A color within a variable map (map.get($color-options, a))
+The background property accepts the background styling options (background color, background image and `overlay`) listed [here](../properties/Background.md).
 
 ### border
 
@@ -58,6 +48,14 @@ The cite property accepts the text-related styling options listed [here](../prop
                 "padding": $measure*5 0,
                 "margin-top": $measure,
                 "margin-bottom": $measure*5,
+                "background": (
+                    "background-color": #1a1a1a,
+                    "background-image": url("/images/quote-bg.jpg"),
+                    "background-size": cover,
+                    "background-position": center,
+                    "background-repeat": no-repeat,
+                    "overlay": linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                ),
                 "border": (
                     "border-color": red,
                     "border-radius": 0,
