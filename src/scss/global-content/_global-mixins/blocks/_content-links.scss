@@ -11,12 +11,6 @@ $link-wysiwyg-options: (
 //    "wp-" pero NO es un link de texto y no debe heredar los estilos del link.
 // Se resuelve por exclusión y no con un reset porque los estilos se aplican vía
 // @extend y un reset perdería por especificidad.
-@mixin link-not-image-wysiwyg($className) {
-    a:not([class]):not(:has(img)),
-    a[class^='wp-']:not([class*="button"]):not(:has(img)) {
-        @include make-class-options($value);
-    }
-}
 
 @mixin block-link-wysiwyg-modifier ($options) {
     @each $property, $value in $options {
