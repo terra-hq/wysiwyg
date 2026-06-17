@@ -43,8 +43,10 @@ $table-wysiwyg-options: (
             border: none;
         }
 
-        td { //* all rows
+        td,
+        th { //* all rows
             margin: 0px;
+            border: none;
         }
     }
 }
