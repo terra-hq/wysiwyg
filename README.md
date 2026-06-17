@@ -8,6 +8,15 @@ This package offers a seamless solution to effortlessly style the WYSIWYG and Gu
 npm install @terrahq/wysiwyg
 ```
 
+## Changelog
+
+### 1.0.1
+
+- ➕ Added more customization options for the **Quote** block and **fonts**.
+- 🐛 Fixed the image zoom on WordPress (WP).
+- 🔄 Updated the **Table** block.
+- 🔗 Updated **Links** so that non-default links (images with a link or buttons) no longer inherit the default link styles.
+
 ## Import Mixins Globally
 
 Import the mixing into the c--content file:
