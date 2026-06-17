@@ -23,10 +23,6 @@ $font-wysiwyg-options: (
 );
 
 @mixin make-font-wysiwyg-options($options) {
-    // * Pase 1: @extend y declaraciones. Van primero para que ninguna
-    // * declaración quede DESPUÉS de una regla anidada (evita el warning
-    // * de deprecación `mixed-decls` de Dart Sass, independientemente del
-    // * orden de las claves del mapa).
     @each $property, $value in $options {
         @if map.has-key($font-wysiwyg-options, $property) {
             @if $value {
@@ -39,28 +35,15 @@ $font-wysiwyg-options: (
                         @extend .#{$value};
                     }
                 } @else if $property == "max-lines" {
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: $value;
-                    -webkit-box-orient: vertical;
+                    // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
+                    & {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: $value;
+                        -webkit-box-orient: vertical;
+                    }
                 } @else if $property == "bold-font-weight" {
-                    // * regla anidada -> pase 2
-                } @else if $property == "bold-color" {
-                    // * regla anidada -> pase 2
-                } @else if $property == "margin-bottom-before-lists" {
-                    // * regla anidada -> pase 2
-                } @else {
-                    #{$property}: $value;
-                }
-            }
-        }
-    }
-    // * Pase 2: reglas anidadas, siempre al final.
-    @each $property, $value in $options {
-        @if map.has-key($font-wysiwyg-options, $property) {
-            @if $value {
-                @if $property == "bold-font-weight" {
                     b,
                     strong {
                         font-weight: $value;
@@ -76,6 +59,11 @@ $font-wysiwyg-options: (
                       + ol
                     ){
                       margin-bottom: $value;
+                    }
+                } @else {
+                    // * `& {}` evita el warning mixed-decls (declaración tras regla anidada)
+                    & {
+                        #{$property}: $value;
                     }
                 }
             }
