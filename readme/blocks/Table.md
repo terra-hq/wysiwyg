@@ -78,6 +78,12 @@ Border-radius of the `<table>`. To make the radius visible, it switches the tabl
 
 The value must be a numerical value expressed in any unit.
 
+### header-border
+
+> ⚠️ **Legacy / backward-compatibility only.** This option is kept so existing tables that already use it don't break. For new tables prefer the granular [`header-border-right`](#header-border-right) and [`header-border-bottom`](#header-border-bottom), which avoid doubled lines on the edges. If you set both a legacy and a granular option at the same time, the one declared **last in your `$table-options` map wins** (later declarations override earlier ones in the generated CSS), so pick one approach per table.
+
+Full border of **all** the header cells (`thead tr th`). Accepts the border styling options listed [here](../properties/Border.md) (`border-color`, `border-radius`, `border-style`, `border-width`).
+
 ### header-border-right
 
 Right border of the header cells, **except the last one** (`thead tr th:not(:last-child)`). Use a CSS `border` shorthand, e.g. `1px solid map.get($color-options, a)`.
@@ -85,6 +91,12 @@ Right border of the header cells, **except the last one** (`thead tr th:not(:las
 ### header-border-bottom
 
 Bottom border of **all** the header cells (`thead tr th`). Use a CSS `border` shorthand.
+
+### body-border
+
+> ⚠️ **Legacy / backward-compatibility only.** This option is kept so existing tables that already use it don't break. For new tables prefer the granular [`body-border-right`](#body-border-right) and [`body-border-bottom`](#body-border-bottom), which avoid doubled lines on the edges. If you set both a legacy and a granular option at the same time, the one declared **last in your `$table-options` map wins** (later declarations override earlier ones in the generated CSS), so pick one approach per table.
+
+Full border of **all** the body cells (`td`). Accepts the border styling options listed [here](../properties/Border.md) (`border-color`, `border-radius`, `border-style`, `border-width`).
 
 ### body-border-right
 
@@ -152,11 +164,24 @@ The value must be a numerical value expressed in any unit.
       // Table frame
       "table-border": 2px solid map.get($color-options, a),
       "table-border-radius": $measure * 2,
-      // Cell borders (right + bottom; edges excluded automatically)
+      // Cell borders (right + bottom; edges excluded automatically) — RECOMMENDED
       "header-border-right": 1px solid map.get($color-options, a),
       "header-border-bottom": 2px solid map.get($color-options, a),
       "body-border-right": 1px solid map.get($color-options, e),
       "body-border-bottom": 1px solid map.get($color-options, e),
+      // LEGACY (backward-compatibility only): a full border on every cell.
+      // Prefer the granular *-border-right/-bottom above for new tables.
+      // Don't combine both — if set together, whichever is declared LAST wins.
+      // "header-border": (
+      //   "border-color": map.get($color-options, a),
+      //   "border-style": solid,
+      //   "border-width": 1px,
+      // ),
+      // "body-border": (
+      //   "border-color": map.get($color-options, e),
+      //   "border-style": solid,
+      //   "border-width": 1px,
+      // ),
       // Horizontal scroll on small screens
       "scroll-breakpoint": 700px,
       // Spacing of the whole block

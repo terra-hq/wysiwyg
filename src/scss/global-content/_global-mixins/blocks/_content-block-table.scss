@@ -12,9 +12,14 @@ $table-wysiwyg-options: (
     "table-border": null,
     "table-border-radius": null,
     "scroll-breakpoint": null,
+    // * `header-border` / `body-border` son LEGACY (compatibilidad con tablas
+    // * anteriores). Para tablas nuevas usar las granulares `*-border-right` /
+    // * `*-border-bottom`. Si se usan ambas a la vez, gana la última declarada.
+    "header-border": null,
     "header-border-right": null,
     "header-border-bottom": null,
     "header-background": null,
+    "body-border": null,
     "body-border-right": null,
     "body-border-bottom": null,
     "body-background": null,
@@ -69,6 +74,13 @@ $table-wysiwyg-options: (
                             background: $value;
                         }
                     }
+                    @else if $property == "header-border" {
+                        thead tr {
+                            th {
+                                @include make-border-wysiwyg-options($options: $value);
+                            }
+                        }
+                    }
                     @else if $property == "header-border-right" {
                         //* la última celda del header NO lleva borde derecho
                         thead tr th:not(:last-child) {
@@ -93,6 +105,11 @@ $table-wysiwyg-options: (
                     @else if $property == "body-background" {
                         tbody tr {
                             background: $value;
+                        }
+                    }
+                    @else if $property == "body-border" {
+                        td {
+                            @include make-border-wysiwyg-options($options: $value);
                         }
                     }
                     @else if $property == "body-border-right" {
